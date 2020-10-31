@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+## link to google drive doc: 
+https://docs.google.com/document/d/1yWxTK3No6bu1qsHlhBnbS39wOHj4mk_xcfIqMkC0lYo/edit?usp=sharing
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
