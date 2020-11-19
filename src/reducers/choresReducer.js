@@ -1,9 +1,16 @@
 import {
-    GET_CHORES_FOR_APARTMENT
+    GET_CHORES_FOR_APARTMENT,
+    GET_CHORE_BY_ID,
+    UPDATE_CHORE
 } from "../actions/choresActions";
 
 const initialState = {
-    chores: []
+    chores: [],
+    chore: {
+        type: 'chore',
+        description: '',
+        deadline: ''
+    }
 }
 
 const choresReducer = (state = initialState, action) => {
@@ -12,6 +19,16 @@ const choresReducer = (state = initialState, action) => {
             return {
                 ...state,
                 chores: action.chores
+            }
+        case GET_CHORE_BY_ID:
+            return {
+                ...state,
+                chore: action.chore
+            }
+        case UPDATE_CHORE:
+            return {
+                ...state,
+                chore: action.chore
             }
         default:
             return state

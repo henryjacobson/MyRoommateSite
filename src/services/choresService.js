@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080/api/apartments'
+const url = 'http://localhost:8080/api'
 
 const chores = [
     {
@@ -29,7 +29,7 @@ const chores = [
 ]
 
 export const getChoresForApartment = apartmentId =>
-    fetch(`${url}/${apartmentId}/chores`)
+    fetch(`${url}/apartments/${apartmentId}/chores`)
         .then(response => response.json())
     // chores.filter(chore => {
     //     console.log(chore.apartmentId)
@@ -37,6 +37,20 @@ export const getChoresForApartment = apartmentId =>
     //     return chore.apartmentId === apartmentId
     // })
 
+export const getChoreById = choreId =>
+    fetch(`${url}/chores/${choreId}`)
+        .then(response => response.json())
+
+export const updateChore = chore =>
+    fetch(`${url}/chores`, {
+        method: 'PUT',
+        body: JSON.stringify(chore),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response)
+
 export default{
-    getChoresForApartment
+    getChoresForApartment, getChoreById, updateChore
 }

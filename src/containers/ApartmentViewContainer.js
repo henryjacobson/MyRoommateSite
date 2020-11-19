@@ -16,6 +16,9 @@ class ApartmentViewContainer extends React.Component {
                 <h1>
                     {this.props.apartment.address}
                 </h1>
+                <h4>
+                    Chores:
+                </h4>
                 <ChoresComponent/>
             </div>
         )

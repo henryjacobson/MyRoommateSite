@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import choresReducer from "./reducers/choresReducer";
 import apartmentReducer from "./reducers/apartmentReducer";
 import ApartmentViewContainer from "./containers/ApartmentViewContainer";
+import ChoreEditorContainer from "./containers/ChoreEditorContainer";
 
 const rootReducer = combineReducers({
     choresReducer,
@@ -25,9 +26,9 @@ ReactDOM.render(
               <Route
                   path={'/apartments/:apartmentId'}
                   component={ApartmentViewContainer}/>
-              {/*<Route*/}
-              {/*    path={'/apartment/:apartmentId/editor/:choreId'}*/}
-              {/*    component={ChoreEditorContainer}/>*/}
+              <Route
+                  path={'/apartments/:apartmentId/chores/:choreId'}
+                  component={ChoreEditorContainer}/>
           </div>
       </Router>
   </Provider>,
