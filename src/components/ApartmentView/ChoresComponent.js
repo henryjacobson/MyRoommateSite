@@ -1,18 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom'
 
 const ChoresComponent = ({
-                             chores = []
+                             chores = [],
+    apartment
                          }) =>
-    <div>
+    <ul>
         {
             chores.map(chore =>
-                <div key={chore.id}>
-                    {chore.description}
-                </div>
+                <li key={chore.id}>
+                    <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
+                        {chore.description}
+                    </Link>
+                </li>
             )
         }
-    </div>
+    </ul>
 
 const stateToPropertyMapper = state => ({
     chores: state.choresReducer.chores,
