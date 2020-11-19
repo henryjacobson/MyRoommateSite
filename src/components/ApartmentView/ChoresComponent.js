@@ -7,8 +7,8 @@ const ChoresComponent = ({
     <div>
         {
             chores.map(chore =>
-                <div key={chore._id}>
-                    {chore.title}
+                <div key={chore.id}>
+                    {chore.description}
                 </div>
             )
         }

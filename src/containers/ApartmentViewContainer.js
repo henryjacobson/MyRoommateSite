@@ -6,13 +6,16 @@ import {getChoresForApartment} from "../actions/choresActions";
 
 class ApartmentViewContainer extends React.Component {
     componentDidMount() {
-        this.props.getApartmentById(0)
-        this.props.getChoresForApartment(this.props.apartment._id)
+        this.props.getApartmentById(this.props.match.params.apartmentId)
+        this.props.getChoresForApartment(this.props.match.params.apartmentId)
     }
 
     render() {
         return(
             <div>
+                <h1>
+                    {this.props.apartment.address}
+                </h1>
                 <ChoresComponent/>
             </div>
         )

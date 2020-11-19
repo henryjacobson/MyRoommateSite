@@ -1,3 +1,5 @@
+const url = 'http://localhost:8080/api/apartments'
+
 const apartment = {
     _id: 0,
     title: "apartment 0",
@@ -5,7 +7,9 @@ const apartment = {
 }
 
 export const getApartmentById = apartmentId =>
-    apartment
+    fetch(`${url}/${apartmentId}`)
+        .then(response => response.json())
+    // apartment
 
 export default {
     getApartmentById
