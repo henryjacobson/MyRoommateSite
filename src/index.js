@@ -23,7 +23,7 @@ ReactDOM.render(
       <Router>
           <div>
               <Route
-                  path={'/apartment/:apartmentId'}
+                  path={'/apartments/:apartmentId'}
                   component={ApartmentViewContainer}/>
               {/*<Route*/}
               {/*    path={'/apartment/:apartmentId/editor/:choreId'}*/}
