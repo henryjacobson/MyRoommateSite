@@ -9,7 +9,8 @@ const initialState = {
     chore: {
         type: 'chore',
         description: '',
-        deadline: ''
+        deadline: '',
+        assignee: ''
     }
 }
 

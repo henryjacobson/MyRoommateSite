@@ -26,10 +26,10 @@ ReactDOM.render(
       <Router>
           <div>
               <Route
-                  path={'/apartments/:apartmentId'}
+                  exact path={'/apartments/:apartmentId'}
                   component={ApartmentViewContainer}/>
               <Route
-                  path={'/apartments/:apartmentId/chores/:choreId'}
+                  exact path={'/apartments/:apartmentId/chores/:choreId'}
                   component={ChoreEditorContainer}/>
           </div>
       </Router>
