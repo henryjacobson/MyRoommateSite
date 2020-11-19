@@ -11,10 +11,12 @@ import choresReducer from "./reducers/choresReducer";
 import apartmentReducer from "./reducers/apartmentReducer";
 import ApartmentViewContainer from "./containers/ApartmentViewContainer";
 import ChoreEditorContainer from "./containers/ChoreEditorContainer";
+import residentReducer from "./reducers/residentReducer";
 
 const rootReducer = combineReducers({
     choresReducer,
-    apartmentReducer
+    apartmentReducer,
+    residentReducer
 })
 
 const store = createStore(rootReducer)
