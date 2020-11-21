@@ -12,6 +12,7 @@ import FacilityEditorComponent from './components/editors/FacilityEditorComponen
 import eventReducer from './reducers/eventReducer'
 import facilityReducer from './reducers/facilityReducer'
 
+
 const rootReducer = combineReducers({
   eventReducer,
   facilityReducer

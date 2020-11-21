@@ -19,8 +19,8 @@ class FacilityEditorComponent extends React.Component {
         return (
             <div>
                 <h1>
-                    Facility Editor
-                    {/* {this.state.event.title} */}
+                    Facility Editor - 
+                    {/* {this.props.facility.title} */}
                 </h1>
                 <div className="container">
                     <div class="form-group row">

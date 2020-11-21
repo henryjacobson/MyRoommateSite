@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import AddFacilityComponent from './AddFacilityComponent'
 
 const FacilityListComponent = ({
-    facilities = []
+    facilities = [],
+    addFacility
 }) =>
     <ul class="list-group-item">
         {
@@ -16,11 +18,9 @@ const FacilityListComponent = ({
             )
         }
         <li>
-            <Link to={`edit/facility`}>
-                Add Facility
-            </Link>
+            <AddFacilityComponent/>
         </li>
-    </ul>
+    </ul >
 
 const stateToPropertyMapper = state => ({
     facilities: state.facilityReducer.facilities
@@ -31,5 +31,5 @@ const propertyToDispatchMapper = dispatch => ({
 })
 
 export default connect
-(stateToPropertyMapper, propertyToDispatchMapper)
-(FacilityListComponent)
+    (stateToPropertyMapper, propertyToDispatchMapper)
+    (FacilityListComponent)

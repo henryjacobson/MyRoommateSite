@@ -19,8 +19,8 @@ class EventEditorComponent extends React.Component {
         return (
             <div>
                 <h1>
-                    Event Editor
-                    {/* {this.state.event.title} */}
+                    Event Editor - 
+                    {/* {this.props.event.title} */}
                 </h1>
                 <div className="container">
                     <div class="form-group row">

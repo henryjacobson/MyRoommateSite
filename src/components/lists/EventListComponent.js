@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
+import AddEventComponent from './AddEventComponent'
 
 const EventListComponent = ({
     events = []
@@ -16,9 +17,7 @@ const EventListComponent = ({
             )
         }
         <li>
-            <Link to={`edit/event`}>
-                Add Event
-            </Link>
+            <AddEventComponent/>
         </li>
     </ul>
 

@@ -1,4 +1,4 @@
-const url = "https://www.googleapis.com/calendar/v3/"
+const url = "https://wbdv-generic-server.herokuapp.com/api/team2/facilities"
 
 export const getFacility = (facilityId) => 
     fetch(`${url}/facilities/${facilityId}`)
