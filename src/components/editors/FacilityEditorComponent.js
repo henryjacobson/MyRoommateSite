@@ -11,7 +11,8 @@ class FacilityEditorComponent extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getFacilityById(this.props.match.params.facilityId)
+        const facilityId = this.props.match.params.facilityId
+        this.props.getFacilityById(facilityId)
             .then(_ => this.setState({ facility: this.props.faciltiy }))
     }
 

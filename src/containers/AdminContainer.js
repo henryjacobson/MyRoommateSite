@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ApartmentListComponent from "../components/lists/ApartmentListComponent"
 import FacilityListComponent from "../components/lists/FacilityListComponent"
 import EventListComponent from "../components/lists/EventListComponent"
+import GoogleCalendar from '../components/googleCalendarExample';
 
 const AdminContainer = ({
 
@@ -31,8 +32,8 @@ const AdminContainer = ({
                     <ApartmentListComponent />
                 </div>
             </div>
-
         </div>
+        <GoogleCalendar/>
     </div>
 
 export default AdminContainer
