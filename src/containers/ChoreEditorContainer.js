@@ -34,10 +34,7 @@ class ChoreEditorContainer extends React.Component {
                             this.setState(prevState => {
                                 return {chore: {...prevState.chore, assignee: event.target.value}}
                             })}>
-                    {
-                        console.log(this.state.chore)
-                    }
-                    <option value={''}></option>
+                    <option value={''}> </option>
                     {
                         this.props.residents.map(resident =>
                             <option value={resident.name}
