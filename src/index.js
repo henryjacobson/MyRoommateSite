@@ -11,11 +11,20 @@ import EventEditorComponent from './components/editors/EventEditorComponent';
 import FacilityEditorComponent from './components/editors/FacilityEditorComponent';
 import eventReducer from './reducers/eventReducer'
 import facilityReducer from './reducers/facilityReducer'
+import choresReducer from "./reducers/choresReducer";
+import apartmentReducer from "./reducers/apartmentReducer";
+import ApartmentViewContainer from "./containers/ApartmentViewContainer";
+import ChoreEditorContainer from "./containers/ChoreEditorContainer";
+import residentReducer from "./reducers/residentReducer";
+
 
 
 const rootReducer = combineReducers({
   eventReducer,
-  facilityReducer
+  facilityReducer,
+  choresReducer,
+  apartmentReducer,
+  residentReducer
 })
 
 const store = createStore(rootReducer)
@@ -28,6 +37,12 @@ ReactDOM.render(
         <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent}/>
         <Route path="/edit/event/:eventId" exact component={EventEditorComponent}/>
         <Route path="/admin" exact component={AdminContainer}/>
+  <Route
+                  exact path={'/apartments/:apartmentId'}
+                  component={ApartmentViewContainer}/>
+              <Route
+                  exact path={'/apartments/:apartmentId/chores/:choreId'}
+                  component={ChoreEditorContainer}/>
       </div>
     </Provider>
   </Router>,
