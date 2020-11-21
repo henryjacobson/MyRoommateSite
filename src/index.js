@@ -4,7 +4,11 @@ import './index.css';
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import AdminContainer from "./containers/AdminContainer"
+import WelcomeComponent from "./components/WelcomeComponent";
 import * as serviceWorker from './serviceWorker';
+import adminReducer from "./reducers/adminReducer";
+import residentReducer from "./reducers/residentReducer";
+import accountReducer from "./reducers/accountReducer";
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import EventEditorComponent from './components/editors/EventEditorComponent';
@@ -19,12 +23,16 @@ import residentReducer from "./reducers/residentReducer";
 
 
 
+
 const rootReducer = combineReducers({
   eventReducer,
   facilityReducer,
   choresReducer,
   apartmentReducer,
-  residentReducer
+  residentReducer,
+  adminReducer,
+  residentReducer,
+  accountReducer
 })
 
 const store = createStore(rootReducer)
@@ -43,6 +51,9 @@ ReactDOM.render(
               <Route
                   exact path={'/apartments/:apartmentId/chores/:choreId'}
                   component={ChoreEditorContainer}/>
+                  <Route
+                  exact path={'/welcome'}
+                  component={WelcomeComponent}/>
       </div>
     </Provider>
   </Router>,
@@ -53,4 +64,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
