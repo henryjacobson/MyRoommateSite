@@ -3,18 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
-import EventSearchContainer from "./containers/EventSearchContainer"
+import WelcomeComponent from "./components/WelcomeComponent";
 import * as serviceWorker from './serviceWorker';
+import adminReducer from "./reducers/adminReducer";
+import residentReducer from "./reducers/residentReducer";
+import accountReducer from "./reducers/accountReducer";
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 const rootReducer = combineReducers({
+    adminReducer,
+    residentReducer,
+    accountReducer
 })
 
 const store = createStore(rootReducer)
 
 ReactDOM.render(
   <Provider store = {store}>
-    <EventSearchContainer/>
+    <WelcomeComponent/>
   </Provider>,
   document.getElementById('root')
 );
