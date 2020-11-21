@@ -1,40 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {combineReducers, createStore} from "redux";
-import {Provider} from "react-redux";
-import EventSearchContainer from "./containers/EventSearchContainer"
+import { combineReducers, createStore } from "redux";
+import { Provider } from "react-redux";
+import AdminContainer from "./containers/AdminContainer"
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import EventEditorComponent from './components/editors/EventEditorComponent';
+import FacilityEditorComponent from './components/editors/FacilityEditorComponent';
+import eventReducer from './reducers/eventReducer'
+import facilityReducer from './reducers/facilityReducer'
 import choresReducer from "./reducers/choresReducer";
 import apartmentReducer from "./reducers/apartmentReducer";
 import ApartmentViewContainer from "./containers/ApartmentViewContainer";
 import ChoreEditorContainer from "./containers/ChoreEditorContainer";
 import residentReducer from "./reducers/residentReducer";
 
+
+
 const rootReducer = combineReducers({
-    choresReducer,
-    apartmentReducer,
-    residentReducer
+  eventReducer,
+  facilityReducer,
+  choresReducer,
+  apartmentReducer,
+  residentReducer
 })
 
 const store = createStore(rootReducer)
 
 ReactDOM.render(
-  <Provider store = {store}>
-      <Router>
-          <div>
-              <Route
-                  exact path={'/apartments/:apartmentId'}
-                  component={ApartmentViewContainer}/>
-              <Route
-                  exact path={'/apartments/:apartmentId/chores/:choreId'}
-                  component={ChoreEditorContainer}/>
-          </div>
-      </Router>
-  </Provider>,
-  document.getElementById('root')
+    <Router>
+      <Provider store={store}>
+        <div>
+          <Link to="/admin">Admin</Link>
+          <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent}/>
+          <Route path="/edit/event/:eventId" exact component={EventEditorComponent}/>
+          <Route path="/admin" exact component={AdminContainer}/>
+          <Route
+              exact path={'/apartments/:apartmentId'}
+              component={ApartmentViewContainer}/>
+          <Route
+              exact path={'/apartments/:apartmentId/chores/:choreId'}
+              component={ChoreEditorContainer}/>
+        </div>
+      </Provider>
+    </Router>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
