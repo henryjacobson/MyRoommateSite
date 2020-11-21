@@ -6,8 +6,8 @@ export const DELETE_EVENT = "DELETE_EVENT"
 export const CREATE_EVENT = "CREATE_EVENT"
 export const UPDATE_EVENT = "UPDATE_EVENT"
 
-export const getEvent = (dispatch, calendarId, eventId) =>
-    eventService.getEvent(calendarId, eventId)
+export const getEventById = (dispatch, calendarId, eventId) =>
+    eventService.getEventById(calendarId, eventId)
         .then(serviceEvent => dispatch({
             type: GET_EVENT,
             event: serviceEvent

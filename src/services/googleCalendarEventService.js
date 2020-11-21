@@ -1,6 +1,6 @@
 const url = "https://www.googleapis.com/calendar/v3/"
 
-export const getEvent = (calendarId, eventId) => 
+export const getEventById = (calendarId, eventId) => 
     fetch(`${url}/calendars/${calendarId}/events/${eventId}`)
         .then(response => response.json())
 
@@ -21,6 +21,6 @@ export const updateEvent = (calendarId, eventId) => {
 }
 
 export default {
-    getEvent, getAllEvents
+    getEventById, getAllEvents
 }
 

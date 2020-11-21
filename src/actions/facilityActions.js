@@ -6,7 +6,7 @@ export const DELETE_FACILITY = "DELETE_FACILITY"
 export const CREATE_FACILITY = "CREATE_FACILITY"
 export const UPDATE_FACILITY = "UPDATE_FACILITY"
 
-export const getFacility = (dispatch, calendarId, facilityId) =>
+export const getFacilityById = (dispatch, calendarId, facilityId) =>
     facilityService.getFacility(calendarId, facilityId)
         .then(serviceFacility => dispatch({
             type: GET_FACILITY,
