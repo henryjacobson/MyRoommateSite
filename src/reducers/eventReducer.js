@@ -6,7 +6,18 @@ import {
     UPDATE_EVENT
 } from "../actions/eventActions"
 
-export const eventReducer =  (state={}, action) => {
+const initialState = {
+    events: [{ id: 1, title: "event1" }, { id: 2, title: "event2" }, { id: 3, title: "event3" }],
+    event: {
+        title: '',
+        location: '',
+        date: '',
+        time: '',
+        description: ''
+    }
+}
+
+export const eventReducer =  (state=initialState, action) => {
     switch (action.type) {
         case GET_EVENT:
             return {

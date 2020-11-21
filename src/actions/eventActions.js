@@ -1,19 +1,19 @@
 import eventService from "../services/googleCalendarEventService"
 
-const GET_EVENT = "GET_EVENT "
-const GET_ALL_EVENTS = "GET_ALL_EVENTS"
-const DELETE_EVENT = "DELETE_EVENT"
-const CREATE_EVENT = "CREATE_EVENT"
-const UPDATE_EVENT = "UPDATE_EVENT"
+export const GET_EVENT = "GET_EVENT "
+export const GET_ALL_EVENTS = "GET_ALL_EVENTS"
+export const DELETE_EVENT = "DELETE_EVENT"
+export const CREATE_EVENT = "CREATE_EVENT"
+export const UPDATE_EVENT = "UPDATE_EVENT"
 
-export const getEvent = (dispatch, calendarId, eventId) => 
-    eventService.getEvent(calendarId, eventId)
+export const getEventById = (dispatch, calendarId, eventId) =>
+    eventService.getEventById(calendarId, eventId)
         .then(serviceEvent => dispatch({
             type: GET_EVENT,
             event: serviceEvent
         }))
 
-export const getAllEvents = (dispatch, calendarId) => 
+export const getAllEvents = (dispatch, calendarId) =>
     eventService.getAllEvents(calendarId)
         .then(serviceEvents => dispatch({
             type: GET_ALL_EVENTS,
@@ -21,11 +21,11 @@ export const getAllEvents = (dispatch, calendarId) =>
         }))
 
 export const deleteEvent = () => {
-    
+
 }
 export const createEvent = () => {
-    
+
 }
 export const updateEvent = () => {
-    
+
 }
