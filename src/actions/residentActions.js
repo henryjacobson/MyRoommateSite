@@ -1,4 +1,4 @@
-import residentService from "../services/residentService";
+import residentService from "../services/ResidentService";
 
 export const GET_RESIDENTS_BY_APARTMENT_ID = 'GET_RESIDENTS_BY_APARTMENT_ID'
 

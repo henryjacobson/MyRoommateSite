@@ -7,7 +7,6 @@ import AdminContainer from "./containers/AdminContainer"
 import WelcomeComponent from "./components/WelcomeComponent";
 import * as serviceWorker from './serviceWorker';
 import adminReducer from "./reducers/adminReducer";
-import residentReducer from "./reducers/residentReducer";
 import accountReducer from "./reducers/accountReducer";
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -29,7 +28,6 @@ const rootReducer = combineReducers({
   facilityReducer,
   choresReducer,
   apartmentReducer,
-  residentReducer,
   adminReducer,
   residentReducer,
   accountReducer
