@@ -24,38 +24,38 @@ import residentReducer from "./reducers/residentReducer";
 
 
 const rootReducer = combineReducers({
-  eventReducer,
-  facilityReducer,
-  choresReducer,
-  apartmentReducer,
-  adminReducer,
-  residentReducer,
-  accountReducer
+    eventReducer,
+    facilityReducer,
+    choresReducer,
+    apartmentReducer,
+    adminReducer,
+    residentReducer,
+    accountReducer
 })
 
 const store = createStore(rootReducer)
 
 ReactDOM.render(
-  <Router>
-    <Provider store={store}>
-      <div>
-        <Link to="/admin">Admin</Link>
-        <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent}/>
-        <Route path="/edit/event/:eventId" exact component={EventEditorComponent}/>
-        <Route path="/admin" exact component={AdminContainer}/>
-  <Route
-                  exact path={'/apartments/:apartmentId'}
-                  component={ApartmentViewContainer}/>
-              <Route
-                  exact path={'/apartments/:apartmentId/chores/:choreId'}
-                  component={ChoreEditorContainer}/>
-                  <Route
-                  exact path={'/welcome'}
-                  component={WelcomeComponent}/>
-      </div>
-    </Provider>
-  </Router>,
-  document.getElementById('root')
+    <Router>
+        <Provider store={store}>
+            <div>
+                <Link to="/admin">Admin</Link>
+                <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent}/>
+                <Route path="/edit/event/:eventId" exact component={EventEditorComponent}/>
+                <Route path="/admin" exact component={AdminContainer}/>
+                <Route
+                    exact path={'/apartments/:apartmentId'}
+                    component={ApartmentViewContainer}/>
+                <Route
+                    exact path={'/apartments/:apartmentId/chores/:choreId'}
+                    component={ChoreEditorContainer}/>
+                <Route
+                    exact path={'/welcome'}
+                    component={WelcomeComponent}/>
+            </div>
+        </Provider>
+    </Router>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
