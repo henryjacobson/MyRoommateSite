@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080/api/apartments'
+const url = 'https://secure-chamber-15246.herokuapp.com/api'
 
 const apartment = {
     _id: 0,
@@ -7,7 +7,7 @@ const apartment = {
 }
 
 export const getApartmentById = apartmentId =>
-    fetch(`${url}/${apartmentId}`)
+    fetch(`${url}/apartments/${apartmentId}`)
         .then(response => response.json())
     // apartment
 

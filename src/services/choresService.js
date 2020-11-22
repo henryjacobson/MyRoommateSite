@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080/api'
+const url = 'https://secure-chamber-15246.herokuapp.com/api'
 
 const chores = [
     {
