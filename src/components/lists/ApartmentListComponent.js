@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const ApartmentListComponent = ({
-    apartments = [{ id: 1, title: "apartment1" }, { id: 2, title: "apartment2" }, { id: 3, title: "apartment3" }]
+    apartments = [{ id: 0, title: "apartment0" }, { id: 1, title: "apartment1" }, { id: 2, title: "apartment2" }]
 }) =>
     <ul class="list-group-item">
         {
             apartments.map(apartment =>
                 <li key={apartment.id}>
-                    <Link to={`/apartment/${apartment.id}`}>
+                    <Link to={`/apartments/${apartment.id}`}>
                         {apartment.title}
                     </Link>
                 </li>

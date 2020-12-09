@@ -13,7 +13,8 @@ class ChoreEditorContainer extends React.Component {
 
     componentDidMount() {
         this.props.getChoreById(this.props.match.params.choreId)
-            .then(_ => this.setState({chore: this.props.chore}))
+            //.then(_ => this.setState({chore: this.props.chore}))
+        this.setState({chore: this.props.chore})
         this.props.getResidentsByApartmentId(this.props.match.params.apartmentId)
     }
 

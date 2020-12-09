@@ -11,7 +11,7 @@ const ChoresComponent = ({
             chores.map(chore =>
                 <li key={chore.id}>
                     <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
-                        {chore.description}
+                        {chore.title}
                     </Link>
                 </li>
             )
