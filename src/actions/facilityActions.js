@@ -13,8 +13,8 @@ export const getFacilityById = (dispatch, calendarId, facilityId) =>
             facility: serviceFacility
         }))
 
-export const getAllFacilities = (dispatch, calendarId) =>
-    facilityService.getAllFacilities(calendarId)
+export const getAllFacilities = (dispatch) =>
+    facilityService.getAllFacilities()
         .then(serviceFacilities => dispatch({
             type: GET_ALL_FACILITIES,
             facilities: serviceFacilities
