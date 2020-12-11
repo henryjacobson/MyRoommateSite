@@ -4,16 +4,6 @@ import {
     UPDATE_CHORE
 } from "../actions/choresActions";
 
-const initialState = {
-    chores: [],
-    chore: {
-        type: 'chore',
-        description: '',
-        deadline: '',
-        assignee: ''
-    }
-}
-
 const chores = [
     {
         _id: 10,
@@ -41,6 +31,13 @@ const chores = [
         title: "chore 4"
     }
 ]
+
+const initialState = {
+    chores: chores,
+    chore: chores[0]
+}
+
+
 
 const choresReducer = (state = initialState, action) => {
     switch (action.type) {

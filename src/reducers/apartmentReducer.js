@@ -1,12 +1,13 @@
 import {
-    GET_APARTMENT_BY_ID
+    GET_APARTMENT_BY_ID, GET_ALL_APARTMENTS
 } from "../actions/apartmentActions";
 
 const initialState = {
     apartment: {
         title: '',
         address: ''
-    }
+    },
+    apartments: []
 }
 
 const apartment = {
@@ -21,6 +22,11 @@ const apartmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 apartment: apartment //action.apartment
+            }
+        case GET_ALL_APARTMENTS:
+            return {
+                ...state,
+                apartments: action.apartments
             }
         default:
             return state

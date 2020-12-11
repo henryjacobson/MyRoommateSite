@@ -2,8 +2,24 @@ import {
     GET_RESIDENTS_BY_APARTMENT_ID
 } from "../actions/residentActions";
 
+
+const residents = [
+    {
+        id: 0,
+        name: 'Henry'
+    },
+    {
+        id: 1,
+        name: 'Shane'
+    },
+    {
+        id: 2,
+        name: 'Akira'
+    }
+]
+
 const initialState = {
-    residents: []
+    residents: residents
 }
 
 const residentReducer = (state = initialState, action) => {

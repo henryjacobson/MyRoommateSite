@@ -11,6 +11,10 @@ export const getApartmentById = apartmentId =>
         .then(response => response.json())
     // apartment
 
+export const getAllApartments = () =>
+    fetch(`${url}/apartments`)
+        .then(response => response.json())
+
 export default {
-    getApartmentById
+    getApartmentById, getAllApartments
 }

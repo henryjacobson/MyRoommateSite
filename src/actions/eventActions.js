@@ -13,8 +13,8 @@ export const getEventById = (dispatch, calendarId, eventId) =>
             event: serviceEvent
         }))
 
-export const getAllEvents = (dispatch, calendarId) =>
-    eventService.getAllEvents(calendarId)
+export const getAllEvents = (dispatch) =>
+    eventService.getAllEvents()
         .then(serviceEvents => dispatch({
             type: GET_ALL_EVENTS,
             events: serviceEvents

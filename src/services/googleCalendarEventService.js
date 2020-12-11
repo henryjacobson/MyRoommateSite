@@ -4,8 +4,8 @@ export const getEventById = (calendarId, eventId) =>
     fetch(`${url}/calendars/${calendarId}/events/${eventId}`)
         .then(response => response.json())
 
-export const getAllEvents = (calendarId) => 
-    fetch(`${url}/calendars/${calendarId}/events`)
+export const getAllEvents = () =>
+    fetch(`${url}/events`)
         .then(response => response.json())
 
 export const deleteEvent = (calendarId, eventId) => {
