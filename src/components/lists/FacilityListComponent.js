@@ -7,7 +7,7 @@ const FacilityListComponent = ({
     facilities = [],
     addFacility
 }) =>
-    <ul class="list-group-item">
+    <ul className="list-group-item">
         {
             facilities.map(facility =>
                 <li key={facility.id} >

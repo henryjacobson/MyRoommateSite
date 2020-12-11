@@ -22,9 +22,9 @@ class AddFacilityComponent extends React.Component {
                 {
                     this.state.newFacility &&
 
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <select class="custom-select" id="facilityType">
+                        <div className="form-group row">
+                            <div className="col-sm-8">
+                                <select className="custom-select" id="facilityType">
                                     <option selected>Choose...</option>
                                     <option value="gym">Gym</option>
                                     <option value="washing machine">Washing Machine</option>

@@ -6,7 +6,7 @@ import AddEventComponent from './AddEventComponent'
 const EventListComponent = ({
     events = []
 }) =>
-    <ul class="list-group-item">
+    <ul className="list-group-item">
         {
             events.map(event =>
                 <li key={event.id} >

@@ -21,8 +21,8 @@ class AddEventComponent extends React.Component {
                 {
                     this.state.newEvent &&
 
-                        <div class="form-group row">
-                            <div class="col-sm-8">
+                        <div className="form-group row">
+                            <div className="col-sm-8">
                                 <input className="form-control"/>
                             </div>
                             <Link to={`edit/event`}>

@@ -4,6 +4,7 @@ import ApartmentListComponent from "../components/lists/ApartmentListComponent"
 import FacilityListComponent from "../components/lists/FacilityListComponent"
 import EventListComponent from "../components/lists/EventListComponent"
 import GoogleCalendar from '../components/googleCalendarExample';
+import FoodApi from '../components/search/foodApiExample'
 
 const AdminContainer = ({
 
@@ -34,6 +35,7 @@ const AdminContainer = ({
             </div>
         </div>
         <GoogleCalendar/>
+        <FoodApi/>
     </div>
 
 export default AdminContainer
