@@ -6,10 +6,11 @@ const ChoresComponent = ({
                              chores = [],
     apartment
                          }) =>
-    <ul>
+    <ul className={'list-group'}>
         {
             chores.map(chore =>
-                <li key={chore.id}>
+                <li className={'list-group-item'}
+                    key={chore.id}>
                     <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
                         {chore.title}
                     </Link>

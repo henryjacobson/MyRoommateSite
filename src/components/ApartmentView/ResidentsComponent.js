@@ -3,15 +3,18 @@ import {connect} from 'react-redux';
 
 const ResidentsComponent = ({
                                 residents = []
-                         }) =>
+                            }) =>
     <div>
-        {
-            residents.map(resident =>
-                <div key={resident.id}>
-                    {resident.name}
-                </div>
-            )
-        }
+        <ul className={'list-group'}>
+            {
+                residents.map(resident =>
+                    <li className={'list-group-item'}
+                        key={resident.id}>
+                        {resident.name}
+                    </li>
+                )
+            }
+        </ul>
     </div>
 
 const stateToPropertyMapper = state => ({

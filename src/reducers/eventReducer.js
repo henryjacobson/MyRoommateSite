@@ -3,7 +3,7 @@ import {
     GET_ALL_EVENTS,
     DELETE_EVENT,
     CREATE_EVENT,
-    UPDATE_EVENT
+    UPDATE_EVENT, GET_EVENTS_FOR_APARTMENT_ID
 } from "../actions/eventActions"
 
 const initialState = {
@@ -25,6 +25,11 @@ export const eventReducer =  (state=initialState, action) => {
                 event: action.event
             }
         case GET_ALL_EVENTS:
+            return {
+                ...state,
+                events: action.events
+            }
+        case GET_EVENTS_FOR_APARTMENT_ID:
             return {
                 ...state,
                 events: action.events

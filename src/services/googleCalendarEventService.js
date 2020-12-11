@@ -8,6 +8,10 @@ export const getAllEvents = () =>
     fetch(`${url}/events`)
         .then(response => response.json())
 
+export const getEventsForApartmentId = apartmentId =>
+    fetch(`${url}/apartments/${apartmentId}/events`)
+        .then(response => response.json())
+
 export const deleteEvent = (calendarId, eventId) => {
 
 }
@@ -21,6 +25,6 @@ export const updateEvent = (calendarId, eventId) => {
 }
 
 export default {
-    getEventById, getAllEvents
+    getEventById, getAllEvents, getEventsForApartmentId
 }
 
