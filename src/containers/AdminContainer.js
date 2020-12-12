@@ -7,7 +7,7 @@ import GoogleCalendar from '../components/googleCalendarExample';
 import {getAllFacilities} from "../actions/facilityActions";
 import {getAllEvents} from "../actions/eventActions";
 import {getAllApartments} from "../actions/apartmentActions";
-import FoodApi from '../components/search/foodApiExample'
+import FoodApi from '../components/search/FoodApi'
 
 class AdminContainer extends React.Component {
     componentDidMount() {
@@ -43,8 +43,6 @@ class AdminContainer extends React.Component {
                         </div>
                     </div>
                 </div>
-                <FoodApi/>
-                {/* <GoogleCalendar/> */}
             </div>
         )
     }

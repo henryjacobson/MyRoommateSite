@@ -1,12 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import ChoresComponent from "../components/ApartmentView/ChoresComponent";
-import {getApartmentById} from '../actions/apartmentActions'
-import {getChoresForApartment} from "../actions/choresActions";
-import {getResidentsByApartmentId} from "../actions/residentActions";
+import { getApartmentById } from '../actions/apartmentActions'
+import { getChoresForApartment } from "../actions/choresActions";
+import { getResidentsByApartmentId } from "../actions/residentActions";
 import ResidentsComponent from "../components/ApartmentView/ResidentsComponent";
 import EventsComponent from "../components/ApartmentView/EventsComponent";
-import {getEventsForApartmentId} from "../actions/eventActions";
+import { getEventsForApartmentId } from "../actions/eventActions";
+import GroceriesComonent from "../components/search/GroceriesComponent"
+import { getGroceriesForApartment} from '../actions/groceriesActions'
 
 class ApartmentViewContainer extends React.Component {
     componentDidMount() {
@@ -15,10 +17,11 @@ class ApartmentViewContainer extends React.Component {
         this.props.getChoresForApartment(apartmentId)
         this.props.getResidentsByApartmentId(apartmentId)
         this.props.getEventsForApartmentId(apartmentId)
+        this.props.getGroceriesForApartment(apartmentId)
     }
 
     render() {
-        return(
+        return (
             <div className={'container'}>
                 <h1>
                     {this.props.apartment.address}
@@ -28,14 +31,23 @@ class ApartmentViewContainer extends React.Component {
                         <h4>
                             Residents:
                         </h4>
-                        <ResidentsComponent/>
+                        <ResidentsComponent />
                     </div>
 
                     <div className={'col-6'}>
                         <h4>
                             Chores:
                         </h4>
-                        <ChoresComponent/>
+                        <ChoresComponent />
+                    </div>
+                </div>
+
+                <div className={'row'}>
+                    <div className={'col'}>
+                        <h4>
+                            Groceries:
+                        </h4>
+                        <GroceriesComonent />
                     </div>
                 </div>
 
@@ -44,7 +56,7 @@ class ApartmentViewContainer extends React.Component {
                         <h4>
                             Events:
                         </h4>
-                        <EventsComponent/>
+                        <EventsComponent />
                     </div>
                 </div>
             </div>
@@ -61,9 +73,10 @@ const propertyToDispatchMapper = dispatch => ({
     getApartmentById: apartmentId => getApartmentById(dispatch, apartmentId),
     getChoresForApartment: apartmentId => getChoresForApartment(dispatch, apartmentId),
     getResidentsByApartmentId: apartmentId => getResidentsByApartmentId(dispatch, apartmentId),
-    getEventsForApartmentId: apartmentId => getEventsForApartmentId(dispatch, apartmentId)
+    getEventsForApartmentId: apartmentId => getEventsForApartmentId(dispatch, apartmentId),
+    getGroceriesForApartment: apartmentId => getGroceriesForApartment(dispatch, apartmentId)
 })
 
 export default connect
-(stateToProperty, propertyToDispatchMapper)
-(ApartmentViewContainer)
+    (stateToProperty, propertyToDispatchMapper)
+    (ApartmentViewContainer)

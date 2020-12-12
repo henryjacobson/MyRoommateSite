@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
-const ChoresComponent = ({
-    chores = [],
+const GroceriesComponent = ({
+    groceries = [],
     apartment
-}) =>
-    <ul className={'list-group'}>
+}) => <ul className={'list-group'}>
         {
-            chores.map(chore =>
+            groceries.map(item =>
                 <li className={'list-group-item'}
-                    key={chore.id}>
-                    <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
-                        {chore.title}
+                    key={item.id}>
+                    <Link to={`/apartments/${apartment.id}/groceries`}>
+                        {item.title}
                     </Link>
                 </li>
             )
@@ -20,7 +19,7 @@ const ChoresComponent = ({
     </ul>
 
 const stateToPropertyMapper = state => ({
-    chores: state.choresReducer.chores,
+    groceries: state.groceriesReducer.groceries,
     apartment: state.apartmentReducer.apartment
 })
 
@@ -30,4 +29,4 @@ const propertyToDispatchMapper = dispatch => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (ChoresComponent)
+    (GroceriesComponent)

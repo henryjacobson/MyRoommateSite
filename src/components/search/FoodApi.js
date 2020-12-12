@@ -31,7 +31,8 @@ class FoodApi extends Component {
                 <ul>
                     {this.state.foods.map(food => {
                         return <li key={food.id}>
-                            <img src={"https://spoonacular.com/cdn/ingredients_100x100/"+food.image}/>{food.name}
+                            <img src={"https://spoonacular.com/cdn/ingredients_100x100/"+food.image}/>
+                            {food.name}
                         </li>
                     })}
                 </ul>

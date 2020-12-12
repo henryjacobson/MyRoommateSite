@@ -19,10 +19,9 @@ import apartmentReducer from "./reducers/apartmentReducer";
 import ApartmentViewContainer from "./containers/ApartmentViewContainer";
 import ChoreEditorContainer from "./containers/ChoreEditorContainer";
 import residentReducer from "./reducers/residentReducer";
-
-
-
-
+import SearchGroceriesContainer from './containers/SearchGroceriesContainer';
+import groceriesReducer from "./reducers/groceriesReducer"
+ 
 const rootReducer = combineReducers({
     eventReducer,
     facilityReducer,
@@ -30,7 +29,8 @@ const rootReducer = combineReducers({
     apartmentReducer,
     adminReducer,
     residentReducer,
-    accountReducer
+    accountReducer,
+    groceriesReducer
 })
 
 const store = createStore(rootReducer)
@@ -40,18 +40,13 @@ ReactDOM.render(
         <Provider store={store}>
             <div>
                 <Link to="/admin">Admin</Link>
-                <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent}/>
-                <Route path="/edit/event/:eventId" exact component={EventEditorComponent}/>
-                <Route path="/admin" exact component={AdminContainer}/>
-                <Route
-                    exact path={'/apartments/:apartmentId'}
-                    component={ApartmentViewContainer}/>
-                <Route
-                    exact path={'/apartments/:apartmentId/chores/:choreId'}
-                    component={ChoreEditorContainer}/>
-                <Route
-                    exact path={'/welcome'}
-                    component={WelcomeComponent}/>
+                <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent} />
+                <Route path="/edit/event/:eventId" exact component={EventEditorComponent} />
+                <Route path="/admin" exact component={AdminContainer} />
+                <Route path={'/apartments/:apartmentId'} exact component={ApartmentViewContainer} />
+                <Route path={'/apartments/:apartmentId/chores/:choreId'} exact component={ChoreEditorContainer} />
+                <Route path={'/welcome'} exact component={WelcomeComponent} />
+                <Route path={'/apartments/:apartmentId/groceries'} exact component={SearchGroceriesContainer} />
             </div>
         </Provider>
     </Router>,
