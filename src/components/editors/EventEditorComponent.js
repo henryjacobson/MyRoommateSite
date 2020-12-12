@@ -23,16 +23,16 @@ class EventEditorComponent extends React.Component {
                     {/* {this.props.event.title} */}
                 </h1>
                 <div className="container">
-                    <div class="form-group row">
-                        <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputTitle" placeholder="Title" />
+                    <div className="form-group row">
+                        <label for="inputTitle" className="col-sm-2 col-form-label">Title</label>
+                        <div className="col-sm-10">
+                            <input className="form-control" id="inputTitle" placeholder="Title" />
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="datetimeInput" class="col-2 col-form-label">Date and time</label>
-                        <div class="col-10">
-                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="datetimeInput" />
+                    <div className="form-group row">
+                        <label for="datetimeInput" className="col-2 col-form-label">Date and time</label>
+                        <div className="col-10">
+                            <input className="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="datetimeInput" />
                         </div>
                     </div>
                     <div className="form-group">
@@ -41,10 +41,10 @@ class EventEditorComponent extends React.Component {
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11">
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="submit" className="btn btn-success">Save</button>
                         </div>
                         <div className="col-sm-1">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" className="btn btn-danger">Delete</button>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,9 @@
 import {
     GET_GROCERIES_FOR_APARTMENT,
     GET_GROCERY_ITEM_BY_ID,
-    UPDATE_GROCERY_ITEM
+    UPDATE_GROCERY_ITEM,
+    DELETE_GROCERY_ITEM,
+    CREATE_GROCERY_ITEM
 } from "../actions/groceriesActions"
 
 const groceries = [ 
@@ -34,7 +36,7 @@ const groceries = [
 
 const initialState = {
     groceries: groceries,
-    igroceryItem: groceries[0]
+    groceryItem: groceries[0]
 }
 
 const groceriesReducer = (state = initialState, action) => {
@@ -53,6 +55,19 @@ const groceriesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 groceryItem: action.groceryItem
+            }
+        case DELETE_GROCERY_ITEM:
+            return {
+                ...state,
+                groceries: state.groceries.filter(groceryItem => groceryItem.id !== action.groceryItemId)
+            }
+        case CREATE_GROCERY_ITEM:
+            return {
+                ...state,
+                groceries: [
+                    ...state.groceries,
+                    action.groceryItem
+                ]
             }
         default:
             return state

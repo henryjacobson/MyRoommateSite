@@ -8,7 +8,8 @@ import ResidentsComponent from "../components/ApartmentView/ResidentsComponent";
 import EventsComponent from "../components/ApartmentView/EventsComponent";
 import { getEventsForApartmentId } from "../actions/eventActions";
 import GroceriesComonent from "../components/search/GroceriesComponent"
-import { getGroceriesForApartment} from '../actions/groceriesActions'
+import { getGroceriesForApartment } from '../actions/groceriesActions'
+import { Link } from "react-router-dom";
 
 class ApartmentViewContainer extends React.Component {
     componentDidMount() {
@@ -46,6 +47,11 @@ class ApartmentViewContainer extends React.Component {
                     <div className={'col'}>
                         <h4>
                             Groceries:
+                            <Link to={`/apartments/${this.apartmentId}/groceries`}>
+                                <button className={'btn btn-primary'}>
+                                    Add
+                                </button>
+                            </Link>
                         </h4>
                         <GroceriesComonent />
                     </div>
