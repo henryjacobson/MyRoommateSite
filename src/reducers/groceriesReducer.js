@@ -34,7 +34,7 @@ const groceries = [
 
 const initialState = {
     groceries: groceries,
-    item: groceries[0]
+    igroceryItem: groceries[0]
 }
 
 const groceriesReducer = (state = initialState, action) => {
@@ -47,12 +47,12 @@ const groceriesReducer = (state = initialState, action) => {
         case GET_GROCERY_ITEM_BY_ID:
             return {
                 ...state,
-                item: action.item
+                groceryItem: action.groceryItem
             }
         case UPDATE_GROCERY_ITEM:
             return {
                 ...state,
-                item: action.item 
+                groceryItem: action.groceryItem
             }
         default:
             return state

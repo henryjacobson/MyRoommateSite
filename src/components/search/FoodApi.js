@@ -20,19 +20,27 @@ class FoodApi extends Component {
         console.log(this.state.foods);
     }
 
-
     render() {
         return (
             <div>
-                <h1>
-                    Search Food
-                </h1>
                 <FoodForm getFood={this.getFood} />
-                <ul>
+                <ul className={'list-group'}>
                     {this.state.foods.map(food => {
-                        return <li key={food.id}>
-                            <img src={"https://spoonacular.com/cdn/ingredients_100x100/"+food.image}/>
-                            {food.name}
+                        return <li className={'list-group-item'} key={food.id}>
+                            <div className='row'>
+                                <div className='col'>
+                                    <img src={"https://spoonacular.com/cdn/ingredients_100x100/" + food.image} />
+                                </div>
+                                <div className='col'>
+                                    <h4>{food.name}</h4>
+                                </div>
+                                <div className='col'>
+                                    <span className="float-right">
+                                        add
+                                    </span>
+                                </div>
+                            </div>
+
                         </li>
                     })}
                 </ul>

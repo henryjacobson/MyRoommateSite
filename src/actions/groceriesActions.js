@@ -13,9 +13,9 @@ export const getGroceriesForApartment = (dispatch, apartmentId) =>
 
 export const getGroceryItemById = (dispatch, groceryItemId) =>
         groceriesService.getGroceryItemById(groceryItemId)
-            .then(item = dispatch({
+            .then(groceryItem = dispatch({
                 type: GET_GROCERY_ITEM_BY_ID,
-                groceryItem: item
+                groceryItem
             }))
 
 export const updateGroceryItem = (dispatch, groceryItem) =>

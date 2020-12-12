@@ -1,5 +1,6 @@
 import React from 'react'
 import FoodApi from '../components/search/FoodApi'
+import GroceriesComponent from '../components/search/GroceriesComponent'
 
 class SearchGroceriesContainer extends React.Component {
     render() {
@@ -8,7 +9,15 @@ class SearchGroceriesContainer extends React.Component {
                 <h1>
                     Groceries
                 </h1>
-                <FoodApi/>
+                <div className='row'>
+                    <div className='col'>
+                        <FoodApi/>
+                    </div>
+                    <div className='col'>
+                        <GroceriesComponent/>
+                    </div>
+                </div>
+                
             </div>
         )
     }
