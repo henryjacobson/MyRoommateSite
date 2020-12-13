@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
     getGroceryItemById,
     updateGroceryItem,
@@ -13,7 +13,8 @@ class GroceryItemEditorComponent extends React.Component {
         groceryItem: {
             title: " ",
             imageUrl: " ",
-            note: " "
+            note: " ",
+            apartmentId: " "
         }
     }
 
@@ -26,9 +27,28 @@ class GroceryItemEditorComponent extends React.Component {
     render() {
         return (
             <div>
-                <h1>
-                    {this.state.groceryItem.title}
-                </h1>
+                <div>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand disabled" href="#">Edit: {this.state.groceryItem.title}</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-item nav-link" href="#">
+                                    <Link to={`/apartments/${this.state.groceryItem.apartmentId}`}>
+                                        Apartment
+                                    </Link>
+                                </a>
+                                <a class="nav-item nav-link" href="#">
+                                    <Link to={`/apartments/${this.state.groceryItem.apartmentId}/groceries`}>
+                                        Search Groceries
+                                    </Link>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
                 <div className="container">
                     <div className="form-group row">
                         <div className="col">

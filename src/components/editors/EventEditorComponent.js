@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import { getEventById, updateEvent } from "../../actions/eventActions";
 
 class EventEditorComponent extends React.Component {
@@ -18,10 +19,22 @@ class EventEditorComponent extends React.Component {
     render() {
         return (
             <div>
-                <h1>
-                    Event Editor - 
-                    {/* {this.props.event.title} */}
-                </h1>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand disabled" href="#">Edit Event {this.props.match.params.apartmentId}</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="#">
+                                <Link to='/admin'>
+                                    Admin Home
+                                </Link>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </nav>
                 <div className="container">
                     <div className="form-group row">
                         <label for="inputTitle" className="col-sm-2 col-form-label">Title</label>

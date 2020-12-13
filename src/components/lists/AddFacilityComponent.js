@@ -32,12 +32,13 @@ class AddFacilityComponent extends React.Component {
                                     <option value="tennis court">Tennis Court</option>
                                 </select>
                             </div>
-                            <Link to={`edit/facility`}>
+                            <span>
                             <button className="btn btn-primary col-sm-12 form-control" onClick={() =>
                                 this.setState(prevState => ({ ...prevState, newFacility: false }))}>
                                 OK
                             </button>
-                        </Link>
+                            </span>
+                            
                         </div>
                         
                 }

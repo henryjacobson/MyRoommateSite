@@ -1,25 +1,25 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-class AddEventComponent extends React.Component {
+class AddApartmentComponent extends React.Component {
     constructor() {
         super()
         this.state = {
-            newEvent: false
+            newApartment: false
         }
     }
     render() {
         return (
             <div>
                 {
-                    !this.state.newEvent &&
+                    !this.state.newApartment &&
                     <button className="form-control btn btn-primary" onClick={() =>
-                        this.setState(prevState => ({ ...prevState, newEvent: true }))}>
-                        Add Event
+                        this.setState(prevState => ({ ...prevState, newApartment: true }))}>
+                        Add Apartment
                 </button>
                 }
                 {
-                    this.state.newEvent &&
+                    this.state.newApartment &&
 
                     <div className="form-group row">
                         <div className="col-sm-8">
@@ -27,7 +27,7 @@ class AddEventComponent extends React.Component {
                         </div>
                         <span>
                             <button className="btn btn-primary col-sm-12 form-control" onClick={() =>
-                                this.setState(prevState => ({ ...prevState, newEvent: false }))}>
+                                this.setState(prevState => ({ ...prevState, newApartment: false }))}>
                                 OK
                             </button>
                         </span>
@@ -40,4 +40,4 @@ class AddEventComponent extends React.Component {
     }
 }
 
-export default AddEventComponent
+export default AddApartmentComponent

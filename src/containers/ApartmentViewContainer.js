@@ -27,49 +27,71 @@ class ApartmentViewContainer extends React.Component {
 
     render() {
         return (
-            <div className={'container'}>
-                <h1>
+            <div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand disabled" href="#">Apartment {this.props.match.params.apartmentId}</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="#">
+                                Roommate 1
+                                </a>
+                            <a class="nav-item nav-link" href="#">
+                                Roommate 2
+                                </a>
+                            <a class="nav-item nav-link" href="#">
+                                Roommate 3
+                                </a>
+                            {/* <ResidentsComponent /> */}
+                        </div>
+                    </div>
+                </nav>
+
+
+
+                <div className={'container'}>
+
+                    {/* <h1>
                     Apartment: {this.props.match.params.apartmentId}
-                </h1>
-                <div className={'row'}>
-                    <div className={'col-6'}>
+                </h1> */}
+                    <div className={'row'}>
+                        {/* <div className={'col-6'}>
                         <h4>
                             Residents:
                         </h4>
                         {/* <ResidentsComponent /> */}
-                    </div>
+                        {/* </div> */}
 
-                    <div className={'col-6'}>
-                        <h4>
-                            Chores:
+                        <div className={'col-3 justify-content-start'}>
+                            <h4>
+                                Chores:
+                            </h4>
+                            <ChoresComponent />
+                        </div>
+                        <div className={'col-6'}>
+                            <h4>
+                                Events:
                         </h4>
-                        <ChoresComponent />
-                    </div>
-                </div>
+                            <EventsComponent />
+                        </div>
+                        <div className={'col-3 justify-content-end'}>
+                            <h4>
+                                Groceries:
+                                <Link to={`/apartments/${this.props.match.params.apartmentId}/groceries`}>
+                                    <button className={'btn btn-primary'}>
+                                        Search Food
+                                    </button>
+                                </Link>
 
-                <div className={'row'}>
-                    <div className={'col'}>
-                        <h4>
-                            Groceries:
-                            <Link to={`/apartments/${this.props.match.params.apartmentId}/groceries`}>
-                                <button className={'btn btn-primary'}>
-                                    Add
-                                </button>
-                            </Link>
-                        </h4>
-                        <GroceriesComonent />
-                    </div>
-                </div>
-
-                <div className={'row'}>
-                    <div className={'col-12'}>
-                        <h4>
-                            Events:
-                        </h4>
-                        <EventsComponent />
+                            </h4>
+                            <GroceriesComonent />
+                        </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 }

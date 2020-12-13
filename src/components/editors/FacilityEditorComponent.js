@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import { getFacilityById, updateFacility } from "../../actions/facilityActions";
 
 class FacilityEditorComponent extends React.Component {
@@ -8,21 +9,36 @@ class FacilityEditorComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state.facility = props.facility
+        const facilityId = this.props.match.params.facilityId
+        this.props.getFacilityById(facilityId)
+            .then(response => console.log(response) )
+                // .then(console.log(this.state.facility))
     }
 
     componentDidMount() {
-        const facilityId = this.props.match.params.facilityId
-        this.props.getFacilityById(facilityId)
-            .then(_ => this.setState({ facility: this.props.faciltiy }))
+        
+        
     }
 
     render() {
         return (
             <div>
-                <h1>
-                    Facility Editor - 
-                    {/* {this.props.facility.title} */}
-                </h1>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand disabled" href="#">Edit Facility: </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="#">
+                                <Link to='/admin'>
+                                    Admin Home
+                                </Link>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </nav>
                 <div className="container">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="facilityType">Facility Type</label>

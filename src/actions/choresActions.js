@@ -60,3 +60,4 @@ export const updateChore = (dispatch, chore) =>
             type: UPDATE_CHORE,
             chore: chore
         }))
+

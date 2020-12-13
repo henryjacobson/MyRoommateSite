@@ -17,7 +17,7 @@ const GroceriesComponent = ({
                     </Link>
                     <span className="float-right">
                         <button className={'btn btn-danger'} onClick={() => deleteGroceryItem(item._id)}>
-                            Delete
+                            X
                         </button>
                     </span>
                 </li>

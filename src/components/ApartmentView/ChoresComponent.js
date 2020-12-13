@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import {updateChore} from '../../actions/choresActions'
 
 const ChoresComponent = ({
     chores = [],
-    apartment
+    apartment,
+    updateChore
 }) =>
     <ul className={'list-group'}>
         {
@@ -15,8 +17,17 @@ const ChoresComponent = ({
                         {chore.title}
                     </Link>
                 </li>
+
             )
+
         }
+        <li li className={'list-group'}>
+            <button 
+            className="btn btn-primary"
+            onClick={() => this.updateChore({title: "new chore"})}>
+                Add Chore
+            </button>
+        </li>
     </ul>
 
 const stateToPropertyMapper = state => ({
@@ -25,7 +36,7 @@ const stateToPropertyMapper = state => ({
 })
 
 const propertyToDispatchMapper = dispatch => ({
-
+    updateChore: chore => updateChore(dispatch, chore)
 })
 
 export default connect
