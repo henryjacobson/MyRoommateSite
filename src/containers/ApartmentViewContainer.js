@@ -13,6 +13,7 @@ class ApartmentViewContainer extends React.Component {
         const apartmentId = this.props.match.params.apartmentId
         this.props.getApartmentById(apartmentId)
         this.props.getChoresForApartment(apartmentId)
+            .then(() => console.log(this.props.chores))
         this.props.getResidentsByApartmentId(apartmentId)
         this.props.getEventsForApartmentId(apartmentId)
     }
@@ -54,7 +55,8 @@ class ApartmentViewContainer extends React.Component {
 
 const stateToProperty = state => ({
     apartment: state.apartmentReducer.apartment,
-    residents: state.residentReducer.residents
+    residents: state.residentReducer.residents,
+    chores: state.choresReducer.chores
 })
 
 const propertyToDispatchMapper = dispatch => ({

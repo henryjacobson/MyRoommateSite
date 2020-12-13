@@ -7,6 +7,7 @@ const ResidentsComponent = ({
     <div>
         <ul className={'list-group'}>
             {
+                residents &&
                 residents.map(resident =>
                     <li className={'list-group-item'}
                         key={resident.id}>

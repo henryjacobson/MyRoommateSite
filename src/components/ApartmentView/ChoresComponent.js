@@ -12,7 +12,7 @@ const ChoresComponent = ({
                 <li className={'list-group-item'}
                     key={chore.id}>
                     <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
-                        {chore.title}
+                        {chore.description}
                     </Link>
                 </li>
             )
