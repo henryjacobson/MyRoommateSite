@@ -1,4 +1,5 @@
-const url = "https://wbdv-generic-server.herokuapp.com/api/team2"
+const url = "https://secure-chamber-15246.herokuapp.com/api/team2"
+// const url = 'http://localhost:8080/api'
 
 const getGroceriesForApartment = apartmentId =>
     fetch(`${url}/apartments/${apartmentId}/groceries`)
@@ -19,13 +20,13 @@ const updateGroceryItem = groceryItem =>
         .then(response => response.json())
 
 const deleteGroceryItem = groceryItemId =>
-    fetch(`${url}/groceries`, {
-        method: "DELETE"
+    fetch(`${url}/groceries/${groceryItemId}`, {
+        method: 'DELETE'
     })
         .then(response => response.json())
 
 const createGroceryItem = (apartmentId, groceryItem) =>
-    fetch(`${url}/apartments/${apartmentId}/groceries`, {
+    fetch(`${url}/groceries`, {
         method: "POST",
         body: JSON.stringify(groceryItem),
         headers: {

@@ -5,6 +5,7 @@ import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import AdminContainer from "./containers/AdminContainer"
 import WelcomeComponent from "./components/WelcomeComponent";
+import 'font-awesome/css/font-awesome.css'
 import * as serviceWorker from './serviceWorker';
 import adminReducer from "./reducers/adminReducer";
 import accountReducer from "./reducers/accountReducer";

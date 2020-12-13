@@ -1,33 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import {updateChore} from '../../actions/choresActions'
+import {createChore, deleteChore, updateChore} from '../../actions/choresActions'
 
 const ChoresComponent = ({
     chores = [],
     apartment,
-    updateChore
+    createChore,
+    deleteChore
 }) =>
     <ul className={'list-group'}>
         {
             chores.map(chore =>
                 <li className={'list-group-item'}
                     key={chore.id}>
-                    <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
-                        {chore.description}
+                    {chore.description}
+                    <Link className={'fa fa-edit float-right'}
+                        to={`/apartments/${apartment.id}/chores/${chore.id}`}>
                     </Link>
+                    <i className={'fa fa-times float-right'}
+                       onClick={() => deleteChore(chore.id)}
+                    />
                 </li>
 
             )
 
         }
-        <li li className={'list-group'}>
+        <li className={'list-group'}>
             <button 
             className="btn btn-primary"
-            onClick={() => this.updateChore({title: "new chore"})}>
+            onClick={() => createChore(apartment.id)}>
                 Add Chore
             </button>
         </li>
+        {console.log(apartment)}
     </ul>
 
 const stateToPropertyMapper = state => ({
@@ -36,7 +42,8 @@ const stateToPropertyMapper = state => ({
 })
 
 const propertyToDispatchMapper = dispatch => ({
-    updateChore: chore => updateChore(dispatch, chore)
+    createChore: apartmentId => createChore(dispatch, apartmentId),
+    deleteChore: choreId => deleteChore(dispatch, choreId)
 })
 
 export default connect

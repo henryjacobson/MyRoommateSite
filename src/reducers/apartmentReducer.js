@@ -21,7 +21,7 @@ const apartmentReducer = (state = initialState, action) => {
         case GET_APARTMENT_BY_ID:
             return {
                 ...state,
-                apartment: apartment //action.apartment
+                apartment: action.apartment
             }
         case GET_ALL_APARTMENTS:
             return {

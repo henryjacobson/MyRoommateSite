@@ -1,8 +1,8 @@
 const url = "https://secure-chamber-15246.herokuapp.com/api"
 // const url = "http://localhost:8080/api"
 
-export const getEventById = (calendarId, eventId) => 
-    fetch(`${url}/calendars/${calendarId}/events/${eventId}`)
+export const getEventById = (eventId) =>
+    fetch(`${url}/events/${eventId}`)
         .then(response => response.json())
 
 export const getAllEvents = () =>

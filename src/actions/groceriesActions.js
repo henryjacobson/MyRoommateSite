@@ -37,9 +37,9 @@ export const deleteGroceryItem = (dispatch, groceryItemId) =>
 
 export const createGroceryItem = (dispatch, apartmentId, groceryItem) =>
     groceriesService.createGroceryItem(apartmentId, groceryItem)
-        .then(response =>
+        .then(actualItem =>
             dispatch({
                 type: CREATE_GROCERY_ITEM,
-                groceryItem
+                groceryItem: actualItem
             })
         )

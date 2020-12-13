@@ -11,12 +11,12 @@ const GroceriesComponent = ({
         {
             groceries.map(item =>
                 <li className={'list-group-item'}
-                    key={item._id}>
-                    <Link to={`/edit/groceries/${item._id}`}>
+                    key={item.id}>
+                    <Link to={`/edit/groceries/${item.id}`}>
                         {item.title}
                     </Link>
                     <span className="float-right">
-                        <button className={'btn btn-danger'} onClick={() => deleteGroceryItem(item._id)}>
+                        <button className={'btn btn-danger'} onClick={() => deleteGroceryItem(item.id)}>
                             X
                         </button>
                     </span>

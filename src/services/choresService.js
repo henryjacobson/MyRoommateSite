@@ -1,4 +1,5 @@
 const url = 'https://secure-chamber-15246.herokuapp.com/api'
+// const url = 'http://localhost:8080/api'
 
 const chores = [
     {
@@ -51,6 +52,26 @@ export const updateChore = chore =>
     })
         .then(response => response)
 
+export const createChore = apartmentId =>
+    fetch(`${url}/chores`, {
+        method: 'POST',
+        body: JSON.stringify({
+            description: "New Chore",
+            deadline: "2020:1:1 0:0:0",
+            apartmentId
+        }),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+
+export const deleteChore = choreId =>
+    fetch(`${url}/chores/${choreId}`, {
+        method: 'DELETE'
+    })
+        .then()
+
 export default{
-    getChoresForApartment, getChoreById, updateChore
+    getChoresForApartment, getChoreById, updateChore, createChore, deleteChore
 }

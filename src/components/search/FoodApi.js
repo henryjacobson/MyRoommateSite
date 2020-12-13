@@ -49,12 +49,14 @@ class FoodApi extends Component {
                                     <h4>{food.name}</h4>
                                 </div>
                                 <div className='col'>
-                                    <span onClick={() =>
+                                    <span onClick={() => {
+                                        console.log(this.props);
                                         this.props.createGroceryItem({
                                             title: food.name,
                                             imageUrl: food.image, notes: "",
-                                            apartmentId: console.log(this.props.match.params.apatmentId)
-                                        })}
+                                            apartmentId: this.props.apartment.id
+                                        })
+                                    }}
                                         className="float-right">
                                             
                                             <button className="btn btn-success">
@@ -76,7 +78,7 @@ class FoodApi extends Component {
 }
 
 const stateToPropertyMapper = state => ({
-
+    apartment: state.apartmentReducer.apartment
 })
 
 const propertyToDispatchMapper = dispatch => ({

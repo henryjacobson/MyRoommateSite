@@ -1,4 +1,4 @@
-import eventService from "../services/googleCalendarEventService"
+import eventService from "../services/eventService"
 
 export const GET_EVENT = "GET_EVENT "
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS"
