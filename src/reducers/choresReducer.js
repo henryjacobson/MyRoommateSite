@@ -44,7 +44,7 @@ const choresReducer = (state = initialState, action) => {
         case GET_CHORES_FOR_APARTMENT:
             return {
                 ...state,
-                chores: chores // action.chores
+                chores: action.chores
             }
         case GET_CHORE_BY_ID:
             return {
