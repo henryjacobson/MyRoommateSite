@@ -1,38 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {getGroceryItemById, updateGroceryItem} from "../../actions/groceriesActions"
+import { getGroceryItemById, updateGroceryItem, getGroceriesForApartment} from "../../actions/groceriesActions"
 
 class GroceryItemEditorComponent extends React.Component {
-    state = {}
+    state = {
+        groceryItem: {
+            title: " ",
+            imageUrl: " ",
+            note: " "
+        }
+    }
 
     constructor(props) {
         super(props);
-        this.state.groceryItem = props.groceryItem
-    }
-
-    componentDidMount() {
         this.props.getGroceryItemById(this.props.match.params.groceryItemId)
-            .then(_ => this.setState({ groceryItem: this.props.groceryItem }))
+            .then(response =>  this.setState({groceryItem: response.groceryItem}))
     }
 
     render() {
         return (
             <div>
                 <h1>
-                    Grocery Editor
+                    {this.state.groceryItem.title}
                 </h1>
                 <div className="container">
                     <div className="form-group row">
                         <div className="col">
-                            Item Name
-                        </div>
-                        <div className="col">
-                            Item Image
+                        <img src={"https://spoonacular.com/cdn/ingredients_400x400/" + this.state.groceryItem.imageUrl} />
                         </div>
                     </div>
                     <div className="form-group">
                         <label for="description">Description</label>
-                        <textarea className="form-control" id="description" rows="3"></textarea>
+                        <textarea value={this.state.groceryItem.notes} className="form-control" id="description" rows="3"></textarea>
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11">
@@ -53,6 +52,7 @@ const stateToPropertyMapper = state => ({
 })
 
 const propertyToDispatchMapper = dispatch => ({
+    getGroceriesForApartment: apartmentId => getGroceriesForApartment(dispatch, apartmentId),
     getGroceryItemById: groceryItemId => getGroceryItemById(dispatch, groceryItemId),
     updateGroceryItem: groceryItem => updateGroceryItem(dispatch, groceryItem)
 })

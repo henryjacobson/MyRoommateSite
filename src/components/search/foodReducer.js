@@ -1,22 +1,22 @@
-import {
-    GET_FOOD
-}
+// import {
+//     GET_FOOD
+// }
 
-from "./foodActions"
+// from "./foodActions"
 
-const initialState = {
-    food: []
-}
+// const initialState = {
+//     food: []
+// }
 
-const foodReducer = (stat=initialState, action) => {
-    switch(action.type) {
-        case GET_FOOD:
-            return food
-        case REPLACE_FOOD:
-            return {
-                food: action.food
-            }
-    }
-}
+// const foodReducer = (stat=initialState, action) => {
+//     switch(action.type) {
+//         case GET_FOOD:
+//             return food
+//         case REPLACE_FOOD:
+//             return {
+//                 food: action.food
+//             }
+//     }
+// }
 
-export default foodReducer
+// export default foodReducer

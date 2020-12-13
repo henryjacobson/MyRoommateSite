@@ -25,14 +25,14 @@ class ApartmentViewContainer extends React.Component {
         return (
             <div className={'container'}>
                 <h1>
-                    {this.props.apartment.address}
+                    Apartment: {this.props.match.params.apartmentId}
                 </h1>
                 <div className={'row'}>
                     <div className={'col-6'}>
                         <h4>
                             Residents:
                         </h4>
-                        <ResidentsComponent />
+                        {/* <ResidentsComponent /> */}
                     </div>
 
                     <div className={'col-6'}>
@@ -47,7 +47,7 @@ class ApartmentViewContainer extends React.Component {
                     <div className={'col'}>
                         <h4>
                             Groceries:
-                            <Link to={`/apartments/${this.apartmentId}/groceries`}>
+                            <Link to={`/apartments/${this.props.match.params.apartmentId}/groceries`}>
                                 <button className={'btn btn-primary'}>
                                     Add
                                 </button>

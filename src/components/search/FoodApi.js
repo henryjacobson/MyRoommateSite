@@ -27,25 +27,6 @@ class FoodApi extends Component {
             <div>
                 <FoodForm getFood={this.getFood} />
 
-                {/* <div className='row'>
-                    <div className='col'>
-                        <img src={"https://spoonacular.com/cdn/ingredients_100x100/"} />
-                    </div>
-                    <div className='col'>
-                        <h4>example</h4>
-                    </div>
-                    <div className='col'>
-                        <span onClick={() =>
-                            this.props.createGroceryItem({ title: "new item", imageUrl: "", notes: "", apartmentId: 0 })}
-                            className="float-right">
-                            <button className="btn btn-success">
-                                add
-                            </button>
-
-                        </span>
-                    </div>
-                </div> */}
-
                 <ul className={'list-group'}>
                     {this.state.foods.map(food => {
                         return <li className={'list-group-item'} key={food.id}>
@@ -58,7 +39,10 @@ class FoodApi extends Component {
                                 </div>
                                 <div className='col'>
                                     <span onClick={() =>
-                                        this.props.createGroceryItem({ title: food.name, imageUrl: food.image, notes: "", apartmentId: 0 })}
+                                        this.props.createGroceryItem({ 
+                                            title: food.name, 
+                                            imageUrl: food.image, notes: "", 
+                                            apartmentId: 0})}
                                         className="float-right">
                                         <button className="btn btn-success">
                                             add

@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 const ResidentsComponent = ({
-                                residents = []
-                            }) =>
+    residents = []
+}) =>
     <div>
         <ul className={'list-group'}>
             {
@@ -27,5 +27,5 @@ const propertyToDispatchMapper = dispatch => ({
 })
 
 export default connect
-(stateToPropertyMapper, propertyToDispatchMapper)
-(ResidentsComponent)
+    (stateToPropertyMapper, propertyToDispatchMapper)
+    (ResidentsComponent)

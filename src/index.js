@@ -60,7 +60,7 @@ ReactDOM.render(
                 <Link to="/adminProfile">Admin Profile</Link>
                 <Route path="/adminProfile" exact component={AdminProfileComponent}/>
 
-                <Route path={'/edit/groceries/:gorceryItemId'} exact component={GroceryItemEditorComponent}/>
+                <Route path={'/edit/groceries/:groceryItemId'} exact component={GroceryItemEditorComponent}/>
                 <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent} />
                 <Route path="/edit/event/:eventId" exact component={EventEditorComponent} />
                 <Route path="/admin" exact component={AdminContainer} />
