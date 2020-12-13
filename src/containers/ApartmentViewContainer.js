@@ -12,6 +12,10 @@ import { getGroceriesForApartment } from '../actions/groceriesActions'
 import { Link } from "react-router-dom";
 
 class ApartmentViewContainer extends React.Component {
+    // constructor(props) {
+
+    // }
+
     componentDidMount() {
         const apartmentId = this.props.match.params.apartmentId
         this.props.getApartmentById(apartmentId)

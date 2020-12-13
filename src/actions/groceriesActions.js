@@ -22,14 +22,15 @@ export const getGroceryItemById = (dispatch, groceryItemId) =>
 
 export const updateGroceryItem = (dispatch, groceryItem) =>
     groceriesService.updateGroceryItem(groceryItem)
-        .then(response => dispatch({
-            type: UPDATE_GROCERY_ITEM,
-            groceryItem
-        }))
+        .then(response =>
+            dispatch({
+                type: UPDATE_GROCERY_ITEM,
+                groceryItem
+            }))
 
 export const deleteGroceryItem = (dispatch, groceryItemId) =>
     groceriesService.deleteGroceryItem(groceryItemId)
-        .then(response => dispatch({
+        .then(status => dispatch({
             type: DELETE_GROCERY_ITEM,
             groceryItemId
         }))
