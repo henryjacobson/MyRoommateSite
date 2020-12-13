@@ -1,4 +1,4 @@
-const url = "https://secure-chamber-15246.herokuapp.com/api/team2"
+const url = "https://secure-chamber-15246.herokuapp.com/api"
 // const url = 'http://localhost:8080/api'
 
 const getGroceriesForApartment = apartmentId =>
