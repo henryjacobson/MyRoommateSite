@@ -15,6 +15,14 @@ export const getAllApartments = () =>
     fetch(`${url}/apartments`)
         .then(response => response.json())
 
+export const createApartment = (apartment) => 
+    fetch(`${url}/apartments`, {
+        method: 'POST',
+        body: JSON.stringify(apartment),
+        headers: {'content-type': 'application/json'}
+    })
+
+
 export default {
-    getApartmentById, getAllApartments
+    getApartmentById, getAllApartments, createApartment
 }

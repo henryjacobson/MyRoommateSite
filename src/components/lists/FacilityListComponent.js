@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import AddFacilityComponent from './AddFacilityComponent'
 
 const FacilityListComponent = ({
-    facilities = [],
-    addFacility
+    facilities = []
 }) =>
     <ul className={'list-group'}>
         {

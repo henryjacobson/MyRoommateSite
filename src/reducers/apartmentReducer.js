@@ -1,5 +1,5 @@
 import {
-    GET_APARTMENT_BY_ID, GET_ALL_APARTMENTS
+    GET_APARTMENT_BY_ID, GET_ALL_APARTMENTS, CREATE_APARTMENT
 } from "../actions/apartmentActions";
 
 const initialState = {
@@ -27,6 +27,11 @@ const apartmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 apartments: action.apartments
+            }
+        case CREATE_APARTMENT:
+            return {
+                ...state,
+                apartment: action.apartment
             }
         default:
             return state
