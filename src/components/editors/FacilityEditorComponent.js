@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { getFacilityById, updateFacility } from "../../actions/facilityActions";
+import {deleteFacility, getFacilityById, updateFacility} from "../../actions/facilityActions";
 
 class FacilityEditorComponent extends React.Component {
     state = {}
@@ -106,7 +106,9 @@ class FacilityEditorComponent extends React.Component {
                             onClick={() => this.props.updateFacility(this.state.facility)}>Save</button>
                         </div>
                         <div className="col-sm-1">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <Link type="submit" class="btn btn-danger"
+                            to={'/admin'}
+                            onClick={() => this.props.deleteFacility(this.props.match.params.facilityId)}>Delete</Link>
                         </div>
                     </div>
                 </div>
@@ -122,7 +124,8 @@ const stateToPropertyMapper = state => ({
 
 const propertyToDispatchMapper = dispatch => ({
     getFacilityById: facilityId => getFacilityById(dispatch, facilityId),
-    updateFacility: facility => updateFacility(dispatch, facility)
+    updateFacility: facility => updateFacility(dispatch, facility),
+    deleteFacility: facilityId => deleteFacility(dispatch, facilityId)
 })
 
 export default connect
