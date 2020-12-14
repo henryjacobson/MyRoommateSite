@@ -95,25 +95,7 @@ class EventEditorComponent extends React.Component {
                                 }} />
                         </div>
                     </div>
-                    <div className="form-group">
-                        <label for="description">Description</label>
-                        <textarea
-                            className="form-control"
-                            value={this.state.event && this.state.event.description}
-                            id="description"
-                            rows="3"
-                            onChange={event => {
-                                this.setState(prevState => {
-                                    return {
-                                        ...prevState,
-                                        event: {
-                                            ...prevState.event,
-                                            description: event.target.value
-                                        }
-                                    }
-                                })
-                            }} />
-                    </div>
+
                     <div className={'form-group'}>
                         <label>Invited</label>
                         <ul className={'list-group'}>
@@ -154,10 +136,26 @@ class EventEditorComponent extends React.Component {
                                 Invite
                             </button>
                         </div>
-
-
                     </div>
-
+                    <div className="form-group">
+                        <label for="description">Description</label>
+                        <textarea
+                            className="form-control"
+                            value={this.state.event && this.state.event.description}
+                            id="description"
+                            rows="3"
+                            onChange={event => {
+                                this.setState(prevState => {
+                                    return {
+                                        ...prevState,
+                                        event: {
+                                            ...prevState.event,
+                                            description: event.target.value
+                                        }
+                                    }
+                                })
+                            }} />
+                    </div>
                     <div className="form-group row">
                         <div className="col-sm-11">
                             <Link to={'/admin'}>

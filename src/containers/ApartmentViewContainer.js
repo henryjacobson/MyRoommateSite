@@ -30,11 +30,9 @@ class ApartmentViewContainer extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand disabled" href="#">Apartment {this.props.match.params.apartmentId}</a>
-
+                    <a className="navbar-brand disabled" href="#">Apartment: {this.props.apartment.address}</a>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-
                             {
                                 this.props.residents.map(resident =>
                                     <Link className="nav-item nav-link" href="#">
@@ -47,25 +45,11 @@ class ApartmentViewContainer extends React.Component {
                     </div>
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"/>
+                        <span className="navbar-toggler-icon" />
                     </button>
                 </nav>
-
-
-
                 <div className={'container'}>
-
-                    {/* <h1>
-                    Apartment: {this.props.match.params.apartmentId}
-                </h1> */}
                     <div className={'row'}>
-                        {/* <div className={'col-6'}>
-                        <h4>
-                            Residents:
-                        </h4>
-                        {/* <ResidentsComponent /> */}
-                        {/* </div> */}
-
                         <div className={'col-3 justify-content-start'}>
                             <h4>
                                 Chores:
