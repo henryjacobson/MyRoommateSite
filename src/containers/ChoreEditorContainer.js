@@ -90,7 +90,7 @@ class ChoreEditorContainer extends React.Component {
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11">
-                            {/* <Link to={`/apartments/${this.props.match.params.apartmentId}`}> */}
+                            <Link to={`/apartments/${this.props.match.params.apartmentId}`}>
                                 <button
                                     type="submit"
                                     className="btn btn-success"
@@ -100,10 +100,10 @@ class ChoreEditorContainer extends React.Component {
                                     }}>
                                     Save
                                 </button>
-                            {/* </Link> */}
+                            </Link>
 
                         </div>
-                        <div className="col-sm-1">
+                        {/* <div className="col-sm-1">
                             <Link to={`/apartments/${this.props.match.params.apartmentId}`}>
                                 <button
                                     type="submit"
@@ -113,7 +113,7 @@ class ChoreEditorContainer extends React.Component {
                                 </button>
                             </Link>
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

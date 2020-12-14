@@ -115,7 +115,7 @@ class EventEditorComponent extends React.Component {
                             </Link>
 
                         </div>
-                        <div className="col-sm-1">
+                        {/* <div className="col-sm-1">
                             <Link to='/admin'>
                                 <button
                                     type="submit"
@@ -125,7 +125,7 @@ class EventEditorComponent extends React.Component {
                                 </button>
                             </Link>
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

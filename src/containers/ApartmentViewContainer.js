@@ -43,16 +43,6 @@ class ApartmentViewContainer extends React.Component {
                                     </Link>
                                 )
                             }
-                            {/*<a className="nav-item nav-link" href="#">*/}
-                            {/*    Roommate 1*/}
-                            {/*    </a>*/}
-                            {/*<a className="nav-item nav-link" href="#">*/}
-                            {/*    Roommate 2*/}
-                            {/*    </a>*/}
-                            {/*<a className="nav-item nav-link" href="#">*/}
-                            {/*    Roommate 3*/}
-                            {/*    </a>*/}
-                             {/*<ResidentsComponent />*/}
                         </div>
                     </div>
 
@@ -93,7 +83,7 @@ class ApartmentViewContainer extends React.Component {
                                 Groceries:
                                 <Link to={`/apartments/${this.props.match.params.apartmentId}/groceries`}>
                                     <button className={'btn btn-primary'}>
-                                        Search Food
+                                        Add Food
                                     </button>
                                 </Link>
 

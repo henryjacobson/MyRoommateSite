@@ -85,26 +85,27 @@ class GroceryItemEditorComponent extends React.Component {
                             </Link >
                         </div>
                         <div className="col-sm-1">
-                            <button
-                                type="submit"
-                                class="btn btn-danger"
-                                onClick={() => this.props.deleteGroceryItem(this.state.groceryItem.id)} >
-                                Delete
-                                </button>
+                            <Link to={`/apartments/${this.state.groceryItem.apartmentId}`}>
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    onClick={() => this.props.deleteGroceryItem(this.state.groceryItem.id)}
+                                >Delete</button>
+                            </Link>
+                        </div>
                         </div>
                     </div>
                 </div>
-            </div>
         )
     }
 }
 
 const stateToPropertyMapper = state => ({
 
-})
+                })
 
 const propertyToDispatchMapper = dispatch => ({
-    getGroceriesForApartment: apartmentId => getGroceriesForApartment(dispatch, apartmentId),
+                    getGroceriesForApartment: apartmentId => getGroceriesForApartment(dispatch, apartmentId),
     getGroceryItemById: groceryItemId => getGroceryItemById(dispatch, groceryItemId),
     updateGroceryItem: groceryItem => updateGroceryItem(dispatch, groceryItem),
     deleteGroceryItem: groceryItemId => deleteGroceryItem(dispatch, groceryItemId)
