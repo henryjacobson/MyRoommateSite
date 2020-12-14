@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import ResidentService from "../services/ResidentService";
+import ResidentService from "../services/residentService";
 import AdminService from "../services/AdminService";
 import ApartmentService from "../services/ApartmentService";
 

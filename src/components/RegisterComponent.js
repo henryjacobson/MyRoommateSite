@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import AccountService from "../services/AccountService";
 import ApartmentService from "../services/ApartmentService";
 import {Link} from "react-router-dom";
-import ResidentService from "../services/ResidentService";
+import ResidentService from "../services/residentService";
 import AdminService from "../services/AdminService";
 
 class RegisterComponent extends React.Component{
