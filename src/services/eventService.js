@@ -40,6 +40,6 @@ export const updateEvent = (event) =>
         .then(response => response)
 
 export default {
-    getEventById, getAllEvents, updateEvent, createEvent, deleteEvent
+    getEventById, getAllEvents, updateEvent, createEvent, deleteEvent, getEventsForApartmentId
 }
 
