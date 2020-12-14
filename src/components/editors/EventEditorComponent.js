@@ -1,26 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { getEventById, updateEvent } from "../../actions/eventActions";
+import { getEventById, updateEvent, deleteEvent } from "../../actions/eventActions";
 
 class EventEditorComponent extends React.Component {
-    state = {}
+    state = {
+        event: {
+            title: "",
+            dateTime: "",
+            location: "",
+            description: ""
+        }
+    }
 
     constructor(props) {
         super(props);
-        this.state.event = props.event
+        this.props.getEventById(this.props.match.params.eventId)
+            .then(response => { this.setState({ event: response.event }) })
     }
 
-    componentDidMount() {
-        this.props.getEventById(this.props.match.params.eventId)
-            .then(_ => this.setState({ event: this.props.event }))
-    }
+    // componentDidMount() {
+    //     this.props.getEventById(this.props.match.params.eventId)
+    //         .then(_ => this.setState({ event: this.props.event }))
+    // }
 
     render() {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand disabled" href="#">Edit Event {this.props.match.params.apartmentId}</a>
+                    <a class="navbar-brand disabled" href="#">Edit Event: {this.state.event.title}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -31,7 +39,7 @@ class EventEditorComponent extends React.Component {
                                     Admin Home
                                 </Link>
                             </a>
-                            
+
                         </div>
                     </div>
                 </nav>
@@ -39,25 +47,38 @@ class EventEditorComponent extends React.Component {
                     <div className="form-group row">
                         <label for="inputTitle" className="col-sm-2 col-form-label">Title</label>
                         <div className="col-sm-10">
-                            <input className="form-control" id="inputTitle" placeholder="Title" />
+                            <input className="form-control" id="inputTitle" value={this.state.event.title} placeholder="Title" />
                         </div>
                     </div>
                     <div className="form-group row">
                         <label for="datetimeInput" className="col-2 col-form-label">Date and time</label>
                         <div className="col-10">
-                            <input className="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="datetimeInput" />
+                            <input
+                                className="form-control"
+                                type="datetime-local"
+                                // defaultValue="2011-08-19T13:45:00" 
+                                value={this.state.event.dateTime}
+                                id="datetimeInput" />
                         </div>
                     </div>
                     <div className="form-group">
                         <label for="description">Description</label>
-                        <textarea className="form-control" id="description" rows="3"></textarea>
+                        <textarea className="form-control" value={this.state.event.description} id="description" rows="3"></textarea>
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11">
                             <button type="submit" className="btn btn-success">Save</button>
                         </div>
                         <div className="col-sm-1">
-                            <button type="submit" className="btn btn-danger">Delete</button>
+                            <Link to='/admin'>
+                                <button
+                                    type="submit"
+                                    className="btn btn-danger"
+                                    onClick={() => this.props.deleteEvent(this.state.event.id)}>
+                                    Delete
+                                </button>
+                            </Link>
+
                         </div>
                     </div>
                 </div>
@@ -73,7 +94,8 @@ const stateToPropertyMapper = state => ({
 
 const propertyToDispatchMapper = dispatch => ({
     getEventById: eventId => getEventById(dispatch, eventId),
-    updateEvent: event => updateEvent(dispatch, event)
+    updateEvent: event => updateEvent(dispatch, event),
+    deleteEvent: eventId => deleteEvent(dispatch, eventId),
 })
 
 export default connect

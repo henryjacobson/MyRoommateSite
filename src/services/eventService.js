@@ -13,19 +13,33 @@ export const getEventsForApartmentId = apartmentId =>
     fetch(`${url}/apartments/${apartmentId}/events`)
         .then(response => response.json())
 
-export const deleteEvent = (calendarId, eventId) => {
+export const deleteEvent = (eventId) => 
+    fetch(`${url}/events/${eventId}`, {
+        method: 'DELETE'
+    })
+        .then()
 
-}
+export const createEvent = (event) => 
+    fetch(`${url}/events`, {
+        method: 'POST',
+        body: JSON.stringify(event),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
 
-export const createEvent = (calendarId, event) => {
-
-}
-
-export const updateEvent = (calendarId, eventId) => {
-
-}
+export const updateEvent = (event) => 
+    fetch(`${url}/events`, {
+        method: 'PUT',
+        body: JSON.stringify(event),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response)
 
 export default {
-    getEventById, getAllEvents, getEventsForApartmentId
+    getEventById, getAllEvents, updateEvent, createEvent, deleteEvent
 }
 

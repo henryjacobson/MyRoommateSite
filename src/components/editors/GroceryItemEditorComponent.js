@@ -72,7 +72,7 @@ class GroceryItemEditorComponent extends React.Component {
                                     }
                                 })
                             }}
-                            />
+                        />
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11" >
@@ -80,7 +80,7 @@ class GroceryItemEditorComponent extends React.Component {
                                 <button
                                     type="submit"
                                     class="btn btn-success"
-                                    onClick={() => this.props.updateGroceryItem({ ...this.state.groceryItem})} 
+                                    onClick={() => this.props.updateGroceryItem({ ...this.state.groceryItem })}
                                 >Save</button>
                             </Link >
                         </div>
@@ -88,8 +88,9 @@ class GroceryItemEditorComponent extends React.Component {
                             <button
                                 type="submit"
                                 class="btn btn-danger"
-                                onClick={() => this.props.deleteGroceryItem(this.state.groceryItem.id)}
-                            >Delete</button>
+                                onClick={() => this.props.deleteGroceryItem(this.state.groceryItem.id)} >
+                                Delete
+                                </button>
                         </div>
                     </div>
                 </div>

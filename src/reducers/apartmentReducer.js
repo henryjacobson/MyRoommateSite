@@ -3,17 +3,11 @@ import {
 } from "../actions/apartmentActions";
 
 const initialState = {
+    apartments: [],
     apartment: {
         title: '',
         address: ''
-    },
-    apartments: []
-}
-
-const apartment = {
-    _id: 0,
-    title: "apartment 0",
-    address: "neu"
+    }
 }
 
 const apartmentReducer = (state = initialState, action) => {
@@ -30,8 +24,10 @@ const apartmentReducer = (state = initialState, action) => {
             }
         case CREATE_APARTMENT:
             return {
-                ...state,
-                apartment: action.apartment
+                ...state, apartments: [
+                    ...state.apartments,
+                    action.apartment
+                ]
             }
         default:
             return state

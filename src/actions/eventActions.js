@@ -7,9 +7,10 @@ export const DELETE_EVENT = "DELETE_EVENT"
 export const CREATE_EVENT = "CREATE_EVENT"
 export const UPDATE_EVENT = "UPDATE_EVENT"
 
-export const getEventById = (dispatch, calendarId, eventId) =>
-    eventService.getEventById(calendarId, eventId)
-        .then(serviceEvent => dispatch({
+export const getEventById = (dispatch, eventId) =>
+    eventService.getEventById(eventId)
+        .then(serviceEvent => 
+            dispatch({
             type: GET_EVENT,
             event: serviceEvent
         }))
@@ -28,12 +29,23 @@ export const getEventsForApartmentId = (dispatch, apartmentId) =>
             events: events
         }))
 
-export const deleteEvent = () => {
+export const deleteEvent = (dispatch, eventId) =>
+    eventService.deleteEvent(eventId)
+        .then(reponse => dispatch({
+            type: DELETE_EVENT,
+            eventId
+        }))
 
-}
-export const createEvent = () => {
+export const createEvent = (dispatch, event) =>
+    eventService.createEvent(event)
+        .then(event => dispatch({
+            type: CREATE_EVENT,
+            event
+        }))
 
-}
-export const updateEvent = () => {
-
-}
+export const updateEvent = (dispatch, event) =>
+    eventService.updateEvent(event)
+        .then(event => dispatch({
+            type: UPDATE_EVENT,
+            event
+        }))

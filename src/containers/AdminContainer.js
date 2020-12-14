@@ -16,6 +16,12 @@ class AdminContainer extends React.Component {
         this.props.getAllApartments()
     }
 
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     this.props.getAllFacilities()
+    //     this.props.getAllEvents()
+    //     this.props.getAllApartments()
+    // }
+
     render() {
         return (
             <div>
