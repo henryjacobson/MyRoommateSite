@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import {createChore, deleteChore, updateChore} from '../../actions/choresActions'
+import { createChore, deleteChore, updateChore } from '../../actions/choresActions'
 
 const ChoresComponent = ({
     chores = [],
@@ -14,22 +14,20 @@ const ChoresComponent = ({
             chores.map(chore =>
                 <li className={'list-group-item'}
                     key={chore.id}>
-                    {chore.description}
-                    <Link className={'fa fa-edit float-right'}
-                        to={`/apartments/${apartment.id}/chores/${chore.id}`}>
+                    <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
+                        {chore.description}
+
                     </Link>
-                    <i className={'fa fa-times float-right'}
-                       onClick={() => deleteChore(chore.id)}
-                    />
+                    {/* <i className={'fa fa-times float-right'}
+                        onClick={() => deleteChore(chore.id)}
+                    /> */}
                 </li>
-
             )
-
         }
         <li className={'list-group'}>
-            <button 
-            className="btn btn-primary"
-            onClick={() => createChore(apartment.id)}>
+            <button
+                className="btn btn-primary"
+                onClick={() => createChore(apartment.id)}>
                 Add Chore
             </button>
         </li>

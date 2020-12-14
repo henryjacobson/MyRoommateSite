@@ -18,7 +18,7 @@ class ApartmentViewContainer extends React.Component {
 
     componentDidMount() {
         const apartmentId = this.props.match.params.apartmentId
-        console.log(apartmentId)
+        // console.log(apartmentId)
         this.props.getApartmentById(apartmentId)
         this.props.getChoresForApartment(apartmentId)
         this.props.getResidentsByApartmentId(apartmentId)
