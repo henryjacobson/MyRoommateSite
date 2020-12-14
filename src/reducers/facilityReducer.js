@@ -3,7 +3,7 @@ import {
     GET_ALL_FACILITIES,
     DELETE_FACILITY,
     CREATE_FACILITY,
-    UPDATE_FACILITY
+    UPDATE_FACILITY, LOCAL_UPDATE_FACILITY
 } from "../actions/facilityActions"
 
 const initialState = {
@@ -25,19 +25,25 @@ export const facilityReducer =  (state=initialState, action) => {
         case GET_ALL_FACILITIES:
             return {
                 ...state,
-                FACILITIES: action.FACILITIES
+                facilities: action.facilities
             }
         case DELETE_FACILITY:
             return {
-
+                ...state,
+                facilities: state.facilities.filter(facility => facility.id !== action.facilityId)
             }
         case CREATE_FACILITY:
             return {
-                
+                ...state,
+                facilities: [
+                    ...state.facilities,
+                    action.facility
+                ]
             }
         case UPDATE_FACILITY:
             return {
-                
+                ...state,
+                facility: state.facility
             }
         default:
             return state

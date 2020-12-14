@@ -43,7 +43,17 @@ class FacilityEditorComponent extends React.Component {
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="facilityType">Facility Type</label>
                         <div class="col-sm-10">
-                            <select class="custom-select" id="facilityType">
+                            <select class="custom-select" id="facilityType"
+                                    onChange={event => {
+                                        this.setState(prevState => {
+                                            return {
+                                                facility: {
+                                                    ...prevState.facility,
+                                                    type: event.target.value
+                                                }
+                                            }
+                                        })
+                                    }}>
                                 <option selected>Choose...</option>
                                 <option value="gym">Gym</option>
                                 <option value="washing machine">Washing Machine</option>
@@ -55,17 +65,37 @@ class FacilityEditorComponent extends React.Component {
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="status">Status</label>
                         <div class="col-sm-10">
-                            <select class="custom-select" id="status">
+                            <select class="custom-select" id="status"
+                                    onChange={event => {
+                                        this.setState(prevState => {
+                                            return {
+                                                facility: {
+                                                    ...prevState.facility,
+                                                    status: event.target.value
+                                                }
+                                            }
+                                        })
+                                    }}>
                                 <option selected>Choose...</option>
-                                <option value="gym">Working</option>
-                                <option value="washing machine">Not Working</option>
-                                <option value="pool">Under Repair</option>
+                                <option value="working">Working</option>
+                                <option value="not working">Not Working</option>
+                                <option value="under repair">Under Repair</option>
                             </select>
                         </div>
                     </div>
                     <div className="form-group">
                         <label for="notes">Notes</label>
-                        <textarea className="form-control" id="notes" rows="3"></textarea>
+                        <textarea className="form-control" id="notes" rows="3"
+                                  onChange={event => {
+                                      this.setState(prevState => {
+                                          return {
+                                              facility: {
+                                                  ...prevState.facility,
+                                                  type: event.target.value
+                                              }
+                                          }
+                                      })
+                                  }}/>
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11">

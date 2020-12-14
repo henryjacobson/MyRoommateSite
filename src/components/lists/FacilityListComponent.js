@@ -12,7 +12,7 @@ const FacilityListComponent = ({
             facilities.map(facility =>
                 <li className={'list-group-item'} key={facility.id} >
                     <Link to={`edit/facility/${facility.id}`}>
-                        {facility.title}
+                        {facility.type}
                     </Link>
                 </li>
             )
