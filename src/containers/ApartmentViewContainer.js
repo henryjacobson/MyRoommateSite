@@ -31,23 +31,34 @@ class ApartmentViewContainer extends React.Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand disabled" href="#">Apartment {this.props.match.params.apartmentId}</a>
+
+                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div className="navbar-nav">
+
+                            {
+                                this.props.residents.map(resident =>
+                                    <Link className="nav-item nav-link" href="#">
+                                        {console.log(resident)}
+                                        {resident.name}
+                                    </Link>
+                                )
+                            }
+                            {/*<a className="nav-item nav-link" href="#">*/}
+                            {/*    Roommate 1*/}
+                            {/*    </a>*/}
+                            {/*<a className="nav-item nav-link" href="#">*/}
+                            {/*    Roommate 2*/}
+                            {/*    </a>*/}
+                            {/*<a className="nav-item nav-link" href="#">*/}
+                            {/*    Roommate 3*/}
+                            {/*    </a>*/}
+                             {/*<ResidentsComponent />*/}
+                        </div>
+                    </div>
+
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"/>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <a className="nav-item nav-link" href="#">
-                                Roommate 1
-                                </a>
-                            <a className="nav-item nav-link" href="#">
-                                Roommate 2
-                                </a>
-                            <a className="nav-item nav-link" href="#">
-                                Roommate 3
-                                </a>
-                            {/* <ResidentsComponent /> */}
-                        </div>
-                    </div>
                 </nav>
 
 
