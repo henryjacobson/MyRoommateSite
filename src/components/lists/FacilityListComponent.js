@@ -4,20 +4,19 @@ import { connect } from 'react-redux';
 import AddFacilityComponent from './AddFacilityComponent'
 
 const FacilityListComponent = ({
-    facilities = [],
-    addFacility
+    facilities = []
 }) =>
-    <ul class="list-group-item">
+    <ul className={'list-group'}>
         {
             facilities.map(facility =>
-                <li key={facility.id} >
+                <li className={'list-group-item'} key={facility.id} >
                     <Link to={`edit/facility/${facility.id}`}>
-                        {facility.title}
+                        {facility.type}
                     </Link>
                 </li>
             )
         }
-        <li>
+        <li className={'list-group'}>
             <AddFacilityComponent/>
         </li>
     </ul >

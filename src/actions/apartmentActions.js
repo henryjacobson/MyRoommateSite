@@ -18,10 +18,13 @@ export const getApartmentById = (dispatch, apartmentId) =>
             type: GET_APARTMENT_BY_ID,
             apartment: apartment
         }))
-// dispatch({
-//     type: GET_APARTMENT_BY_ID,
-//     apartment: apartment
-// })
+
+export const createApartment = (dispatch, apartment) =>
+        apartmentService.createApartment(apartment)
+            .then(apartment => dispatch({
+                type: CREATE_APARTMENT,
+                apartment
+            }))
 
 export const getAllApartments = (dispatch) =>
     apartmentService.getAllApartments()

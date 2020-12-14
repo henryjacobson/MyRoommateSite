@@ -1,7 +1,7 @@
 import {
     GET_CHORES_FOR_APARTMENT,
     GET_CHORE_BY_ID,
-    UPDATE_CHORE
+    UPDATE_CHORE, CREATE_CHORE, DELETE_CHORE
 } from "../actions/choresActions";
 
 const chores = [
@@ -55,6 +55,19 @@ const choresReducer = (state = initialState, action) => {
             return {
                 ...state,
                 chore: action.chore
+            }
+        case CREATE_CHORE:
+            return {
+                ...state,
+                chores: [
+                    ...state.chores,
+                    action.chore
+                ]
+            }
+        case DELETE_CHORE:
+            return {
+                ...state,
+                chores: state.chores.filter(chore => chore.id !== action.choreId)
             }
         default:
             return state

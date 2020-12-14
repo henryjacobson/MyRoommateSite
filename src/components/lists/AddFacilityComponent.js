@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { Icon } from 'semantic-ui-react'
+import { createFacility } from "../../actions/facilityActions";
 
 class AddFacilityComponent extends React.Component {
     constructor() {
@@ -22,28 +24,49 @@ class AddFacilityComponent extends React.Component {
                 {
                     this.state.newFacility &&
 
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <select class="custom-select" id="facilityType">
-                                    <option selected>Choose...</option>
-                                    <option value="gym">Gym</option>
-                                    <option value="washing machine">Washing Machine</option>
-                                    <option value="pool">Pool</option>
-                                    <option value="tennis court">Tennis Court</option>
-                                </select>
-                            </div>
-                            <Link to={`edit/facility`}>
-                            <button className="btn btn-primary col-sm-12 form-control" onClick={() =>
-                                this.setState(prevState => ({ ...prevState, newFacility: false }))}>
+                    <div className="form-group row">
+                        <div className="col-sm-8">
+                            <select className="custom-select" id="facilityType"
+                                onChange={event => {
+                                    this.setState(prevState => {
+                                        return {
+                                            type: event.target.value
+                                        }
+                                    })
+                                }}>
+                                <option selected>Choose...</option>
+                                <option value="gym">Gym</option>
+                                <option value="washing machine">Washing Machine</option>
+                                <option value="pool">Pool</option>
+                                <option value="tennis court">Tennis Court</option>
+                            </select>
+                        </div>
+                        <span>
+                            <button className="btn btn-primary col-sm-12 form-control" onClick={() => {
+                                this.setState(prevState => ({ ...prevState, newFacility: false }))
+                                this.state.type &&
+                                    this.props.createFacility(this.state.type)
+                            }}>
                                 OK
                             </button>
-                        </Link>
-                        </div>
-                        
+                        </span>
+
+                    </div>
+
                 }
             </div>
         )
     }
 }
 
-export default AddFacilityComponent
+const stateToProperty = state => ({
+
+})
+
+const propertyToDispatch = dispatch => ({
+    createFacility: type => createFacility(dispatch, type)
+})
+
+export default connect
+    (stateToProperty, propertyToDispatch)
+    (AddFacilityComponent)

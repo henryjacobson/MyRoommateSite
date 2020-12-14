@@ -6,8 +6,8 @@ export const DELETE_FACILITY = "DELETE_FACILITY"
 export const CREATE_FACILITY = "CREATE_FACILITY"
 export const UPDATE_FACILITY = "UPDATE_FACILITY"
 
-export const getFacilityById = (dispatch, calendarId, facilityId) =>
-    facilityService.getFacility(calendarId, facilityId)
+export const getFacilityById = (dispatch, facilityId) =>
+    facilityService.getFacility(facilityId)
         .then(serviceFacility => dispatch({
             type: GET_FACILITY,
             facility: serviceFacility
@@ -20,12 +20,29 @@ export const getAllFacilities = (dispatch) =>
             facilities: serviceFacilities
         }))
 
-export const deleteFacility = () => {
+export const deleteFacility = (dispatch, facilityId) =>
+    facilityService.deleteFacility(facilityId)
+        .then(_ => dispatch({
+            type: DELETE_FACILITY,
+            facilityId
+        }))
 
-}
-export const createFacility = () => {
+export const createFacility = (dispatch, type) =>
+    facilityService.createFacility(type)
+        .then(facility => dispatch({
+            type: CREATE_FACILITY,
+            facility: facility
+        }))
 
-}
-export const updateFacility = () => {
+export const updateFacility = (dispatch, facility) =>
+    facilityService.updateFacility(facility)
+        .then(facility => dispatch({
+            type: UPDATE_FACILITY,
+            facility
+        }))
 
-}
+export const localUpdateFacility = (dispatch, facility) =>
+    dispatch({
+        type: UPDATE_FACILITY,
+        facility
+    })

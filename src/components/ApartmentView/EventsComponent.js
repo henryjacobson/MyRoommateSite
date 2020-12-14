@@ -14,10 +14,6 @@ const EventsComponent = ({
                 )
             }
         </ul>
-
-        <button className={'btn btn-primary'}>
-            Add
-        </button>
     </div>
 
 const stateToPropertyMapper = (state) => ({

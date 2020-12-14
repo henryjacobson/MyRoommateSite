@@ -1,44 +1,45 @@
 import React from 'react'
-import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import { createEvent } from "../../actions/eventActions";
+import { connect } from 'react-redux';
+import { createApartment } from "../../actions/apartmentActions"
 
-class AddEventComponent extends React.Component {
+class AddApartmentComponent extends React.Component {
     constructor() {
         super()
         this.state = {
-            newEvent: false
+            newApartment: false
         }
     }
     render() {
         return (
             <div>
                 {
-                    !this.state.newEvent &&
+                    !this.state.newApartment &&
                     <button className="form-control btn btn-primary" onClick={() =>
-                        this.setState(prevState => ({ ...prevState, newEvent: true }))}>
-                        Add Event
+                        this.setState(prevState => ({ ...prevState, newApartment: true }))}>
+                        Add Apartment
                 </button>
                 }
                 {
-                    this.state.newEvent &&
+                    this.state.newApartment &&
 
                     <div className="form-group row">
                         <div className="col-sm-8">
                             <input
                                 className="form-control"
+                                placeholder="Address"
                                 onChange={event => {
                                     this.setState(prevState => {
                                         return {
-                                            event: {title: event.target.value}
+                                            apartment: { address: event.target.value }
                                         }
                                     })
                                 }} />
                         </div>
                         <span>
                             <button className="btn btn-primary col-sm-12 form-control" onClick={() => {
-                                this.setState(prevState => ({ ...prevState, newEvent: false }))
-                                this.state.event && this.props.createEvent(this.state.event)
+                                this.setState(prevState => ({ ...prevState, newApartment: false }))
+                                this.state.apartment && this.props.createApartment(this.state.apartment)
                             }}>
                                 OK
                             </button>
@@ -57,9 +58,9 @@ const stateToProperty = state => ({
 })
 
 const propertyToDispatch = dispatch => ({
-    createEvent: event => createEvent(dispatch, event)
+    createApartment: apartment => createApartment(dispatch, apartment)
 })
 
 export default connect
     (stateToProperty, propertyToDispatch)
-    (AddEventComponent)
+    (AddApartmentComponent)

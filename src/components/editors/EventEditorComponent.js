@@ -26,6 +26,11 @@ class EventEditorComponent extends React.Component {
         this.props.getApartmentsForEventId(this.props.match.params.eventId)
     }
 
+    // componentDidMount() {
+    //     this.props.getEventById(this.props.match.params.eventId)
+    //         .then(_ => this.setState({ event: this.props.event }))
+    // }
+
     render() {
         return (
             <div>
@@ -148,10 +153,26 @@ class EventEditorComponent extends React.Component {
 
                     <div className="form-group row">
                         <div className="col-sm-11">
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <Link to={'/admin'}>
+                                <button
+                                    type="submit"
+                                    className="btn btn-success"
+                                    onClick={() => this.props.updateEvent({ ...this.state.event })}>
+                                    Save
+                                </button>
+                            </Link>
+
                         </div>
                         <div className="col-sm-1">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <Link to='/admin'>
+                                <button
+                                    type="submit"
+                                    className="btn btn-danger"
+                                    onClick={() => this.props.deleteEvent(this.state.event.id)}>
+                                    Delete
+                                </button>
+                            </Link>
+
                         </div>
                     </div>
                 </div>

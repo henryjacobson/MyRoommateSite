@@ -3,6 +3,8 @@ import choresService from '../services/choresService'
 export const GET_CHORES_FOR_APARTMENT = "GET_CHORES_FOR_APARTMENT"
 export const GET_CHORE_BY_ID = 'GET_CHORE_BY_ID'
 export const UPDATE_CHORE = 'UPDATE_CHORE'
+export const CREATE_CHORE = 'CREATE_CHORE'
+export const DELETE_CHORE = 'DELETE_CHORE'
 
 // const chores = [
 //     {
@@ -60,3 +62,18 @@ export const updateChore = (dispatch, chore) =>
             type: UPDATE_CHORE,
             chore: chore
         }))
+
+export const createChore = (dispatch, apartmentId) =>
+    choresService.createChore(apartmentId)
+        .then(chore => dispatch({
+            type: CREATE_CHORE,
+            chore
+        }))
+
+export const deleteChore = (dispatch, choreId) =>
+    choresService.deleteChore(choreId)
+        .then(_ => dispatch({
+            type: DELETE_CHORE,
+            choreId
+        }))
+

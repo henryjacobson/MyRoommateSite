@@ -5,6 +5,7 @@ import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import AdminContainer from "./containers/AdminContainer"
 import WelcomeComponent from "./components/WelcomeComponent";
+import 'font-awesome/css/font-awesome.css'
 import * as serviceWorker from './serviceWorker';
 import adminReducer from "./reducers/adminReducer";
 import accountReducer from "./reducers/accountReducer";
@@ -19,10 +20,16 @@ import apartmentReducer from "./reducers/apartmentReducer";
 import ApartmentViewContainer from "./containers/ApartmentViewContainer";
 import ChoreEditorContainer from "./containers/ChoreEditorContainer";
 import residentReducer from "./reducers/residentReducer";
-
-
-
-
+import SearchGroceriesContainer from './containers/SearchGroceriesContainer';
+import groceriesReducer from "./reducers/groceriesReducer"
+import LoginComponent from './components/LoginComponent';
+import PolicyComponent from './components/PolicyComponent';
+import RegisterComponent from './components/RegisterComponent';
+import ResidentProfileComponent from './components/ResidentProfileComponent';
+import AdminProfileComponent from './components/AdminProfileComponent';
+import GroceryItemEditorComponent from './components/editors/GroceryItemEditorComponent';
+import FoodApi from './components/search/FoodApi';
+ 
 const rootReducer = combineReducers({
     eventReducer,
     facilityReducer,
@@ -30,7 +37,8 @@ const rootReducer = combineReducers({
     apartmentReducer,
     adminReducer,
     residentReducer,
-    accountReducer
+    accountReducer,
+    groceriesReducer
 })
 
 const store = createStore(rootReducer)
@@ -39,19 +47,32 @@ ReactDOM.render(
     <Router>
         <Provider store={store}>
             <div>
-                <Link to="/admin">Admin</Link>
-                <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent}/>
-                <Route path="/edit/event/:eventId" exact component={EventEditorComponent}/>
-                <Route path="/admin" exact component={AdminContainer}/>
-                <Route
-                    exact path={'/apartments/:apartmentId'}
-                    component={ApartmentViewContainer}/>
-                <Route
-                    exact path={'/apartments/:apartmentId/chores/:choreId'}
-                    component={ChoreEditorContainer}/>
-                <Route
-                    exact path={'/welcome'}
-                    component={WelcomeComponent}/>
+                {/* <Link to="/admin">[ADMIN]</Link>
+                <Link to="/welcome">Welcome</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/policy">Policy</Link>
+                <Link to="/register">Register</Link>
+                <Link to="/profile">Profile</Link>
+                <Link to="/adminProfile">Admin Profile</Link> */}
+
+                <Route path="/welcoms" exact component={WelcomeComponent}/>
+                <Route path="/login" exact component={LoginComponent}/>
+                <Route path="/policy" exact component={PolicyComponent}/>
+                <Route path="/register" exact component={RegisterComponent}/>
+                <Route path="/profile" exact component={ResidentProfileComponent}/>
+                <Route path="/adminProfile" exact component={AdminProfileComponent}/>
+
+
+
+
+                <Route path={'/edit/groceries/:groceryItemId'} exact component={GroceryItemEditorComponent}/>
+                <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent} />
+                <Route path="/edit/event/:eventId" exact component={EventEditorComponent} />
+                <Route path="/admin" exact component={AdminContainer} />
+                <Route path={'/apartments/:apartmentId'} exact component={ApartmentViewContainer} />
+                <Route path={'/apartments/:apartmentId/chores/:choreId'} exact component={ChoreEditorContainer} />
+                <Route path={'/apartments/:apartmentId/groceries'} exact component={ SearchGroceriesContainer} />
+                {/* <Route path={'/apartments/:apartmentId/groceries'} exact component={FoodApi} /> */}
             </div>
         </Provider>
     </Router>,
