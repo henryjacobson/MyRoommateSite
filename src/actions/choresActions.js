@@ -70,10 +70,10 @@ export const createChore = (dispatch, apartmentId) =>
             chore
         }))
 
-export const deleteChore = (dispatch, choreId) =>
-    choresService.deleteChore(choreId)
+export const deleteChore = (dispatch, chore) =>
+    choresService.deleteChore(chore)
         .then(_ => dispatch({
             type: DELETE_CHORE,
-            choreId
+            chore
         }))
 

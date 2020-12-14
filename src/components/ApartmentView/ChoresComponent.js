@@ -19,7 +19,7 @@ const ChoresComponent = ({
 
                     </Link>
                     <span className="float-right">
-                        <button className={'btn btn-danger'} onClick={() => deleteChore(chore.id)}>
+                        <button className={'btn btn-danger'} onClick={() => deleteChore(chore)}>
                         <i className={'fa fa-times float-right'}/>
                         </button>
                     </span>

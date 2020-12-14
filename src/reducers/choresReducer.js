@@ -67,7 +67,7 @@ const choresReducer = (state = initialState, action) => {
         case DELETE_CHORE:
             return {
                 ...state,
-                chores: state.chores.filter(chore => chore.id !== action.choreId)
+                chores: state.chores.filter(chore => chore.id !== action.chore.id)
             }
         default:
             return state

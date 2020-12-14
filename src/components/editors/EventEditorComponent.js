@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { getEventById, updateEvent, deleteEvent } from "../../actions/eventActions";
-import {getAllApartments, getApartmentsForEventId, inviteApartmentToEvent} from "../../actions/apartmentActions";
+import { getAllApartments, getApartmentsForEventId, inviteApartmentToEvent } from "../../actions/apartmentActions";
 
 class EventEditorComponent extends React.Component {
     state = {
@@ -17,6 +17,7 @@ class EventEditorComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state.event = props.event
         this.props.getEventById(this.props.match.params.eventId)
             .then(() => { this.setState({ event: this.props.event }) })
     }
@@ -111,7 +112,7 @@ class EventEditorComponent extends React.Component {
                                         }
                                     }
                                 })
-                            }}/>
+                            }} />
                     </div>
                     <div className={'form-group'}>
                         <label>Invited</label>
@@ -130,13 +131,13 @@ class EventEditorComponent extends React.Component {
                         <div className={'col-sm-10'}>
                             <label htmlFor={'invite'}>New Invite</label>
                             <select className={'custom-select'} value={this.state.apartmentId}
-                                    id={'invite'}
-                                    onChange={event => this.setState(prevState => {
-                                        return {
-                                            ...prevState,
-                                            apartmentId: event.target.value
-                                        }
-                                    })}>
+                                id={'invite'}
+                                onChange={event => this.setState(prevState => {
+                                    return {
+                                        ...prevState,
+                                        apartmentId: event.target.value
+                                    }
+                                })}>
                                 <option value={''}>Choose...</option>
                                 {
                                     this.props.apartments.map(apartment =>
@@ -149,7 +150,7 @@ class EventEditorComponent extends React.Component {
                         </div>
                         <div className={'col-sm-2'}>
                             <button type={'submit'} className={'form-control btn btn-success'}
-                                    onClick={() => this.props.inviteApartmentToEvent(this.props.match.params.eventId, this.state.apartmentId)}>
+                                onClick={() => this.props.inviteApartmentToEvent(this.props.match.params.eventId, this.state.apartmentId)}>
                                 Invite
                             </button>
                         </div>
@@ -163,7 +164,9 @@ class EventEditorComponent extends React.Component {
                                 <button
                                     type="submit"
                                     className="btn btn-success"
-                                    onClick={() => this.props.updateEvent({ ...this.state.event })}>
+                                    onClick={() => {
+                                        this.props.updateEvent({ ...this.state.event })
+                                    }}>
                                     Save
                                 </button>
                             </Link>
