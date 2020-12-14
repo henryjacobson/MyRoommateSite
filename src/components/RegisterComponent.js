@@ -5,6 +5,7 @@ import ApartmentService from "../services/apartmentService";
 import {Link} from "react-router-dom";
 import ResidentService from "../services/residentService";
 import AdminService from "../services/AdminService";
+import {getAllApartments} from "../actions/apartmentActions";
 
 class RegisterComponent extends React.Component{
     state={
@@ -18,7 +19,7 @@ class RegisterComponent extends React.Component{
     }
 
     componentDidMount() {
-
+        this.props.getAllApartments()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -62,7 +63,7 @@ class RegisterComponent extends React.Component{
     updateApartment(event){
         this.setState({
             ...this.state,
-            apartment: this.state.apartments.find(apart=>apart.name===event.target.value)
+            apartment: this.props.apartments.find(apart=>apart.address===event.target.value)
         })
     }
 
@@ -139,7 +140,8 @@ class RegisterComponent extends React.Component{
                     <label htmlFor="typeOfUser" className="col-sm-2 col-form-label">Type of User</label>
 
                     <div className="col-sm-10">
-                        <select onChange={e => this.updateType(e)}>
+                        <select onChange={e => this.updateType(e)} value={this.state.type}>
+                            <option value={''}>Choose...</option>
                             <option>Resident</option>
                             <option>Admin</option>
                         </select>
@@ -157,8 +159,10 @@ class RegisterComponent extends React.Component{
                         </div>
                         <div className="form-group row">
                             <label htmlFor="Apartments" className="col-sm-2 col-form-label">Apartments</label>
-                            <select onChange={e => this.updateApartment(e)}>
-                            {this.props.apartments.map(apart=><option>{apart.name}</option>)}
+
+                            <select onChange={e => this.updateApartment(e)} value={this.state.apartment}>
+                                <option value={''}>Choose...</option>
+                            {this.props.apartments && this.props.apartments.map(apart=><option>{apart.address}</option>)}
                             </select>
                         </div>
                     </div>
@@ -169,15 +173,40 @@ class RegisterComponent extends React.Component{
                     <div className="col-sm-10">
                         {
                             this.state.type==="Resident" &&
-                            <button className="wbdv-button wbdv-login btn-primary btn-block"
-                                    onClick={this.createResident
-                                    }>
-                                Register</button>
+                                <Link to={'/profile'}>
+                                    <button className="wbdv-button wbdv-login btn-primary btn-block"
+                                            onClick={() => this.props.createResident({
+                                                name: this.state.name,
+                                                address: this.state.apartment.address,
+                                                email: this.state.email,
+                                                adminId: this.state.apartment.adminId,
+                                                apartmentId: this.state.apartment.id
+                                            }).then(r=>
+                                                this.props.createAccount({
+                                                    username: this.state.usernameField,
+                                                    password: this.state.passwordField,
+                                                    adminId: 0,
+                                                    residentId: r.id,
+                                                    resident: true
+                                                })).then(alert("Created account successfully"))
+                                            }>
+                                        Register</button>
+                                </Link>
+
                         }
                         {
                             this.state.type==="Admin" &&
                             <button className="wbdv-button wbdv-login btn-primary btn-block"
-                                    onClick={this.createAdmin
+                                    onClick={this.props.createAdmin({
+                                        name: this.state.name,
+                                    }).then(a=>
+                                        this.props.createAccount({
+                                            username: this.state.usernameField,
+                                            password: this.state.passwordField,
+                                            adminId: a.id,
+                                            residentId: 0,
+                                            resident: false
+                                        })).then(alert("Created account successfully"))
                                     }>
                                 Register</button>
                         }
@@ -190,9 +219,10 @@ class RegisterComponent extends React.Component{
 }
 
 const stateToProperty = (state) => ({
+    apartments: state.apartmentReducer.apartments
 })
 const propertyToDispatchMapper = (dispatch) => ({
-    getAllApartments: () => ApartmentService.getAllApartments().then(aparts =>aparts),
+    getAllApartments: () => getAllApartments(dispatch),
     createAccount: (account) => AccountService.createAccount(account),
     createResident: (r) => ResidentService.createResident(r),
     createAdmin: (a) => AdminService.createAdmin(a)

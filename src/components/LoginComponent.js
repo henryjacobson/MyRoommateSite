@@ -53,7 +53,10 @@ class LoginComponent extends React.Component{
                 <div className="form-group row">
                     <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
                     <div className="col-sm-10">
-                        <input id="username" onChange={this.updateUsername} placeholder="username" type="text" className="wbdv-field wbdv-username"/>
+                        <input id="username" onChange={event => this.setState({
+                            ...this.state,
+                            usernameField: event.target.value
+                        })} placeholder="username" type="text" className="wbdv-field wbdv-username"/>
                     </div>
                 </div>
 
