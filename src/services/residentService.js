@@ -5,10 +5,6 @@ export const getResidentsByApartmentId = apartmentId =>
     fetch(`${url}/apartments/${apartmentId}/residents`)
         .then(response => response.json())
 
-export const findResidentById = (id) =>
-    fetch(`${url}/residents/${id}`)
-        .then(response => response.json())
-
 export const findAllResidents = () =>
   fetch(`${url}/residents`)
     .then(response => response.json())
@@ -24,5 +20,5 @@ export const createResident = (resident) =>
         .then(response => response.json())
 
 export default {
-    findAllResidents, createResident, getResidentsByApartmentId.findResidentById
+    findAllResidents, createResident, getResidentsByApartmentId
 }

@@ -3,10 +3,21 @@ import {
     GET_ALL_EVENTS,
     DELETE_EVENT,
     CREATE_EVENT,
-    UPDATE_EVENT
+    UPDATE_EVENT, GET_EVENTS_FOR_APARTMENT_ID
 } from "../actions/eventActions"
 
-export const eventReducer =  (state={}, action) => {
+const initialState = {
+    events: [{ id: 1, title: "event1" }, { id: 2, title: "event2" }, { id: 3, title: "event3" }],
+    event: {
+        title: '',
+        location: '',
+        date: '',
+        time: '',
+        description: ''
+    }
+}
+
+export const eventReducer =  (state=initialState, action) => {
     switch (action.type) {
         case GET_EVENT:
             return {
@@ -18,17 +29,28 @@ export const eventReducer =  (state={}, action) => {
                 ...state,
                 events: action.events
             }
+        case GET_EVENTS_FOR_APARTMENT_ID:
+            return {
+                ...state,
+                events: action.events
+            }
         case DELETE_EVENT:
             return {
-
+                ...state,
+                events: state.events.filter(event => event.id !== action.eventId)
             }
         case CREATE_EVENT:
             return {
-                
+                ...state,
+                events: [
+                    ...state.events,
+                    action.event
+                ]
             }
         case UPDATE_EVENT:
             return {
-                
+                ...state,
+                event: state.event
             }
         default:
             return state
