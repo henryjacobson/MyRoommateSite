@@ -15,14 +15,24 @@ export const getAllApartments = () =>
     fetch(`${url}/apartments`)
         .then(response => response.json())
 
-export const createApartment = (apartment) => 
+export const createApartment = (apartment) =>
     fetch(`${url}/apartments`, {
         method: 'POST',
         body: JSON.stringify(apartment),
         headers: {'content-type': 'application/json'}
     })
+        .then(response => response.json())
 
+export const getApartmentsForEventId = (eventId) =>
+    fetch(`${url}/events/${eventId}/apartments`)
+        .then(response => response.json())
+
+export const inviteApartmentToEvent = (eventId, apartmentId) =>
+    fetch(`${url}/rsvp/${eventId}/${apartmentId}`, {
+        method: 'POST'
+    })
+        .then()
 
 export default {
-    getApartmentById, getAllApartments, createApartment
+    getApartmentById, getAllApartments, createApartment, getApartmentsForEventId, inviteApartmentToEvent
 }

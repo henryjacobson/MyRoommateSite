@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { getEventById, updateEvent, deleteEvent } from "../../actions/eventActions";
+import {getAllApartments, getApartmentsForEventId, inviteApartmentToEvent} from "../../actions/apartmentActions";
 
 class EventEditorComponent extends React.Component {
     state = {
@@ -10,13 +11,19 @@ class EventEditorComponent extends React.Component {
             dateTime: "",
             location: "",
             description: ""
-        }
+        },
+        apartmentId: ""
     }
 
     constructor(props) {
         super(props);
         this.props.getEventById(this.props.match.params.eventId)
-            .then(response => { this.setState({ event: response.event }) })
+            .then(() => { this.setState({ event: this.props.event }) })
+    }
+
+    componentDidMount() {
+        this.props.getAllApartments()
+        this.props.getApartmentsForEventId(this.props.match.params.eventId)
     }
 
     // componentDidMount() {
@@ -28,7 +35,7 @@ class EventEditorComponent extends React.Component {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand disabled" href="#">Edit Event: {this.state.event.title}</a>
+                    <a class="navbar-brand disabled" href="#">Edit Event: {this.state.event && this.state.event.title}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -50,11 +57,12 @@ class EventEditorComponent extends React.Component {
                             <input
                                 className="form-control"
                                 id="inputTitle"
-                                value={this.state.event.title}
+                                value={this.state.event && this.state.event.title}
                                 placeholder="Title"
                                 onChange={event => {
                                     this.setState(prevState => {
                                         return {
+                                            ...prevState,
                                             event: {
                                                 ...prevState.event,
                                                 title: event.target.value
@@ -70,12 +78,13 @@ class EventEditorComponent extends React.Component {
                             <input
                                 className="form-control"
                                 type="datetime-local"
-                                // defaultValue="2011-08-19T13:45:00" 
-                                value={this.state.event.dateTime}
+                                // defaultValue="2011-08-19T13:45:00"
+                                value={this.state.event && this.state.event.dateTime}
                                 id="datetimeInput"
                                 onChange={event => {
                                     this.setState(prevState => {
                                         return {
+                                            ...prevState,
                                             event: {
                                                 ...prevState.event,
                                                 dateTime: event.target.value
@@ -89,20 +98,59 @@ class EventEditorComponent extends React.Component {
                         <label for="description">Description</label>
                         <textarea
                             className="form-control"
-                            value={this.state.event.description}
+                            value={this.state.event && this.state.event.description}
                             id="description"
                             rows="3"
                             onChange={event => {
                                 this.setState(prevState => {
                                     return {
+                                        ...prevState,
                                         event: {
                                             ...prevState.event,
                                             description: event.target.value
                                         }
                                     }
                                 })
-                            }}></textarea>
+                            }}/>
                     </div>
+                    <div className={'form-group'}>
+                        <label>Invited</label>
+                        <ul className={'list-group'}>
+                            {
+                                this.props.invitedApartments.map(apartment =>
+                                    <li className={'list-group-item'} key={apartment.id}>
+                                        {apartment.address}
+                                    </li>
+                                )
+                            }
+                        </ul>
+                    </div>
+
+                    <div className={'form-group'}>
+                        <label>New Invite</label>
+                        <select className={'custom-select'} value={this.state.apartmentId}
+                                onChange={event => this.setState(prevState => {
+                                    return {
+                                        ...prevState,
+                                        apartmentId: event.target.value
+                                    }
+                                })}>
+                            <option value={''}>Choose...</option>
+                            {
+                                this.props.apartments.map(apartment =>
+                                    <option value={apartment.id}>
+                                        {apartment.address}
+                                    </option>
+                                )
+                            }
+                        </select>
+
+                        <button type={'submit'} className={'btn btn-success'}
+                        onClick={() => this.props.inviteApartmentToEvent(this.props.match.params.eventId, this.state.apartmentId)}>
+                            Invite
+                        </button>
+                    </div>
+
                     <div className="form-group row">
                         <div className="col-sm-11">
                             <Link to={'/admin'}>
@@ -135,13 +183,18 @@ class EventEditorComponent extends React.Component {
 }
 
 const stateToPropertyMapper = state => ({
-    // event: state.eventReducer.event
+    event: state.eventReducer.event,
+    apartments: state.apartmentReducer.apartments,
+    invitedApartments: state.apartmentReducer.invitedApartments
 })
 
 const propertyToDispatchMapper = dispatch => ({
     getEventById: eventId => getEventById(dispatch, eventId),
     updateEvent: event => updateEvent(dispatch, event),
     deleteEvent: eventId => deleteEvent(dispatch, eventId),
+    getAllApartments: () => getAllApartments(dispatch),
+    getApartmentsForEventId: eventId => getApartmentsForEventId(dispatch, eventId),
+    inviteApartmentToEvent: (eventId, apartmentId) => inviteApartmentToEvent(dispatch, eventId, apartmentId)
 })
 
 export default connect
