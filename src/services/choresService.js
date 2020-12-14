@@ -43,17 +43,17 @@ export const getChoreById = choreId =>
         .then(response => response.json())
 
 export const updateChore = chore =>
-    fetch(`${url}/apartments/${chore.apartmentId}/chores`, {
+    fetch(`${url}/chores`, {
         method: 'PUT',
         body: JSON.stringify(chore),
         headers: {
             'content-type': 'application/json'
         }
     })
-        .then(response => console.log(response))
+        .then(response => response)
 
 export const createChore = apartmentId =>
-    fetch(`${url}/apartments/${apartmentId}/chores`, {
+    fetch(`${url}/chores`, {
         method: 'POST',
         body: JSON.stringify({
             description: "New Chore",
@@ -67,7 +67,7 @@ export const createChore = apartmentId =>
         .then(response => response.json())
 
 export const deleteChore = chore =>
-    fetch(`${url}/apartments/${chore.apartmentId}/chores/${chore.id}`, {
+    fetch(`${url}/chores/${chore.id}`, {
         method: 'DELETE'
     })
         .then()

@@ -23,7 +23,7 @@ const deleteGroceryItem = groceryItemId =>
     fetch(`${url}/groceries/${groceryItemId}`, {
         method: 'DELETE'
     })
-        .then(response => response.json())
+        .then()
 
 const createGroceryItem = (apartmentId, groceryItem) =>
     fetch(`${url}/groceries`, {

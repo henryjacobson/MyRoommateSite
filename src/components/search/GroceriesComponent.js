@@ -15,9 +15,10 @@ const GroceriesComponent = ({
                     <Link to={`/edit/groceries/${item.id}`}>
                         {item.title}
                     </Link>
+                    : {item.notes}
                     <span className="float-right">
                         <button className={'btn btn-danger'} onClick={() => deleteGroceryItem(item.id)}>
-                            X
+                        <i className={'fa fa-times float-right'}/>
                         </button>
                     </span>
                 </li>

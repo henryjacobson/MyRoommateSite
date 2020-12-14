@@ -1,10 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import AddEventComponent from './AddEventComponent'
+import { deleteEvent } from '../../actions/eventActions'
 
 const EventListComponent = ({
-    events = []
+    events = [],
+    deleteEvent
 }) =>
     <ul className={'list-group'}>
         {
@@ -13,11 +15,17 @@ const EventListComponent = ({
                     <Link to={`edit/event/${event.id}`}>
                         {event.title}
                     </Link>
+
+                    <span className="float-right">
+                        <button className={'btn btn-danger'} onClick={() => deleteEvent(event.id)}>
+                            <i className={'fa fa-times float-right'} />
+                        </button>
+                    </span>
                 </li>
             )
         }
         <li className={'list-group'}>
-            <AddEventComponent/>
+            <AddEventComponent />
         </li>
     </ul>
 
@@ -26,9 +34,9 @@ const stateToPropertyMapper = state => ({
 })
 
 const propertyToDispatchMapper = dispatch => ({
-
+    deleteEvent: eventId => deleteEvent(dispatch, eventId)
 })
 
 export default connect
-(stateToPropertyMapper, propertyToDispatchMapper)
-(EventListComponent)
+    (stateToPropertyMapper, propertyToDispatchMapper)
+    (EventListComponent)

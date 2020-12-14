@@ -105,11 +105,11 @@ class FacilityEditorComponent extends React.Component {
                             <button type="submit" class="btn btn-success"
                             onClick={() => this.props.updateFacility(this.state.facility)}>Save</button>
                         </div>
-                        <div className="col-sm-1">
+                        {/* <div className="col-sm-1">
                             <Link type="submit" class="btn btn-danger"
                             to={'/admin'}
                             onClick={() => this.props.deleteFacility(this.props.match.params.facilityId)}>Delete</Link>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

@@ -126,29 +126,35 @@ class EventEditorComponent extends React.Component {
                         </ul>
                     </div>
 
-                    <div className={'form-group'}>
-                        <label>New Invite</label>
-                        <select className={'custom-select'} value={this.state.apartmentId}
-                                onChange={event => this.setState(prevState => {
-                                    return {
-                                        ...prevState,
-                                        apartmentId: event.target.value
-                                    }
-                                })}>
-                            <option value={''}>Choose...</option>
-                            {
-                                this.props.apartments.map(apartment =>
-                                    <option value={apartment.id}>
-                                        {apartment.address}
-                                    </option>
-                                )
-                            }
-                        </select>
+                    <div className={'form-group row'}>
+                        <div className={'col-sm-10'}>
+                            <label htmlFor={'invite'}>New Invite</label>
+                            <select className={'custom-select'} value={this.state.apartmentId}
+                                    id={'invite'}
+                                    onChange={event => this.setState(prevState => {
+                                        return {
+                                            ...prevState,
+                                            apartmentId: event.target.value
+                                        }
+                                    })}>
+                                <option value={''}>Choose...</option>
+                                {
+                                    this.props.apartments.map(apartment =>
+                                        <option value={apartment.id}>
+                                            {apartment.address}
+                                        </option>
+                                    )
+                                }
+                            </select>
+                        </div>
+                        <div className={'col-sm-2'}>
+                            <button type={'submit'} className={'form-control btn btn-success'}
+                                    onClick={() => this.props.inviteApartmentToEvent(this.props.match.params.eventId, this.state.apartmentId)}>
+                                Invite
+                            </button>
+                        </div>
 
-                        <button type={'submit'} className={'btn btn-success'}
-                        onClick={() => this.props.inviteApartmentToEvent(this.props.match.params.eventId, this.state.apartmentId)}>
-                            Invite
-                        </button>
+
                     </div>
 
                     <div className="form-group row">
@@ -163,7 +169,7 @@ class EventEditorComponent extends React.Component {
                             </Link>
 
                         </div>
-                        <div className="col-sm-1">
+                        {/* <div className="col-sm-1">
                             <Link to='/admin'>
                                 <button
                                     type="submit"
@@ -173,7 +179,7 @@ class EventEditorComponent extends React.Component {
                                 </button>
                             </Link>
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
