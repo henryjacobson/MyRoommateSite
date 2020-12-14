@@ -1,5 +1,5 @@
 import {
-    GET_APARTMENT_BY_ID, GET_ALL_APARTMENTS
+    GET_APARTMENT_BY_ID, GET_ALL_APARTMENTS, CREATE_APARTMENT, GET_APARTMENTS_BY_EVENT_ID
 } from "../actions/apartmentActions";
 
 const initialState = {
@@ -7,13 +7,7 @@ const initialState = {
         title: '',
         address: ''
     },
-    apartments: []
-}
-
-const apartment = {
-    _id: 0,
-    title: "apartment 0",
-    address: "neu"
+    invitedApartments: []
 }
 
 const apartmentReducer = (state = initialState, action) => {
@@ -27,6 +21,18 @@ const apartmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 apartments: action.apartments
+            }
+        case CREATE_APARTMENT:
+            return {
+                ...state, apartments: [
+                    ...state.apartments,
+                    action.apartment
+                ]
+            }
+        case GET_APARTMENTS_BY_EVENT_ID:
+            return {
+                ...state,
+                invitedApartments: action.invitedApartments
             }
         default:
             return state
