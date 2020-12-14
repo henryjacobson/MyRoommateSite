@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import AdminService from "../services/AdminService";
-import ApartmentService from "../services/ApartmentService";
+import ApartmentService from "../services/apartmentService";
 import {Link} from "react-router-dom";
 
 class AdminProfileComponent extends React.Component{
@@ -23,7 +23,7 @@ class AdminProfileComponent extends React.Component{
             <h3>Admin profile: {this.props.account.username}</h3>
             <h5>Admin name: {this.state.loggedInAdmin.name}</h5>
             <h5>Apartments this Admin owns:</h5>
-            ApartmentService.getApartmentsByAdminId(this.props.account.adminId).map(apart => <li>{apart.name}</li>
+            {ApartmentService.getAllApartments(this.props.account.adminId).map(apart => <li>{apart.name}</li>)}
         </div>
     )
   }

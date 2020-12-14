@@ -19,14 +19,14 @@ class LoginComponent extends React.Component{
 
     updateUsername(event){
         this.setState({
-            ...state,
+            ...this.state,
             usernameField: event.target.value
         })
     }
 
     updatePassword(event){
         this.setState({
-            ...state,
+            ...this.state,
             passwordField: event.target.value
         })
     }

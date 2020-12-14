@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import AccountService from "../services/AccountService";
-import ApartmentService from "../services/ApartmentService";
+import ApartmentService from "../services/apartmentService";
 import {Link} from "react-router-dom";
 import ResidentService from "../services/residentService";
 import AdminService from "../services/AdminService";
@@ -26,42 +26,42 @@ class RegisterComponent extends React.Component{
 
     updateUsername(event){
         this.setState({
-            ...state,
+            ...this.state,
             usernameField: event.target.value
         })
     }
 
     updatePassword(event){
         this.setState({
-            ...state,
+            ...this.state,
             passwordField: event.target.value
         })
     }
 
     updateName(event){
         this.setState({
-            ...state,
+            ...this.state,
             name: event.target.value
         })
     }
 
     updateType(event){
         this.setState({
-            ...state,
+            ...this.state,
             type: event.target.value
         })
     }
 
     updateEmail(event){
         this.setState({
-            ...state,
+            ...this.state,
             email: event.target.value
         })
     }
 
     updateApartment(event){
         this.setState({
-            ...state,
+            ...this.state,
             apartment: this.state.apartments.find(apart=>apart.name===event.target.value)
         })
     }
@@ -192,7 +192,7 @@ class RegisterComponent extends React.Component{
 const stateToProperty = (state) => ({
 })
 const propertyToDispatchMapper = (dispatch) => ({
-    getAllApartments: () => ApartmentService.getApartments().then(aparts =>aparts),
+    getAllApartments: () => ApartmentService.getAllApartments().then(aparts =>aparts),
     createAccount: (account) => AccountService.createAccount(account),
     createResident: (r) => ResidentService.createResident(r),
     createAdmin: (a) => AdminService.createAdmin(a)
