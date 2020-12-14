@@ -47,7 +47,21 @@ class EventEditorComponent extends React.Component {
                     <div className="form-group row">
                         <label for="inputTitle" className="col-sm-2 col-form-label">Title</label>
                         <div className="col-sm-10">
-                            <input className="form-control" id="inputTitle" value={this.state.event.title} placeholder="Title" />
+                            <input
+                                className="form-control"
+                                id="inputTitle"
+                                value={this.state.event.title}
+                                placeholder="Title"
+                                onChange={event => {
+                                    this.setState(prevState => {
+                                        return {
+                                            event: {
+                                                ...prevState.event,
+                                                title: event.target.value
+                                            }
+                                        }
+                                    })
+                                }} />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -58,16 +72,48 @@ class EventEditorComponent extends React.Component {
                                 type="datetime-local"
                                 // defaultValue="2011-08-19T13:45:00" 
                                 value={this.state.event.dateTime}
-                                id="datetimeInput" />
+                                id="datetimeInput"
+                                onChange={event => {
+                                    this.setState(prevState => {
+                                        return {
+                                            event: {
+                                                ...prevState.event,
+                                                dateTime: event.target.value
+                                            }
+                                        }
+                                    })
+                                }} />
                         </div>
                     </div>
                     <div className="form-group">
                         <label for="description">Description</label>
-                        <textarea className="form-control" value={this.state.event.description} id="description" rows="3"></textarea>
+                        <textarea
+                            className="form-control"
+                            value={this.state.event.description}
+                            id="description"
+                            rows="3"
+                            onChange={event => {
+                                this.setState(prevState => {
+                                    return {
+                                        event: {
+                                            ...prevState.event,
+                                            description: event.target.value
+                                        }
+                                    }
+                                })
+                            }}></textarea>
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11">
-                            <button type="submit" className="btn btn-success">Save</button>
+                            <Link to={'/admin'}>
+                                <button
+                                    type="submit"
+                                    className="btn btn-success"
+                                    onClick={() => this.props.updateEvent({ ...this.state.event })}>
+                                    Save
+                                </button>
+                            </Link>
+
                         </div>
                         <div className="col-sm-1">
                             <Link to='/admin'>
