@@ -11,12 +11,12 @@ class FacilityEditorComponent extends React.Component {
         this.state.facility = props.facility
         const facilityId = this.props.match.params.facilityId
         this.props.getFacilityById(facilityId)
-            .then(response => console.log(response) )
                 // .then(console.log(this.state.facility))
     }
 
     componentDidMount() {
-        
+        this.props.getFacilityById(this.props.match.params.facilityId)
+            .then(() => this.setState({facility: this.props.facility}))
         
     }
 
@@ -44,6 +44,7 @@ class FacilityEditorComponent extends React.Component {
                         <label class="col-sm-2 col-form-label" for="facilityType">Facility Type</label>
                         <div class="col-sm-10">
                             <select class="custom-select" id="facilityType"
+                                    value={this.state.facility.type}
                                     onChange={event => {
                                         this.setState(prevState => {
                                             return {
@@ -66,6 +67,7 @@ class FacilityEditorComponent extends React.Component {
                         <label class="col-sm-2 col-form-label" for="status">Status</label>
                         <div class="col-sm-10">
                             <select class="custom-select" id="status"
+                                    value={this.state.facility.status}
                                     onChange={event => {
                                         this.setState(prevState => {
                                             return {
@@ -86,12 +88,13 @@ class FacilityEditorComponent extends React.Component {
                     <div className="form-group">
                         <label for="notes">Notes</label>
                         <textarea className="form-control" id="notes" rows="3"
+                                  value={this.state.facility.notes}
                                   onChange={event => {
                                       this.setState(prevState => {
                                           return {
                                               facility: {
                                                   ...prevState.facility,
-                                                  type: event.target.value
+                                                  notes: event.target.value
                                               }
                                           }
                                       })
@@ -99,7 +102,8 @@ class FacilityEditorComponent extends React.Component {
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11">
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="submit" class="btn btn-success"
+                            onClick={() => this.props.updateFacility(this.state.facility)}>Save</button>
                         </div>
                         <div className="col-sm-1">
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -113,7 +117,7 @@ class FacilityEditorComponent extends React.Component {
 }
 
 const stateToPropertyMapper = state => ({
-    // faciltiy: state.failityReducer.facility
+    facility: state.facilityReducer.facility
 })
 
 const propertyToDispatchMapper = dispatch => ({
