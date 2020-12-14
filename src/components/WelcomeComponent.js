@@ -19,19 +19,19 @@ export class WelcomeComponent extends React.Component {
                     <li><Link to={"/policy"}>Policy</Link></li>
                     <li><Link to={"/"}>Home Page</Link></li>
                     {
-                        this.props.loggedIn && this.props.account.isResident===true &&
-                        <li><Link to={`/profile/resident/${this.props.loggedOnResident.id}`}>ResidentProfile</Link></li>
+                        this.props.loggedIn && this.props.account.resident===true &&
+                        <li><Link to={`/profile/resident`}>ResidentProfile</Link></li>
                     }
                     {
-                        this.props.loggedIn && this.props.account.isResident===false &&
-                        <li><Link to={`/profile/admin/${this.props.loggedOnAdmin.id}`}>AdminProfile</Link></li>
+                        this.props.loggedIn && this.props.account.resident===false &&
+                        <li><Link to={`/profile/admin`}>AdminProfile</Link></li>
                     }
                 </ul>
                 <Route path="/login" exact component={LoginComponent}/>
                 <Route path="/register" exact component={RegisterComponent}/>
                 <Route path="/policy" exact component={PolicyComponent}/>
-                <Route path="/profile/resident/:id" exact component={ResidentProfileComponent}/>
-                <Route path="/profile/admin/:id" exact component={AdminProfileComponent}/>
+                <Route path="/profile/resident" exact component={ResidentProfileComponent}/>
+                <Route path="/profile/admin" exact component={AdminProfileComponent}/>
             </div>
         </BrowserRouter>
         )
