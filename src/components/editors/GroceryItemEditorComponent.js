@@ -13,7 +13,7 @@ class GroceryItemEditorComponent extends React.Component {
         groceryItem: {
             title: " ",
             imageUrl: " ",
-            note: " ",
+            notes: " ",
             apartmentId: " "
         }
     }
@@ -62,7 +62,17 @@ class GroceryItemEditorComponent extends React.Component {
                             className="form-control"
                             id="notes"
                             rows="3"
-                            onChange={(event) => this.props.updateGroceryItem({ ...this.state.groceryItem, notes: event.target.value })} />
+                            onChange={event => {
+                                this.setState(prevState => {
+                                    return {
+                                        groceryItem: {
+                                            ...prevState.groceryItem,
+                                            notes: event.target.value
+                                        }
+                                    }
+                                })
+                            }}
+                            />
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-11" >
@@ -70,8 +80,7 @@ class GroceryItemEditorComponent extends React.Component {
                                 <button
                                     type="submit"
                                     class="btn btn-success"
-                                // onClick={() => this.props.updateGroceryItem(
-                                //     { ...this.state.groceryItem, notes: document.getElementById("notes") })}
+                                    onClick={() => this.props.updateGroceryItem({ ...this.state.groceryItem})} 
                                 >Save</button>
                             </Link >
                         </div>
