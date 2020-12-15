@@ -55,7 +55,8 @@ ReactDOM.render(
                 <Link to="/profile">Profile</Link>
                 <Link to="/adminProfile">Admin Profile</Link> */}
 
-                <Route path="/welcome" exact component={WelcomeComponent}/>
+
+                <Route path="/" exact component={WelcomeComponent}/>
                 <Route path="/login" exact component={LoginComponent}/>
                 <Route path="/policy" exact component={PolicyComponent}/>
                 <Route path="/register" exact component={RegisterComponent}/>

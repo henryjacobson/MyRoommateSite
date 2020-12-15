@@ -88,7 +88,7 @@ class LoginComponent extends React.Component{
                                     {
                                         !this.props.account.resident &&
                                         <Link to={'/profile/admin'}>
-                                            Profile
+                                            Go to Profile
                                         </Link>
                                     }
 
@@ -98,9 +98,11 @@ class LoginComponent extends React.Component{
                         {
                             this.props.loggedIn!==true &&
                                 <div>
+                                    {/* <Link to={'/profile'}> */}
                                     <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={() =>
                                         this.props.checkLoginSuccess(this.state.usernameField,this.state.passwordField)}>
                                         Login</button>
+                                    {/* </Link> */}
                                 </div>
 
                         }
