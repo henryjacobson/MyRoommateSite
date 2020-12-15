@@ -73,10 +73,13 @@ export const getChoreById = (dispatch, choreId) =>
 
 export const updateChore = (dispatch, chore) =>
     choresService.updateChore(chore)
-        .then(_ => dispatch({
-            type: UPDATE_CHORE,
-            chore: chore
-        }))
+        .then(_ => {
+            console.log(chore)
+            dispatch({
+                type: UPDATE_CHORE,
+                chore: chore
+            })
+        })
 
 export const createChore = (dispatch, apartmentId) =>
     choresService.createChore(apartmentId)
