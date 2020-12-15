@@ -113,12 +113,25 @@ class LoginComponent extends React.Component {
                 <div className="form-group row">
                     <div className="col-sm-10">
                         {
-                            this.props.loggedIn === true &&
-                            <div>
-                                <button className="wbdv-button wbdv-login btn-danger btn-block" onClick={
-                                    () => this.props.Logout()}>LogOut</button>
-                                {console.log(this.props.account)}
-                            </div>
+                            this.props.loggedIn===true &&
+                                <div>
+                                    <button className="wbdv-button wbdv-login btn-danger btn-block" onClick={
+                                        () => this.props.Logout()}>LogOut</button>
+                                    {console.log(this.props.account)}
+                                    {/* {
+                                        this.props.account.resident &&
+                                        <Link to={'/profile'}>
+                                            Profile
+                                        </Link>
+                                    }
+                                    {
+                                        !this.props.account.resident &&
+                                        <Link to={'/profileAdmin'}>
+                                            Go to Profile
+                                        </Link>
+                                    } */}
+
+                                </div>
 
                         }
                         {
