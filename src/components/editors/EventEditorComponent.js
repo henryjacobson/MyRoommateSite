@@ -36,7 +36,7 @@ class EventEditorComponent extends React.Component {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand disabled" href="#">Edit Event: {this.state.event && this.state.event.title}</a>
+                <Link className="navbar-brand disabled" to={'/'}>MyRoommate</Link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -52,6 +52,7 @@ class EventEditorComponent extends React.Component {
                     </div>
                 </nav>
                 <div className="container">
+                    <h1>Edit Event: {this.state.event && this.state.event.title}</h1>
                     <div className="form-group row">
                         <label for="inputTitle" className="col-sm-2 col-form-label">Title</label>
                         <div className="col-sm-10">

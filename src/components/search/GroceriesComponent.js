@@ -27,7 +27,7 @@ const GroceriesComponent = ({
                             {item.title}
                         </div>
                     }
-                    {item.notes}
+                    {''} NOTES: {item.notes}
                     {
                         account &&
                         account.id !== 0 &&

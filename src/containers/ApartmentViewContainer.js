@@ -32,7 +32,7 @@ class ApartmentViewContainer extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand disabled" href="#">Apartment: {this.props.apartment.address}</a>
+                <Link className="navbar-brand disabled" to={'/'}>MyRoommate</Link>
 
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
@@ -60,6 +60,7 @@ class ApartmentViewContainer extends React.Component {
                     </button>
                 </nav>
                 <div className={'container'}>
+                    <h1>{this.props.apartment.address}</h1>
                     <div className={'row'}>
                         <div className={'col-3 justify-content-start'}>
                             <h4>

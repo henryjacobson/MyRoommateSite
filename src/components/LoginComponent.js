@@ -44,17 +44,47 @@ class LoginComponent extends React.Component {
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
+                        {
+                            this.props.account &&
+                            this.props.account.id !== 0 &&
+                            <div className={'navbar-right'}>
+                                Go to profile: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                                <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
+                                    Logout
+                                </button>
+
+                            </div>
+                        }
                     </nav>
                 </div>
-                <h1>Log In</h1>
-                {/* {
-                    this.props.loggedIn===true &&
-                    <h1>Logged In As {this.props.account.username}</h1>
+                {
+                    this.props.loggedIn === true &&
+                    <h1>
+                        Logged in as: {this.props.account.username}
+                        {
+                                    this.props.account.resident &&
+                                    <Link to={'/profile'}>
+                                        <button className="btn btn-primary">
+                                            Go to profile
+                                        </button>
+
+                                    </Link>
+                                }
+                                {
+                                    !this.props.account.resident &&
+                                    <Link to={'/profile/admin'}>
+                                       <button className="btn btn-primary">
+                                            Go to profile
+                                        </button>
+                                        </Link>
+                                }
+                    </h1>
                 }
                 {
-                    this.props.loggedIn!==true &&
+                    this.props.loggedIn !== true &&
                     <h1>Log In Here</h1>
-                } */}
+                }
                 {
                     this.props.tryAgain === true &&
                     alert("Try Login Again")
@@ -83,34 +113,21 @@ class LoginComponent extends React.Component {
                 <div className="form-group row">
                     <div className="col-sm-10">
                         {
-                            this.props.loggedIn===true &&
-                                <div>
-                                    <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={
-                                        () => this.props.Logout()}>LogOut</button>
-                                    {console.log(this.props.account)}
-                                    {
-                                        this.props.account.resident &&
-                                        <Link to={'/profile'}>
-                                            Profile
-                                        </Link>
-                                    }
-                                    {
-                                        !this.props.account.resident &&
-                                        <Link to={'/profile/admin'}>
-                                            Go to Profile
-                                        </Link>
-                                    }
-
-                                </div>
+                            this.props.loggedIn === true &&
+                            <div>
+                                <button className="wbdv-button wbdv-login btn-danger btn-block" onClick={
+                                    () => this.props.Logout()}>LogOut</button>
+                                {console.log(this.props.account)}
+                            </div>
 
                         }
                         {
-                            this.props.loggedIn!==true &&
-                                <div>
-                                    <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={() =>
-                                        this.props.checkLoginSuccess(this.state.usernameField,this.state.passwordField)}>
-                                        Login</button>
-                                </div>
+                            this.props.loggedIn !== true &&
+                            <div>
+                                <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={() =>
+                                    this.props.checkLoginSuccess(this.state.usernameField, this.state.passwordField)}>
+                                    Login</button>
+                            </div>
 
                         }
                     </div>
@@ -137,15 +154,17 @@ const propertyToDispatchMapper = (dispatch) => ({
     checkLoginSuccess: (usr, pas) => AccountService.findAccountByUsernamePassword(usr, pas)
         .then(acc => {
             acc.id !== 0 &&
-            dispatch({
-                type: "LOGIN",
-                account: acc
-            })
+                dispatch({
+                    type: "LOGIN",
+                    account: acc
+                })
         }),
     Logout: () => logout().then(
-        () => {dispatch({
-            type: "LOGOUT"
-        })})
+        () => {
+            dispatch({
+                type: "LOGOUT"
+            })
+        })
 })
 
 export default connect

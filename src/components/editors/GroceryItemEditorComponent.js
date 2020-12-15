@@ -29,7 +29,7 @@ class GroceryItemEditorComponent extends React.Component {
             <div>
                 <div>
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <a class="navbar-brand disabled" href="#">Edit: {this.state.groceryItem.title}</a>
+                    <Link className="navbar-brand disabled" to={'/'}>MyRoommate</Link>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -50,6 +50,7 @@ class GroceryItemEditorComponent extends React.Component {
                     </nav>
                 </div>
                 <div className="container">
+                    <h1>{this.state.groceryItem.title}</h1>
                     <div className="form-group row">
                         <div className="col">
                             <img src={"https://spoonacular.com/cdn/ingredients_100x100/" + this.state.groceryItem.imageUrl} />
@@ -79,7 +80,7 @@ class GroceryItemEditorComponent extends React.Component {
                             <Link to={`/apartments/${this.state.groceryItem.apartmentId}`}>
                                 <button
                                     type="submit"
-                                    class="btn btn-success"
+                                    class="btn btn-primary"
                                     onClick={() => this.props.updateGroceryItem({ ...this.state.groceryItem })}
                                 >Save</button>
                             </Link >

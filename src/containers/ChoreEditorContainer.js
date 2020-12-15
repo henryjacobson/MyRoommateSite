@@ -23,7 +23,7 @@ class ChoreEditorContainer extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand disabled" href="#">Edit Chore: {this.state.chore.description}</a>
+                <Link className="navbar-brand disabled" to={'/'}>MyRoommate</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"/>
                     </button>
@@ -39,6 +39,7 @@ class ChoreEditorContainer extends React.Component {
                     </div>
                 </nav>
                 <div className="container">
+                    <h1>Chore: {this.state.chore.description}</h1>
                     <div className="form-group row">
                         <label for="description" className="col-sm-2 col-form-label">Chore</label>
                         <div className="col-sm-10">
@@ -93,7 +94,7 @@ class ChoreEditorContainer extends React.Component {
                             <Link to={`/apartments/${this.props.match.params.apartmentId}`}>
                                 <button
                                     type="submit"
-                                    className="btn btn-success"
+                                    className="btn btn-primary"
                                     onClick={_ => {
                                         console.log(this.state.chore)
                                         this.props.updateChore(this.state.chore)
