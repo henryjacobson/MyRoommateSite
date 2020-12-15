@@ -66,7 +66,6 @@ ReactDOM.render(
                 <Route path="/policy" exact component={PolicyComponent}/>
                 <Route path="/register" exact component={RegisterComponent}/>
                 <Route path="/profile" exact component={ResidentProfileComponent}/>
-                <Route path="/profileAdmin" exact component={AdminProfileComponent}/>
                 <Route path="/profile/:id" exact component={ResidentProfileComponent}/>
 
 

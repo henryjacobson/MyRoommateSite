@@ -73,7 +73,7 @@ class LoginComponent extends React.Component {
                                 }
                                 {
                                     !this.props.account.resident &&
-                                    <Link to={'/profileAdmin'}>
+                                    <Link to={'/admin'}>
                                        <button className="btn btn-primary">
                                             Go to profile
                                         </button>
