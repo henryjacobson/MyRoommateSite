@@ -37,6 +37,24 @@ class ChoreEditorContainer extends React.Component {
 
                         </div>
                     </div>
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        this.props.account.resident &&
+                        <div className={'float-right'}>
+                            Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                        </div>
+                    }
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        !this.props.account.resident &&
+                        <div className={'float-right'}>
+                            Logged in as: <Link to={'/admin'}>{this.props.account && this.props.account.username}</Link>
+
+                        </div>
+                    }
                 </nav>
                 <div className="container">
                     <h1>Chore: {this.state.chore.description}</h1>
@@ -156,7 +174,8 @@ class ChoreEditorContainer extends React.Component {
 
 const stateToPropertyMapper = state => ({
     chore: state.choresReducer.chore,
-    residents: state.residentReducer.residents
+    residents: state.residentReducer.residents,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({

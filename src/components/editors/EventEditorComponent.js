@@ -50,6 +50,24 @@ class EventEditorComponent extends React.Component {
 
                         </div>
                     </div>
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        this.props.account.resident &&
+                        <div className={'float-right'}>
+                            Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                        </div>
+                    }
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        !this.props.account.resident &&
+                        <div className={'float-right'}>
+                            Logged in as: <Link to={'/admin'}>{this.props.account && this.props.account.username}</Link>
+
+                        </div>
+                    }
                 </nav>
                 <div className="container">
                     <h1>Edit Event: {this.state.event && this.state.event.title}</h1>
@@ -193,7 +211,8 @@ class EventEditorComponent extends React.Component {
 const stateToPropertyMapper = state => ({
     event: state.eventReducer.event,
     apartments: state.apartmentReducer.apartments,
-    invitedApartments: state.apartmentReducer.invitedApartments
+    invitedApartments: state.apartmentReducer.invitedApartments,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({
