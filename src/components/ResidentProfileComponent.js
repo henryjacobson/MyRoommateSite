@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import ResidentService, {updateResident} from "../services/residentService";
 import AdminService from "../services/AdminService";
 import ApartmentService from "../services/apartmentService";
-import {findAccountByCookies, updateAccount} from "../services/AccountService";
+import {findAccountByCookies, logout, updateAccount} from "../services/AccountService";
 import {getChoresForApartment, getChoresForApartmentFiltered} from "../actions/choresActions";
 
 class ResidentProfileComponent extends React.Component{
@@ -274,7 +274,11 @@ const propertyToDispatchMapper = (dispatch) => ({
             type: "LOGIN",
             account: acc
         })),
-    getChoresForApartmentFiltered: (apartmentId, name) => getChoresForApartmentFiltered(dispatch, apartmentId, name)
+    getChoresForApartmentFiltered: (apartmentId, name) => getChoresForApartmentFiltered(dispatch, apartmentId, name),
+    Logout: () =>  logout().then(
+        () => dispatch({
+            type: "LOGOUT"
+        }))
 })
 
 export default connect
