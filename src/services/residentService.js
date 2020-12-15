@@ -1,5 +1,5 @@
-// const url = "https://secure-chamber-15246.herokuapp.com/api"
-const url = "http://localhost:8080/api"
+const url = "https://secure-chamber-15246.herokuapp.com/api"
+// const url = "http://localhost:8080/api"
 
 export const getResidentsByApartmentId = apartmentId =>
     fetch(`${url}/apartments/${apartmentId}/residents`)

@@ -64,7 +64,10 @@ class LoginComponent extends React.Component{
                     <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>
 
                     <div className="col-sm-10">
-                        <input type="text" onChange={this.updatePassword} placeholder="password" className="wbdv-field wbdv-password" id="inputPassword"/>
+                        <input type="text" onChange={event => this.setState({
+                            ...this.state,
+                            passwordField: event.target.value
+                        })} placeholder="password" className="wbdv-field wbdv-password" id="inputPassword"/>
                     </div>
                 </div>
 
@@ -72,14 +75,34 @@ class LoginComponent extends React.Component{
                     <div className="col-sm-10">
                         {
                             this.props.loggedIn===true &&
-                            <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={
-                                this.props.Logout}>LogOut</button>
+                                <div>
+                                    <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={
+                                        this.props.Logout}>LogOut</button>
+
+                                    {
+                                        this.props.account.isResident &&
+                                        <Link to={'/profile'}>
+                                            Profile
+                                        </Link>
+                                    }
+                                    {
+                                        !this.props.account.isResident &&
+                                        <Link to={'/adminProfile'}>
+                                            Profile
+                                        </Link>
+                                    }
+
+                                </div>
+
                         }
                         {
                             this.props.loggedIn!==true &&
-                            <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={
-                                this.props.checkLoginSuccess(this.state.usernameField,this.state.passwordField)}>
-                                Login</button>
+                                <div>
+                                    <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={() =>
+                                        this.props.checkLoginSuccess(this.state.usernameField,this.state.passwordField)}>
+                                        Login</button>
+                                </div>
+
                         }
                     </div>
                 </div>

@@ -8,10 +8,26 @@ import ApartmentService from "../services/apartmentService";
 class ResidentProfileComponent extends React.Component{
 
     state = {
-        loggedInResident: this.props.findResidentById(this.props.account.residentId)
+        loggedInResident: {
+            name: '',
+            email: '',
+            apartmentId: ''
+        },
+        apartment: {address: ''},
     }
 
     componentDidMount() {
+        this.props.findResidentById(this.props.account.residentId)
+            .then(res => {
+                this.setState(prev => {
+                    return {...prev, loggedInResident: res}
+                })
+
+                this.props.findApartmentById(this.state.loggedInResident.apartmentId)
+                    .then(ap => this.setState(prev => {
+                        return {...prev, apartment: ap}
+                    }))
+            })
 
     }
 
@@ -24,8 +40,12 @@ class ResidentProfileComponent extends React.Component{
                 <h3>Resident profile: {this.props.account.username}</h3>
                 <h5>Resident name: {this.state.loggedInResident.name}</h5>
                 <h5>email: {this.state.loggedInResident.email}</h5>
-                <h5>apartment: {this.props.findApartentById(this.props.account.apartmentId)}</h5>
-                <h5>admin: {this.props.findAdminById(this.props.account.adminId)}</h5>
+                <h5>
+                    <Link to={`/apartments/${this.state.apartment.id}`}>
+                        {this.state.apartment.address}
+                    </Link>
+                </h5>
+                <h5>admin: {this.props.findAdminById(this.props.account.adminId).email}</h5>
 
             </div>
         )
@@ -41,7 +61,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     findAdminById: (id) =>
         AdminService.findAdminById(id).then(admin => admin),
     findApartmentById: (id) =>
-        ApartmentService.findApartmentById(id).then(apart => apart)
+        ApartmentService.getApartmentById(id).then(apart => apart)
 })
 
 export default connect

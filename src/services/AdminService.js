@@ -1,4 +1,4 @@
-const url = "https://secure-chamber-15246.herokuapp.com/api/"
+const url = "https://secure-chamber-15246.herokuapp.com/api"
 
 export const findAdminById = (id) =>
     fetch(`${url}/admins/${id}`)

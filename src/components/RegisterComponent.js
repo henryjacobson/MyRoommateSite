@@ -173,7 +173,7 @@ class RegisterComponent extends React.Component{
                     <div className="col-sm-10">
                         {
                             this.state.type==="Resident" &&
-                                <Link to={'/profile'}>
+                                <Link to={'/login'}>
                                     <button className="wbdv-button wbdv-login btn-primary btn-block"
                                             onClick={() => this.props.createResident({
                                                 name: this.state.name,
@@ -185,7 +185,7 @@ class RegisterComponent extends React.Component{
                                                 this.props.createAccount({
                                                     username: this.state.usernameField,
                                                     password: this.state.passwordField,
-                                                    adminId: 0,
+                                                    adminId: 1,
                                                     residentId: r.id,
                                                     resident: true
                                                 })).then(alert("Created account successfully"))
@@ -197,7 +197,7 @@ class RegisterComponent extends React.Component{
                         {
                             this.state.type==="Admin" &&
                             <button className="wbdv-button wbdv-login btn-primary btn-block"
-                                    onClick={this.props.createAdmin({
+                                    onClick={() => this.props.createAdmin({
                                         name: this.state.name,
                                     }).then(a=>
                                         this.props.createAccount({
