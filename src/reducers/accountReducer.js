@@ -12,6 +12,8 @@ const accountReducer = (state = initialState, action) => {
     tryAgainCheck=false;
   }
 
+  console.log(action.account)
+
   switch(action.type) {
     case "LOGIN":
       return {

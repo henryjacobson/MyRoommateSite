@@ -4,6 +4,7 @@ import AdminService from "../services/AdminService";
 import ApartmentService from "../services/apartmentService";
 import {Link} from "react-router-dom";
 import {getAllApartments} from "../actions/apartmentActions";
+import {findAccountByCookies} from "../services/AccountService";
 
 class AdminProfileComponent extends React.Component{
     state = {
@@ -12,12 +13,15 @@ class AdminProfileComponent extends React.Component{
         }
     }
   componentDidMount() {
-      this.props.findAdminById(this.props.account.adminId)
-          .then(a => this.setState(prev => {
-              return{...prev, loggedInAdmin: a}
-          })
 
-          )
+      this.props.tryLogin()
+          .then(() =>
+              this.props.findAdminById(this.props.account.adminId)
+                  .then(a => this.setState(prev => {
+                          return{...prev, loggedInAdmin: a}
+                      })
+
+                  ))
       this.props.getAllApartments()
   }
 
@@ -29,7 +33,7 @@ class AdminProfileComponent extends React.Component{
   render() {
     return(
         <div>
-            <h3>Admin profile: {this.props.account.username}</h3>
+            <h3>Admin profile: {this.props.account && this.props.account.username}</h3>
             <h5>Admin name: {this.state.loggedInAdmin.name}</h5>
             <h5>
                 <Link to={'/admin'}>
@@ -55,7 +59,15 @@ const stateToProperty = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     findAdminById: (id) =>
         AdminService.findAdminById(id).then(admin => admin),
-    getAllApartments: () => getAllApartments(dispatch)
+    getAllApartments: () => getAllApartments(dispatch),
+    tryLogin: () => findAccountByCookies()
+        .then(acc => {
+            acc.id !== 0 &&
+            dispatch({
+                type: 'LOGIN',
+                account: acc
+            })
+        }),
 })
 
 export default connect

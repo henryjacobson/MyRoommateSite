@@ -107,11 +107,9 @@ class LoginComponent extends React.Component {
                         {
                             this.props.loggedIn!==true &&
                                 <div>
-                                    <Link to={'/profile'}>
                                     <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={() =>
                                         this.props.checkLoginSuccess(this.state.usernameField,this.state.passwordField)}>
                                         Login</button>
-                                    </Link>
                                 </div>
 
                         }
@@ -137,14 +135,17 @@ const propertyToDispatchMapper = (dispatch) => ({
                 })
         }),
     checkLoginSuccess: (usr, pas) => AccountService.findAccountByUsernamePassword(usr, pas)
-        .then(acc => dispatch({
-            type: "LOGIN",
-            account: acc
-        })),
+        .then(acc => {
+            acc.id !== 0 &&
+            dispatch({
+                type: "LOGIN",
+                account: acc
+            })
+        }),
     Logout: () => logout().then(
-        () => dispatch({
+        () => {dispatch({
             type: "LOGOUT"
-        }))
+        })})
 })
 
 export default connect
