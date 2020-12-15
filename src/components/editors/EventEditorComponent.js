@@ -52,7 +52,7 @@ class EventEditorComponent extends React.Component {
                     </div>
                 </nav>
                 <div className="container">
-                    <h1>Edit Event: {this.state.event && this.state.event.title}</h1>
+                    <h1>Event: {this.state.event && this.state.event.title}</h1>
                     <div className="form-group row">
                         <label for="inputTitle" className="col-sm-2 col-form-label">Title</label>
                         <div className="col-sm-10">
@@ -132,7 +132,7 @@ class EventEditorComponent extends React.Component {
                             </select>
                         </div>
                         <div className={'col-sm-2'}>
-                            <button type={'submit'} className={'form-control btn btn-success'}
+                            <button type={'submit'} className={'form-control btn btn-primary'}
                                 onClick={() => this.props.inviteApartmentToEvent(this.props.match.params.eventId, this.state.apartmentId)}>
                                 Invite
                             </button>
@@ -162,7 +162,7 @@ class EventEditorComponent extends React.Component {
                             <Link to={'/admin'}>
                                 <button
                                     type="submit"
-                                    className="btn btn-success"
+                                    className="btn btn-primary"
                                     onClick={() => {
                                         this.props.updateEvent({ ...this.state.event })
                                     }}>

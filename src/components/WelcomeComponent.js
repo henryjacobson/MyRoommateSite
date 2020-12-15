@@ -34,10 +34,6 @@ export class WelcomeComponent extends React.Component {
                         this.props.account.id !== 0 &&
                         <div className={'float-right'}>
                             Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
-
-                            <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
-                                Logout
-                            </button>
                         </div>
                     }
 
@@ -48,7 +44,8 @@ export class WelcomeComponent extends React.Component {
 
                 <div className={'container'}>
                     <div className='row title'>
-                       <h1>Welcome to MyRoommate!</h1> 
+                        <h1>Welcome to MyRoommate!</h1>
+                        <h6>An easy way to stay organized with your roommates and know whats going on in your community!</h6>
                     </div>
                     <div className={'row'}>
                         <div className='col-sm-6 apartment-list '>
@@ -60,7 +57,7 @@ export class WelcomeComponent extends React.Component {
                                 this.props.account &&
                                 this.props.account.id === 0 &&
                                 <div>
-                                    
+
                                     <div className='row login'>
                                         <h5>Already have an account?</h5>
                                         <Link to={'/login'}>
@@ -87,9 +84,12 @@ export class WelcomeComponent extends React.Component {
                                 <div>
                                     <Link to={'/profile'}>
                                         <button className={'btn btn-primary'}>
-                                            Profile
-                                    </button>
+                                            Go to your profile
+                                        </button>
                                     </Link>
+                                    <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
+                                        Logout
+                                    </button>
                                 </div>
                             }
                         </div>

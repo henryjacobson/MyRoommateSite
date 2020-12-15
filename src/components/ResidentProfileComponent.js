@@ -66,19 +66,11 @@ class ResidentProfileComponent extends React.Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <Link className="navbar-brand disabled" to={'/'}>MyRoommate</Link>
-                    <Link to={`/apartments/${this.state.apartment.id}`}>
-                        {this.state.apartment.address}
-                    </Link>
                     {
                         this.props.account &&
                         this.props.account.id !== 0 &&
-                        <div className={'navbar-right'}>
+                        <div className={'float-right'}>
                             Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
-
-                            <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
-                                Logout
-                                </button>
-
                         </div>
                     }
                 </nav>
@@ -227,7 +219,7 @@ class ResidentProfileComponent extends React.Component {
                         <div className={'col-sm-6'}>
                             <h4>
                                 Chores:
-                        </h4>
+                            </h4>
                             <ul className={"list-group"}>
                                 {console.log(this.props.chores)}
                                 {
@@ -239,6 +231,14 @@ class ResidentProfileComponent extends React.Component {
                                     )
                                 }
                             </ul>
+                            <Link to={`/apartments/${this.state.apartment.id}`}>
+                                <button className="btn btn-primary">Go to my apartment</button>
+                            </Link>
+                            <Link to="/">
+                                <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
+                                    Logout
+                                </button>
+                            </Link>
                         </div>
                     </div>
 
