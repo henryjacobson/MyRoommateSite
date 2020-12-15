@@ -10,6 +10,7 @@ import { getEventsForApartmentId } from "../actions/eventActions";
 import GroceriesComonent from "../components/search/GroceriesComponent"
 import { getGroceriesForApartment } from '../actions/groceriesActions'
 import { Link } from "react-router-dom";
+import {findAccountByCookies} from "../services/AccountService";
 
 class ApartmentViewContainer extends React.Component {
     // constructor(props) {
@@ -84,7 +85,8 @@ class ApartmentViewContainer extends React.Component {
 const stateToProperty = state => ({
     apartment: state.apartmentReducer.apartment,
     residents: state.residentReducer.residents,
-    chores: state.choresReducer.chores
+    chores: state.choresReducer.chores,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({
@@ -92,7 +94,12 @@ const propertyToDispatchMapper = dispatch => ({
     getChoresForApartment: apartmentId => getChoresForApartment(dispatch, apartmentId),
     getResidentsByApartmentId: apartmentId => getResidentsByApartmentId(dispatch, apartmentId),
     getEventsForApartmentId: apartmentId => getEventsForApartmentId(dispatch, apartmentId),
-    getGroceriesForApartment: apartmentId => getGroceriesForApartment(dispatch, apartmentId)
+    getGroceriesForApartment: apartmentId => getGroceriesForApartment(dispatch, apartmentId),
+    getAccount: () => findAccountByCookies()
+        .then(acc => dispatch({
+            type: "LOGIN",
+            account: acc
+        }))
 })
 
 export default connect

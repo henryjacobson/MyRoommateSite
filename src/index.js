@@ -60,9 +60,9 @@ ReactDOM.render(
                 <Route path="/login" exact component={LoginComponent}/>
                 <Route path="/policy" exact component={PolicyComponent}/>
                 <Route path="/register" exact component={RegisterComponent}/>
-                <Route path="/profile/resident" exact component={ResidentProfileComponent}/>
+                <Route path="/profile" exact component={ResidentProfileComponent}/>
                 <Route path="/profile/admin" exact component={AdminProfileComponent}/>
-                <Route path="/profile/resident/:id" exact component={ResidentProfileComponent}/>
+                <Route path="/profile/:id" exact component={ResidentProfileComponent}/>
 
 
 

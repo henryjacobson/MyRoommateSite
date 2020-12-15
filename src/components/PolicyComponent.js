@@ -14,7 +14,10 @@ class PolicyComponent extends React.Component{
     render() {
         return(
             <div>
-                <h1>Policy Temp</h1>
+                <h1>Privacy Policy</h1>
+                <p>
+                    This website employs very few security measures. Proceed with caution.
+                </p>
             </div>
         )
     }

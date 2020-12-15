@@ -14,10 +14,22 @@ const ChoresComponent = ({
             chores.map(chore =>
                 <li className={'list-group-item'}
                     key={chore.id}>
-                    <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
-                        {chore.description}
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
+                            {chore.description}
 
-                    </Link>
+                        </Link>
+                    }
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                            <div>
+                                {chore.description}
+                            </div>
+                    }
+
                     <span className="float-right">
                         <button className={'btn btn-danger'} onClick={() => deleteChore(chore)}>
                         <i className={'fa fa-times float-right'}/>

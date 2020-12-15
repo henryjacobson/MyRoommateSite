@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import AccountService from "../services/AccountService";
+import AccountService, {findAccountByCookies, logout} from "../services/AccountService";
 import {Link} from "react-router-dom";
 
 class LoginComponent extends React.Component{
@@ -11,7 +11,7 @@ class LoginComponent extends React.Component{
     }
 
     componentDidMount() {
-
+        this.props.tryLogin()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -77,7 +77,7 @@ class LoginComponent extends React.Component{
                             this.props.loggedIn===true &&
                                 <div>
                                     <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={
-                                        this.props.Logout}>LogOut</button>
+                                        () => this.props.Logout()}>LogOut</button>
                                     {console.log(this.props.account)}
                                     {
                                         this.props.account.resident &&
@@ -119,14 +119,23 @@ const stateToProperty = (state) => ({
     tryAgain: state.accountReducer.tryAgain
 })
 const propertyToDispatchMapper = (dispatch) => ({
+    tryLogin: () => findAccountByCookies()
+        .then(acc => {
+            acc.id !== 0 &&
+                dispatch({
+                    type: 'LOGIN',
+                    account: acc
+                })
+        }),
     checkLoginSuccess: (usr,pas) => AccountService.findAccountByUsernamePassword(usr,pas)
         .then(acc => dispatch({
             type: "LOGIN",
             account: acc
         })),
-    Logout: () => dispatch({
+    Logout: () =>  logout().then(
+        () => dispatch({
             type: "LOGOUT"
-        })
+        }))
 })
 
 export default connect
