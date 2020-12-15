@@ -47,12 +47,17 @@ class LoginComponent extends React.Component {
                         {
                             this.props.account &&
                             this.props.account.id !== 0 &&
+                            this.props.account.resident &&
                             <div className={'navbar-right'}>
-                                Go to profile: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
-
-                                <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
-                                    Logout
-                                </button>
+                                Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+                            </div>
+                        }
+                        {
+                            this.props.account &&
+                            this.props.account.id !== 0 &&
+                            !this.props.account.resident &&
+                            <div className={'float-right'}>
+                                Logged in as: <Link to={'/admin'}>{this.props.account && this.props.account.username}</Link>
 
                             </div>
                         }
@@ -63,22 +68,22 @@ class LoginComponent extends React.Component {
                     <h1>
                         Logged in as: {this.props.account.username}
                         {
-                                    this.props.account.resident &&
-                                    <Link to={'/profile'}>
-                                        <button className="btn btn-primary">
-                                            Go to profile
+                            this.props.account.resident &&
+                            <Link to={'/profile'}>
+                                <button className="btn btn-primary">
+                                    Go to profile
                                         </button>
 
-                                    </Link>
-                                }
-                                {
-                                    !this.props.account.resident &&
-                                    <Link to={'/admin'}>
-                                       <button className="btn btn-primary">
-                                            Go to profile
+                            </Link>
+                        }
+                        {
+                            !this.props.account.resident &&
+                            <Link to={'/admin'}>
+                                <button className="btn btn-primary">
+                                    Go to profile
                                         </button>
-                                        </Link>
-                                }
+                            </Link>
+                        }
                     </h1>
                 }
                 {
@@ -113,12 +118,12 @@ class LoginComponent extends React.Component {
                 <div className="form-group row">
                     <div className="col-sm-10">
                         {
-                            this.props.loggedIn===true &&
-                                <div>
-                                    <button className="wbdv-button wbdv-login btn-danger btn-block" onClick={
-                                        () => this.props.Logout()}>LogOut</button>
-                                    {console.log(this.props.account)}
-                                    {/* {
+                            this.props.loggedIn === true &&
+                            <div>
+                                <button className="wbdv-button wbdv-login btn-danger btn-block" onClick={
+                                    () => this.props.Logout()}>LogOut</button>
+                                {console.log(this.props.account)}
+                                {/* {
                                         this.props.account.resident &&
                                         <Link to={'/profile'}>
                                             Profile
@@ -131,7 +136,7 @@ class LoginComponent extends React.Component {
                                         </Link>
                                     } */}
 
-                                </div>
+                            </div>
 
                         }
                         {

@@ -92,11 +92,18 @@ export class WelcomeComponent extends React.Component {
                                 this.props.account &&
                                 this.props.account.id !== 0 &&
                                 <div>
-                                    <Link to={'/profile'}>
-                                        <button className={'btn btn-primary'}>
-                                            Go to your profile
+                                    {!this.props.account.resident &&
+                                        <Link to={'/admin'}>
+                                            <button className={'btn btn-primary'}>
+                                                Go to your profile
+                                    </button>
+                                        </Link>}
+                                    {this.props.account.resident &&
+                                        <Link to={'/profile'}>
+                                            <button className={'btn btn-primary'}>
+                                                Go to your profile
                                         </button>
-                                    </Link>
+                                        </Link>}
                                     <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
                                         Logout
                                     </button>

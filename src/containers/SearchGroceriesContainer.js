@@ -17,7 +17,7 @@ class SearchGroceriesContainer extends React.Component {
             <div>
                 <div>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <Link className="navbar-brand disabled" to={'/'}>MyApartment</Link>
+                    <Link className="navbar-brand disabled" to={'/'}>MyRoommate</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
