@@ -24,7 +24,7 @@ class FacilityEditorComponent extends React.Component {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand disabled" href="#">Edit Facility: </a>
+                    <Link className="navbar-brand disabled" to={'/'}>MyRoommate</Link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -58,6 +58,7 @@ class FacilityEditorComponent extends React.Component {
                     }
                 </nav>
                 <div className="container">
+                    <h1>Facility: {this.state.facility.type}</h1>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="facilityType">Facility Type</label>
                         <div class="col-sm-10">
