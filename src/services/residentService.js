@@ -23,6 +23,16 @@ export const createResident = (resident) =>
     })
         .then(response => response.json())
 
+export const updateResident = resident => 
+    fetch(`${url}/residents`, {
+        method: 'PUT',
+        body: JSON.stringify(resident),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response)
+
 export default {
-    findAllResidents, createResident, getResidentsByApartmentId, findResidentById
+    findAllResidents, createResident, getResidentsByApartmentId, findResidentById, updateResident
 }

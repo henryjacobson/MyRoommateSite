@@ -37,6 +37,14 @@ class ResidentProfileComponent extends React.Component{
     render() {
         return(
             <div>
+                <div>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                        <a className="navbar-brand disabled" href="#">{this.props.account.username}</a>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                    </nav>
+                </div>
                 <h3>Resident profile: {this.props.account.username}</h3>
                 <h5>Resident name: {this.state.loggedInResident.name}</h5>
                 <h5>email: {this.state.loggedInResident.email}</h5>

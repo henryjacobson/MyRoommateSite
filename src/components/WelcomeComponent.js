@@ -17,7 +17,7 @@ export class WelcomeComponent extends React.Component {
                     <li><Link to={"/login"}>Login</Link></li>
                     <li><Link to={"/register"}>Register</Link></li>
                     <li><Link to={"/policy"}>Policy</Link></li>
-                    <li><Link to={"/"}>Home Page</Link></li>
+                    {/* <li><Link to={"/"}>Home Page</Link></li> */}
                     {
                         this.props.loggedIn && this.props.account.resident===true &&
                         <li><Link to={`/profile/resident`}>ResidentProfile</Link></li>

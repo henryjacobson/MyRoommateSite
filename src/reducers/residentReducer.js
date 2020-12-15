@@ -3,20 +3,7 @@ import {
 } from "../actions/residentActions";
 
 
-const residents = [
-    {
-        id: 0,
-        name: 'Henry'
-    },
-    {
-        id: 1,
-        name: 'Shane'
-    },
-    {
-        id: 2,
-        name: 'Akira'
-    }
-]
+const residents = []
 
 const initialState = {
     residents: residents
