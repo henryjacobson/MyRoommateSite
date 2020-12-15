@@ -7,7 +7,8 @@ const ChoresComponent = ({
     chores = [],
     apartment,
     createChore,
-    deleteChore
+    deleteChore,
+    account
 }) =>
     <ul className={'list-group'}>
         {
@@ -15,16 +16,16 @@ const ChoresComponent = ({
                 <li className={'list-group-item'}
                     key={chore.id}>
                     {
-                        this.props.account &&
-                        this.props.account.id !== 0 &&
+                        account &&
+                        account.id !== 0 &&
                         <Link to={`/apartments/${apartment.id}/chores/${chore.id}`}>
                             {chore.description}
 
                         </Link>
                     }
                     {
-                        this.props.account &&
-                        this.props.account.id !== 0 &&
+                        account &&
+                        account.id === 0 &&
                             <div>
                                 {chore.description}
                             </div>
@@ -50,7 +51,8 @@ const ChoresComponent = ({
 
 const stateToPropertyMapper = state => ({
     chores: state.choresReducer.chores,
-    apartment: state.apartmentReducer.apartment
+    apartment: state.apartmentReducer.apartment,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({

@@ -25,6 +25,7 @@ class ApartmentViewContainer extends React.Component {
         this.props.getResidentsByApartmentId(apartmentId)
         this.props.getEventsForApartmentId(apartmentId)
         this.props.getGroceriesForApartment(apartmentId)
+        this.props.getAccount()
     }
 
     render() {
