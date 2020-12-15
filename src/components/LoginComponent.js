@@ -78,16 +78,16 @@ class LoginComponent extends React.Component{
                                 <div>
                                     <button className="wbdv-button wbdv-login btn-primary btn-block" onClick={
                                         this.props.Logout}>LogOut</button>
-
+                                    {console.log(this.props.account)}
                                     {
-                                        this.props.account.isResident &&
-                                        <Link to={'/profile'}>
+                                        this.props.account.resident &&
+                                        <Link to={'/profile/resident'}>
                                             Profile
                                         </Link>
                                     }
                                     {
-                                        !this.props.account.isResident &&
-                                        <Link to={'/adminProfile'}>
+                                        !this.props.account.resident &&
+                                        <Link to={'/profile/admin'}>
                                             Profile
                                         </Link>
                                     }

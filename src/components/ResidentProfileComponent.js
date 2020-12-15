@@ -17,6 +17,19 @@ class ResidentProfileComponent extends React.Component{
     }
 
     componentDidMount() {
+        this.props.match.params.id &&
+        this.props.findResidentById(this.props.match.params.id)
+            .then(res => {
+                this.setState(prev => {
+                    return {...prev, loggedInResident: res}
+                })
+
+                this.props.findApartmentById(this.state.loggedInResident.apartmentId)
+                    .then(ap => this.setState(prev => {
+                        return {...prev, apartment: ap}
+                    }))
+            })
+        !this.props.match.params.id &&
         this.props.findResidentById(this.props.account.residentId)
             .then(res => {
                 this.setState(prev => {
@@ -37,7 +50,14 @@ class ResidentProfileComponent extends React.Component{
     render() {
         return(
             <div>
-                <h3>Resident profile: {this.props.account.username}</h3>
+                {
+                    this.state.loggedInResident.id === this.props.account.residentId &&
+                        <div>
+
+                            <h3>Resident Username: {this.props.account.username}</h3>
+                            <h3>Resident Password: {this.props.account.password}</h3>
+                        </div>
+                }
                 <h5>Resident name: {this.state.loggedInResident.name}</h5>
                 <h5>email: {this.state.loggedInResident.email}</h5>
                 <h5>

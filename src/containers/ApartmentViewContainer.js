@@ -35,8 +35,7 @@ class ApartmentViewContainer extends React.Component {
                         <div className="navbar-nav">
                             {
                                 this.props.residents.map(resident =>
-                                    <Link className="nav-item nav-link" href="#">
-                                        {console.log(resident)}
+                                    <Link className="nav-item nav-link" to={`/profile/resident/${resident.id}`}>
                                         {resident.name}
                                     </Link>
                                 )

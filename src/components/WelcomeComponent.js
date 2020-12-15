@@ -32,6 +32,8 @@ export class WelcomeComponent extends React.Component {
                 <Route path="/policy" exact component={PolicyComponent}/>
                 <Route path="/profile/resident" exact component={ResidentProfileComponent}/>
                 <Route path="/profile/admin" exact component={AdminProfileComponent}/>
+                <Route path="/profile/resident/:id" exact component={ResidentProfileComponent}/>
+                <Route path="/profile/admin/:id" exact component={AdminProfileComponent}/>
             </div>
         </BrowserRouter>
         )
