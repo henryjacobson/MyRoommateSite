@@ -29,9 +29,10 @@ class AdminContainer extends React.Component {
                 <div>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <Link to="/" className="navbar-brand disabled">MyRoommate</Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
+                    <div>
+                        <Link to="/"><button className="btn btn-danger" onClick={
+                                    () => this.props.Logout()}>LogOut</button></Link>
+                    </div>
                     </nav>
                 </div>
                 <div className="container">
