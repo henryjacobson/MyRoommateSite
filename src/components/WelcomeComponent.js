@@ -25,7 +25,7 @@ export class WelcomeComponent extends React.Component {
     render() {
         return (
             <div >
-
+                {console.log(this.props.account)}
 
                 <nav className="  navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand disabled" href="#">MyRoommate</a>
@@ -125,14 +125,25 @@ const stateToProperty = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     getAllApartments: () => getAllApartments(dispatch),
     getAccount: () => findAccountByCookies()
-        .then(acc => dispatch({
-            type: "LOGIN",
-            account: acc
-        })),
+        .then(acc => {
+            dispatch({
+                type: "LOGIN",
+                account: acc
+            })
+        }),
     Logout: () => logout().then(
-        () => dispatch({
-            type: "LOGOUT"
-        }))
+        () => {
+            dispatch({
+                type: "LOGOUT"
+            })
+            findAccountByCookies()
+                .then(acc => {
+                    dispatch({
+                        type: "LOGIN",
+                        account: acc
+                    })
+                })
+        })
 })
 
 export default connect

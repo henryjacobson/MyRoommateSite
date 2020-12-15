@@ -37,7 +37,9 @@ class LoginComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div>{
+                console.log(this.props.loggedIn)
+            }
                 <div>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         <Link to="/" className="navbar-brand disabled">MyRoommate</Link>
@@ -47,6 +49,7 @@ class LoginComponent extends React.Component {
                         {
                             this.props.account &&
                             this.props.account.id !== 0 &&
+                            this.props.account.id !== -1 &&
                             this.props.account.resident &&
                             <div className={'navbar-right'}>
                                 Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
@@ -90,9 +93,10 @@ class LoginComponent extends React.Component {
                     this.props.loggedIn !== true &&
                     <h1>Log In Here</h1>
                 }
+
                 {
                     this.props.tryAgain === true &&
-                    alert("Try Login Again")
+                    <h3 className={'color-red'}>Try Again</h3>
                 }
                 <div className="form-group row">
                     <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
@@ -171,7 +175,6 @@ const propertyToDispatchMapper = (dispatch) => ({
         }),
     checkLoginSuccess: (usr, pas) => AccountService.findAccountByUsernamePassword(usr, pas)
         .then(acc => {
-            acc.id !== 0 &&
                 dispatch({
                     type: "LOGIN",
                     account: acc

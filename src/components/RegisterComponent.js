@@ -107,7 +107,7 @@ class RegisterComponent extends React.Component{
                 }
                 {
                     this.props.loggedIn!==true &&
-                    <h1>Log In Here</h1>
+                    <h1>Register Here</h1>
                 }
                 {
                     this.props.tryAgain===true &&
