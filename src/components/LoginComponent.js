@@ -96,7 +96,7 @@ class LoginComponent extends React.Component {
                                     }
                                     {
                                         !this.props.account.resident &&
-                                        <Link to={'/profile/admin'}>
+                                        <Link to={'/profileAdmin'}>
                                             Go to Profile
                                         </Link>
                                     }
