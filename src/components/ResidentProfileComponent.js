@@ -95,7 +95,7 @@ class ResidentProfileComponent extends React.Component{
                                                 {this.state.apartment.address}
                                             </Link>
                                         </h5>
-                                        <h5>admin: {this.props.account && this.props.findAdminById(this.props.account.adminId).email}</h5>
+                                        <h5>admin: {this.props.account && this.props.account.adminId !== 0 && this.props.findAdminById(this.props.account.adminId).email}</h5>
                                         {
                                             this.props.account &&
                                             this.state.loggedInResident.id === this.props.account.residentId &&

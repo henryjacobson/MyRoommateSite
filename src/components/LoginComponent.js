@@ -81,7 +81,7 @@ class LoginComponent extends React.Component{
                                     {console.log(this.props.account)}
                                     {
                                         this.props.account.resident &&
-                                        <Link to={'/profile/resident'}>
+                                        <Link to={'/profile'}>
                                             Profile
                                         </Link>
                                     }
