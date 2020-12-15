@@ -33,17 +33,27 @@ class ApartmentViewContainer extends React.Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand disabled" href="#">Apartment: {this.props.apartment.address}</a>
+
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
                             {
                                 this.props.residents.map(resident =>
-                                    <Link className="nav-item nav-link" to={`/profile/resident/${resident.id}`}>
+                                    <Link className="nav-item nav-link" to={`/profile/${resident.id}`}>
                                         {resident.name}
                                     </Link>
                                 )
                             }
                         </div>
                     </div>
+
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        <div className={'float-right'}>
+                            Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                        </div>
+                    }
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />

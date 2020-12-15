@@ -4,6 +4,7 @@ export const GET_APARTMENT_BY_ID = 'GET_APARTMENT_BY_ID'
 export const GET_ALL_APARTMENTS = 'GET_ALL_APARTMENTS'
 export const CREATE_APARTMENT = 'CREATE_APARTMENT'
 export const GET_APARTMENTS_BY_EVENT_ID = 'GET_APARTMENTS_BY_EVENT_ID'
+export const GET_APARTMENTS_BY_ADMIN_ID = 'GET_APARTMENTS_BY_ADMIN_ID'
 export const INVITE_APARTMENT_TO_EVENT = 'INVITE+APARTMENT_TO_EVENT'
 
 // const apartment = {
@@ -45,3 +46,10 @@ export const inviteApartmentToEvent = (dispatch, eventId, apartmentId) =>
         .then(() => {
             getApartmentsForEventId(dispatch, eventId)
         })
+
+export const getApartmentsForAdminId = (dispatch, adminId) =>
+    apartmentService.getApartmentsForAdminId(adminId)
+        .then(invitedApartments => dispatch({
+            type: GET_ALL_APARTMENTS,
+            apartments: invitedApartments
+        }))

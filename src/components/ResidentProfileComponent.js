@@ -5,7 +5,7 @@ import ResidentService, {updateResident} from "../services/residentService";
 import AdminService from "../services/AdminService";
 import ApartmentService from "../services/apartmentService";
 import {findAccountByCookies, updateAccount} from "../services/AccountService";
-import {getChoresForApartment} from "../actions/choresActions";
+import {getChoresForApartment, getChoresForApartmentFiltered} from "../actions/choresActions";
 
 class ResidentProfileComponent extends React.Component{
 
@@ -26,6 +26,7 @@ class ResidentProfileComponent extends React.Component{
                 this.setState(prev => {
                     return {...prev, account: this.props.account}
                 })
+                console.log(this.props.account)
                 this.props.match.params.id &&
                 this.props.findResidentById(this.props.match.params.id)
                     .then(res => {
@@ -38,7 +39,9 @@ class ResidentProfileComponent extends React.Component{
                                 return {...prev, apartment: ap}
                             }))
 
-                        this.props.getChoresForApartment(this.state.loggedInResident.apartmentId)
+                        console.log(this.state.loggedInResident)
+
+                        this.props.getChoresForApartmentFiltered(this.state.loggedInResident.apartmentId, this.state.loggedInResident.name)
                     })
                 !this.props.match.params.id &&
                 this.props.findResidentById(this.props.account.residentId)
@@ -61,6 +64,26 @@ class ResidentProfileComponent extends React.Component{
     render() {
         return(
             <div className={'container'}>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <Link className="navbar-brand disabled" to={'/'}>MyApartment</Link>
+
+
+
+                        {
+                            this.props.account &&
+                            this.props.account.id !== 0 &&
+                            <div className={'navbar-right'}>
+                                Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                                <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
+                                    Logout
+                                </button>
+
+                            </div>
+                        }
+
+
+                </nav>
                 <div className={'row'}>
                     <div className={'col-sm-6'}>
                         <div className={'container'}>
@@ -221,7 +244,7 @@ class ResidentProfileComponent extends React.Component{
                                 this.props.chores &&
                                 this.props.chores.map(chore =>
                                     <li className={'list-group-item'}>
-                                        {chore.title}
+                                        {chore.description}
                                     </li>
                                 )
                             }
@@ -251,7 +274,7 @@ const propertyToDispatchMapper = (dispatch) => ({
             type: "LOGIN",
             account: acc
         })),
-    getChoresForApartment: apartmentId => getChoresForApartment(dispatch, apartmentId)
+    getChoresForApartmentFiltered: (apartmentId, name) => getChoresForApartmentFiltered(dispatch, apartmentId, name)
 })
 
 export default connect

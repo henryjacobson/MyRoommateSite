@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { createApartment } from "../../actions/apartmentActions"
+import {findAccountByCookies} from "../../services/AccountService";
 
 class AddApartmentComponent extends React.Component {
     constructor() {
@@ -10,6 +11,10 @@ class AddApartmentComponent extends React.Component {
             newApartment: false
         }
     }
+
+    componentDidMount() {
+    }
+
     render() {
         return (
             <div>
@@ -18,7 +23,7 @@ class AddApartmentComponent extends React.Component {
                     <button className="form-control btn btn-primary" onClick={() =>
                         this.setState(prevState => ({ ...prevState, newApartment: true }))}>
                         Add Apartment
-                </button>
+                    </button>
                 }
                 {
                     this.state.newApartment &&
@@ -36,14 +41,16 @@ class AddApartmentComponent extends React.Component {
                                     })
                                 }} />
                         </div>
-                        <span>
+                        {
+
+                            <span>
                             <button className="btn btn-primary col-sm-12 form-control" onClick={() => {
-                                this.setState(prevState => ({ ...prevState, newApartment: false }))
+                                this.setState(prevState => ({...prevState, newApartment: false}))
                                 this.state.apartment && this.props.createApartment(this.state.apartment)
                             }}>
                                 OK
                             </button>
-                        </span>
+                        </span>}
 
                     </div>
 
@@ -58,9 +65,10 @@ const stateToProperty = state => ({
 })
 
 const propertyToDispatch = dispatch => ({
-    createApartment: apartment => createApartment(dispatch, apartment)
+    createApartment: apartment => createApartment(dispatch, apartment),
+
 })
 
 export default connect
-    (stateToProperty, propertyToDispatch)
-    (AddApartmentComponent)
+(stateToProperty, propertyToDispatch)
+(AddApartmentComponent)

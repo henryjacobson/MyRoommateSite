@@ -45,6 +45,21 @@ export const getChoresForApartment = (dispatch, apartmentId) =>
             chores: chores
         }))
 
+export const getChoresForApartmentFiltered = (dispatch, apartmentId, name) =>
+    // dispatch({
+    //     type: GET_CHORES_FOR_APARTMENT,
+    //     chores: chores
+    // })
+    choresService.getChoresForApartment(apartmentId)
+        .then(chores => {
+            console.log(chores)
+            console.log(name)
+            dispatch({
+                type: GET_CHORES_FOR_APARTMENT,
+                chores: chores.filter(chore => chore.asignee === name)
+            })
+        })
+
 export const getChoreById = (dispatch, choreId) =>
     choresService.getChoreById(choreId)
         .then(chore => dispatch({

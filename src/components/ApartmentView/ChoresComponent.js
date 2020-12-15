@@ -30,22 +30,29 @@ const ChoresComponent = ({
                                 {chore.description}
                             </div>
                     }
-
-                    <span className="float-right">
+                    {
+                        account &&
+                        account.id !== 0 &&
+                        <span className="float-right">
                         <button className={'btn btn-danger'} onClick={() => deleteChore(chore)}>
                         <i className={'fa fa-times float-right'}/>
                         </button>
                     </span>
+                    }
                 </li>
             )
         }
-        <li className={'list-group'}>
-            <button
-                className="btn btn-primary"
-                onClick={() => createChore(apartment.id)}>
-                Add Chore
-            </button>
-        </li>
+        {
+            account &&
+            account.id !== 0 &&
+            <li className={'list-group'}>
+                <button
+                    className="btn btn-primary"
+                    onClick={() => createChore(apartment.id)}>
+                    Add Chore
+                </button>
+            </li>
+        }
         {console.log(apartment)}
     </ul>
 

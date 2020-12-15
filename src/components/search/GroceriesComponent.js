@@ -6,21 +6,37 @@ import { deleteGroceryItem } from "../../actions/groceriesActions"
 const GroceriesComponent = ({
     groceries = [],
     apartment,
-    deleteGroceryItem
+    deleteGroceryItem,
+    account
 }) => <ul className={'list-group'}>
         {
             groceries.map(item =>
                 <li className={'list-group-item'}
                     key={item.id}>
-                    <Link to={`/edit/groceries/${item.id}`}>
-                        {item.title}
-                    </Link>
-                    : {item.notes}
-                    <span className="float-right">
+                    {
+                        account &&
+                        account.id !== 0 &&
+                        <Link to={`/edit/groceries/${item.id}`}>
+                            {item.title}
+                        </Link>
+                    }
+                    {
+                        account &&
+                        account.id === 0 &&
+                        <div>
+                            {item.title}
+                        </div>
+                    }
+                    {item.notes}
+                    {
+                        account &&
+                        account.id !== 0 &&
+                        <span className="float-right">
                         <button className={'btn btn-danger'} onClick={() => deleteGroceryItem(item.id)}>
                         <i className={'fa fa-times float-right'}/>
                         </button>
                     </span>
+                    }
                 </li>
             )
         }
@@ -29,6 +45,7 @@ const GroceriesComponent = ({
 const stateToPropertyMapper = state => ({
     groceries: state.groceriesReducer.groceries,
     apartment: state.apartmentReducer.apartment,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({
