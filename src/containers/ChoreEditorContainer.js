@@ -22,14 +22,14 @@ class ChoreEditorContainer extends React.Component {
     render() {
         return (
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand disabled" href="#">Edit Chore: {this.state.chore.description}</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <a className="navbar-brand disabled" href="#">Edit Chore: {this.state.chore.description}</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"/>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="#">
+                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div className="navbar-nav">
+                            <a className="nav-item nav-link" href="#">
                                 <Link to={`/apartments/${this.props.match.params.apartmentId}`}>
                                     Apartment
                                 </Link>
@@ -61,17 +61,17 @@ class ChoreEditorContainer extends React.Component {
                     </div>
 
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="status">Assign To</label>
-                        <div class="col-sm-10">
-                            <select class="custom-select" id="assignee"
-                                value={this.state.chore.assignee}
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label" for="status">Assign To</label>
+                        <div className="col-sm-10">
+                            <select className="custom-select" id="asignee"
+                                value={this.state.chore.asignee}
                                 onChange={event => {
                                     this.setState(prevState => {
                                         return {
                                             chore: {
                                                 ...prevState.chore,
-                                                assignee: event.target.value
+                                                asignee: event.target.value
                                             }
                                         }
                                     })
@@ -127,10 +127,10 @@ class ChoreEditorContainer extends React.Component {
                             return { chore: { ...prevState.chore, description: event.target.value } }
                         })
                     } />
-                <select value={this.state.chore.assignee}
+                <select value={this.state.chore.asignee}
                     onChange={event =>
                         this.setState(prevState => {
-                            return { chore: { ...prevState.chore, assignee: event.target.value } }
+                            return { chore: { ...prevState.chore, asignee: event.target.value } }
                         })}>
                     <option value={''}> </option>
                     {
