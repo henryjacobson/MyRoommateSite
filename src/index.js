@@ -1,6 +1,8 @@
 import React from 'react';
+import {Helmet} from 'react-helmet';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './style/MainStyle.css';
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import AdminContainer from "./containers/AdminContainer"
@@ -46,7 +48,10 @@ const store = createStore(rootReducer)
 ReactDOM.render(
     <Router>
         <Provider store={store}>
-            <div>
+            <div className="wbdv-color-scheme">
+            <Helmet>
+                <style>{'body { background-color: rgb(183, 255, 148); }'}</style>
+            </Helmet>
                 {/* <Link to="/admin">[ADMIN]</Link>
                 <Link to="/welcome">Welcome</Link>
                 <Link to="/login">Login</Link>
@@ -75,7 +80,6 @@ ReactDOM.render(
                 <Route path={'/apartments/:apartmentId'} exact component={ApartmentViewContainer} />
                 <Route path={'/apartments/:apartmentId/chores/:choreId'} exact component={ChoreEditorContainer} />
                 <Route path={'/apartments/:apartmentId/groceries'} exact component={ SearchGroceriesContainer} />
-                {/* <Route path={'/apartments/:apartmentId/groceries'} exact component={FoodApi} /> */}
             </div>
         </Provider>
     </Router>,

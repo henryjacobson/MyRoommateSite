@@ -7,7 +7,8 @@ import GoogleCalendar from '../components/googleCalendarExample';
 import { getAllFacilities } from "../actions/facilityActions";
 import { getAllEvents } from "../actions/eventActions";
 import { getAllApartments } from "../actions/apartmentActions";
-import FoodApi from '../components/search/FoodApi'
+import FoodApi from '../components/search/FoodApi';
+import {Link} from 'react-router-dom'
 
 class AdminContainer extends React.Component {
     componentDidMount() {
@@ -27,7 +28,7 @@ class AdminContainer extends React.Component {
             <div>
                 <div>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <a className="navbar-brand disabled" href="#">Admin</a>
+                    <Link to="/" className="navbar-brand disabled">MyRoommate</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
