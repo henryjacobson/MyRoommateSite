@@ -69,12 +69,8 @@ class ResidentProfileComponent extends React.Component {
                     {
                         this.props.account &&
                         this.props.account.id !== 0 &&
-<<<<<<< HEAD
-                        <div className={'float-right'}>
-=======
                         this.props.account.resident &&
-                        <div className={'navbar-right'}>
->>>>>>> 2eaa8b87ba981cff91fb2ba1a87580d010d95deb
+                        <div className={'float-right'}>
                             Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
                         </div>
                     }
