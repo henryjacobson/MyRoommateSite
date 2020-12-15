@@ -196,6 +196,7 @@ class RegisterComponent extends React.Component{
                         }
                         {
                             this.state.type==="Admin" &&
+                            <Link to="/login">
                             <button className="wbdv-button wbdv-login btn-primary btn-block"
                                     onClick={() => this.props.createAdmin({
                                         name: this.state.name,
@@ -209,6 +210,7 @@ class RegisterComponent extends React.Component{
                                         })).then(alert("Created account successfully"))
                                     }>
                                 Register</button>
+                                </Link>
                         }
 
                     </div>

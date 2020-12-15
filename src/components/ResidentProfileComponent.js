@@ -241,14 +241,19 @@ class ResidentProfileComponent extends React.Component {
                                     )
                                 }
                             </ul>
-                            <Link to={`/apartments/${this.state.apartment.id}`}>
-                                <button className="btn btn-primary">Go to my apartment</button>
-                            </Link>
-                            <Link to="/">
-                                <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
-                                    Logout
+                            {this.props.account.id !== 0 &&
+                                <div>
+
+
+                                    <Link to={`/apartments/${this.state.apartment.id}`}>
+                                        <button className="btn btn-primary">Go to my apartment</button>
+                                    </Link>
+                                    <Link to="/">
+                                        <button className={'btn btn-danger'} onClick={() => this.props.Logout()}>
+                                            Logout
                                 </button>
-                            </Link>
+                                    </Link>
+                                </div>}
                         </div>
                     </div>
 

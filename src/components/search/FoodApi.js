@@ -59,7 +59,7 @@ class FoodApi extends Component {
                                     }}
                                         className="float-right">
                                             
-                                            <button className="btn btn-success">
+                                        <button className="btn btn-success">
                                             add
                                         </button>
                                         
