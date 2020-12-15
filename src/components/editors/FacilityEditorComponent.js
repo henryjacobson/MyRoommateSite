@@ -38,6 +38,24 @@ class FacilityEditorComponent extends React.Component {
 
                         </div>
                     </div>
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        this.props.account.resident &&
+                        <div className={'float-right'}>
+                            Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                        </div>
+                    }
+                    {
+                        this.props.account &&
+                        this.props.account.id !== 0 &&
+                        !this.props.account.resident &&
+                        <div className={'float-right'}>
+                            Logged in as: <Link to={'/admin'}>{this.props.account && this.props.account.username}</Link>
+
+                        </div>
+                    }
                 </nav>
                 <div className="container">
                     <h1>Facility: {this.state.facility.type}</h1>
@@ -122,7 +140,8 @@ class FacilityEditorComponent extends React.Component {
 }
 
 const stateToPropertyMapper = state => ({
-    facility: state.facilityReducer.facility
+    facility: state.facilityReducer.facility,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({

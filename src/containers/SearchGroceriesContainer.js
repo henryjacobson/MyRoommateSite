@@ -34,6 +34,25 @@ class SearchGroceriesContainer extends React.Component {
                                 </a>
                             </div>
                         </div>
+
+                        {
+                            this.props.account &&
+                            this.props.account.id !== 0 &&
+                            this.props.account.resident &&
+                            <div className={'float-right'}>
+                                Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                            </div>
+                        }
+                        {
+                            this.props.account &&
+                            this.props.account.id !== 0 &&
+                            !this.props.account.resident &&
+                            <div className={'float-right'}>
+                                Logged in as: <Link to={'/admin'}>{this.props.account && this.props.account.username}</Link>
+
+                            </div>
+                        }
                     </nav>
                 </div>
 
@@ -71,7 +90,8 @@ class SearchGroceriesContainer extends React.Component {
 
 const stateToProperty = state => ({
     apartment: state.apartmentReducer.apartment,
-    residents: state.residentReducer.residents
+    residents: state.residentReducer.residents,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({

@@ -47,6 +47,24 @@ class GroceryItemEditorComponent extends React.Component {
                                 </a>
                             </div>
                         </div>
+                        {
+                            this.props.account &&
+                            this.props.account.id !== 0 &&
+                            this.props.account.resident &&
+                            <div className={'float-right'}>
+                                Logged in as: <Link to={'/profile'}>{this.props.account && this.props.account.username}</Link>
+
+                            </div>
+                        }
+                        {
+                            this.props.account &&
+                            this.props.account.id !== 0 &&
+                            !this.props.account.resident &&
+                            <div className={'float-right'}>
+                                Logged in as: <Link to={'/admin'}>{this.props.account && this.props.account.username}</Link>
+
+                            </div>
+                        }
                     </nav>
                 </div>
                 <div className="container">
@@ -102,7 +120,7 @@ class GroceryItemEditorComponent extends React.Component {
 }
 
 const stateToPropertyMapper = state => ({
-
+account: state.accountReducer.account
                 })
 
 const propertyToDispatchMapper = dispatch => ({
