@@ -9,6 +9,7 @@ import { getAllEvents } from "../actions/eventActions";
 import { getAllApartments } from "../actions/apartmentActions";
 import FoodApi from '../components/search/FoodApi';
 import {Link} from 'react-router-dom'
+import {logout} from "../services/AccountService";
 
 class AdminContainer extends React.Component {
     componentDidMount() {
@@ -71,7 +72,13 @@ const stateToProperty = state => ({
 const propertyToDispatch = dispatch => ({
     getAllFacilities: () => getAllFacilities(dispatch),
     getAllEvents: () => getAllEvents(dispatch),
-    getAllApartments: () => getAllApartments(dispatch)
+    getAllApartments: () => getAllApartments(dispatch),
+    Logout: () => logout().then(
+        () => {
+            dispatch({
+                type: "LOGOUT"
+            })
+        })
 })
 
 export default connect
