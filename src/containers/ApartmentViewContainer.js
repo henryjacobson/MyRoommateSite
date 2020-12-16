@@ -80,33 +80,18 @@ class ApartmentViewContainer extends React.Component {
                         </div>
                         <div className={'col-6'}>
                             <h4>
-                                Events:
+                                Apartment Events:
                         </h4>
                             <EventsComponent />
                         </div>
                         <div className={'col-3 justify-content-end'}>
                             <h4>
                                 Groceries:
-
-                                {
-                                    this.props.account &&
-                                    this.props.account.id !== 0 &&
-                                    <Link to={`/apartments/${this.props.match.params.apartmentId}/groceries`}>
+                                    <Link to={`/apartments/${this.props.match.params.apartmentId}/search`}>
                                         <button className={'btn btn-primary'}>
-                                            Add Food
+                                            Search Food
                                         </button>
                                     </Link>
-                                }
-                                {
-                                    this.props.account &&
-                                    this.props.account.id === 0 &&
-                                    <Link to={`/login`}>
-                                        <button className={'btn btn-primary'}>
-                                            Add Food
-                                        </button>
-                                    </Link>
-                                }
-
                             </h4>
                             <GroceriesComonent />
                         </div>

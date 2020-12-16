@@ -41,7 +41,7 @@ class GroceryItemEditorComponent extends React.Component {
                                     </Link>
                                 </a>
                                 <a class="nav-item nav-link" href="#">
-                                    <Link to={`/apartments/${this.state.groceryItem.apartmentId}/groceries`}>
+                                    <Link to={`/apartments/${this.state.groceryItem.apartmentId}/search`}>
                                         Search Groceries
                                     </Link>
                                 </a>

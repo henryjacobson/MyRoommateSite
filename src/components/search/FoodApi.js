@@ -1,25 +1,18 @@
 import React, { Component } from 'react'
-import FoodForm from './FoodForm'
 import { createGroceryItem } from '../../actions/groceriesActions';
 import 'react-router-dom'
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { updateSearchResults } from '../../actions/searchActions'
 
 const APIKEY = "66a072032d914d08929e8232de1fde63";
 
 class FoodApi extends Component {
     state = {
         foods: [],
+        search: ""
         // apartmentId: ""
     }
-    // constructor(props) {
-    //     super(props);
-    //     this.state.apartmentId = props.apartmentId
-    // }
-    // componentDidMount() {
-    //     const apartmentId = this.props.match.params.apartmentId
-    //     console.log(apartmentId)
-    // }
     getFood = async (e) => {
         const food = e.target.elements.foodName.value + "";
 
@@ -36,7 +29,27 @@ class FoodApi extends Component {
     render() {
         return (
             <div>
-                <FoodForm getFood={this.getFood} />
+                <div>
+
+                    <form onSubmit={this.getFood}>
+                        <input 
+                        id="itemSearch" 
+                        type="text" 
+                        name="foodName" 
+                        onChange={event => {
+                            this.setState(prevState => {
+                                return {
+                                    ...prevState,
+                                    search: event.target.value
+                                }
+                            })
+                        }} />
+                            <button className={'btn btn-primary'}>
+                                Search
+                            </button>
+                    </form>
+
+                </div >
 
                 <ul className={'list-group'}>
                     {this.state.foods.map(food => {
@@ -49,39 +62,51 @@ class FoodApi extends Component {
                                     <h4>{food.name}</h4>
                                 </div>
                                 <div className='col'>
-                                    <span onClick={() => {
-                                        console.log(this.props);
-                                        this.props.createGroceryItem({
-                                            title: food.name,
-                                            imageUrl: food.image, notes: "",
-                                            apartmentId: this.props.apartment.id
-                                        })
-                                    }}
-                                        className="float-right">
-                                            
-                                        <button className="btn btn-success">
-                                            add
+                                    {
+                                        this.props.account &&
+                                        this.props.account.id === 0 &&
+                                        <Link to="/login">
+                                            <button className="btn btn-success">
+                                                add
                                         </button>
-                                        
-
-                                    </span>
+                                        </Link>
+                                    }
+                                    {
+                                        this.props.account &&
+                                        this.props.account.id !== 0 &&
+                                        <span onClick={() => {
+                                            console.log(this.props);
+                                            this.props.createGroceryItem({
+                                                title: food.name,
+                                                imageUrl: food.image, notes: "",
+                                                apartmentId: this.props.apartment.id
+                                            })
+                                        }}
+                                            className="float-right">
+                                            <button className="btn btn-success">
+                                                add
+                                        </button>
+                                        </span>
+                                    }
                                 </div>
                             </div>
-
                         </li>
                     })}
                 </ul>
 
-            </div>
+            </div >
         )
     }
 }
 
 const stateToPropertyMapper = state => ({
-    apartment: state.apartmentReducer.apartment
+    food: state.searchReducer,
+    apartment: state.apartmentReducer.apartment,
+    account: state.accountReducer.account
 })
 
 const propertyToDispatchMapper = dispatch => ({
+
     createGroceryItem: groceryItem => createGroceryItem(dispatch, groceryItem.apartmentId, groceryItem)
 })
 

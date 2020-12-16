@@ -29,14 +29,6 @@ class FacilityEditorComponent extends React.Component {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="#">
-                                <Link to='/admin'>
-                                    Admin Home
-                                </Link>
-                            </a>
-
-                        </div>
                     </div>
                     {
                         this.props.account &&
@@ -122,7 +114,7 @@ class FacilityEditorComponent extends React.Component {
                     <div className="form-group row">
                         <div className="col-sm-11">
                             <Link to={'/admin'}>
-                                <button type="submit" class="btn btn-success"
+                                <button type="submit" class="btn btn-primary"
                                     onClick={() => this.props.updateFacility(this.state.facility)}>Save</button>
                             </Link>
                         </div>

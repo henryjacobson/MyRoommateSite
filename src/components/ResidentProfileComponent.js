@@ -20,7 +20,6 @@ class ResidentProfileComponent extends React.Component {
     }
 
     componentDidMount() {
-
         this.props.getAccount()
             .then(() => {
                 this.setState(prev => {
@@ -80,7 +79,6 @@ class ResidentProfileComponent extends React.Component {
                         !this.props.account.resident &&
                         <div className={'float-right'}>
                             Logged in as: <Link to={'/admin'}>{this.props.account && this.props.account.username}</Link>
-
                         </div>
                     }
                 </nav>
@@ -243,8 +241,6 @@ class ResidentProfileComponent extends React.Component {
                             </ul>
                             {this.props.account && this.props.account.id !== 0 &&
                                 <div>
-
-
                                     <Link to={`/apartments/${this.state.apartment.id}`}>
                                         <button className="btn btn-primary">Go to my apartment</button>
                                     </Link>
@@ -267,6 +263,7 @@ const stateToProperty = (state) => ({
     account: state.accountReducer.account,
     chores: state.choresReducer.chores
 })
+
 const propertyToDispatchMapper = (dispatch) => ({
     findResidentById: (id) =>
         ResidentService.findResidentById(id).then(resident => resident),

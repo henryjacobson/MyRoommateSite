@@ -1,5 +1,5 @@
 import React from 'react';
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './style/MainStyle.css';
@@ -31,7 +31,8 @@ import ResidentProfileComponent from './components/ResidentProfileComponent';
 import AdminProfileComponent from './components/AdminProfileComponent';
 import GroceryItemEditorComponent from './components/editors/GroceryItemEditorComponent';
 import FoodApi from './components/search/FoodApi';
- 
+import searchReducer from './reducers/searchReducer'
+
 const rootReducer = combineReducers({
     eventReducer,
     facilityReducer,
@@ -40,7 +41,8 @@ const rootReducer = combineReducers({
     adminReducer,
     residentReducer,
     accountReducer,
-    groceriesReducer
+    groceriesReducer,
+    searchReducer
 })
 
 const store = createStore(rootReducer)
@@ -49,9 +51,9 @@ ReactDOM.render(
     <Router>
         <Provider store={store}>
             <div className="wbdv-color-scheme">
-            <Helmet>
-                <style>{'body { background-color: rgb(183, 255, 148); }'}</style>
-            </Helmet>
+                <Helmet>
+                    <style>{'body { background-color: rgb(183, 255, 148); }'}</style>
+                </Helmet>
                 {/* <Link to="/admin">[ADMIN]</Link>
                 <Link to="/welcome">Welcome</Link>
                 <Link to="/login">Login</Link>
@@ -61,24 +63,25 @@ ReactDOM.render(
                 <Link to="/adminProfile">Admin Profile</Link> */}
 
 
-                <Route path="/" exact component={WelcomeComponent}/>
-                <Route path="/login" exact component={LoginComponent}/>
-                <Route path="/policy" exact component={PolicyComponent}/>
-                <Route path="/register" exact component={RegisterComponent}/>
-                <Route path="/profile" exact component={ResidentProfileComponent}/>
-                <Route path="/profile/:id" exact component={ResidentProfileComponent}/>
+                <Route path="/" exact component={WelcomeComponent} />
+                <Route path="/login" exact component={LoginComponent} />
+                <Route path="/policy" exact component={PolicyComponent} />
+                <Route path="/register" exact component={RegisterComponent} />
+                <Route path="/profile" exact component={ResidentProfileComponent} />
+                <Route path="/profile/:id" exact component={ResidentProfileComponent} />
 
 
 
 
 
-                <Route path={'/edit/groceries/:groceryItemId'} exact component={GroceryItemEditorComponent}/>
+                <Route path={'/edit/groceries/:groceryItemId'} exact component={GroceryItemEditorComponent} />
                 <Route path="/edit/facility/:facilityId" exact component={FacilityEditorComponent} />
                 <Route path="/edit/event/:eventId" exact component={EventEditorComponent} />
                 <Route path="/admin" exact component={AdminContainer} />
                 <Route path={'/apartments/:apartmentId'} exact component={ApartmentViewContainer} />
                 <Route path={'/apartments/:apartmentId/chores/:choreId'} exact component={ChoreEditorContainer} />
-                <Route path={'/apartments/:apartmentId/groceries'} exact component={ SearchGroceriesContainer} />
+                <Route path={['/apartments/:apartmentId/search',
+                    '/apartments/:apartmentId/search/:item']} exact component={SearchGroceriesContainer} />
             </div>
         </Provider>
     </Router>,

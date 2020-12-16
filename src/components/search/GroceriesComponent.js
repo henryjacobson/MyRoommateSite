@@ -13,30 +13,41 @@ const GroceriesComponent = ({
             groceries.map(item =>
                 <li className={'list-group-item'}
                     key={item.id}>
-                    {
-                        account &&
-                        account.id !== 0 &&
-                        <Link to={`/edit/groceries/${item.id}`}>
-                            {item.title}
-                        </Link>
-                    }
-                    {
-                        account &&
-                        account.id === 0 &&
-                        <Link to={`/login`}>
-                            {item.title}
-                        </Link>
-                    }
-                    {''} NOTES: {item.notes}
-                    {
-                        account &&
-                        account.id !== 0 &&
-                        <span className="float-right">
-                        <button className={'btn btn-danger'} onClick={() => deleteGroceryItem(item.id)}>
-                        <i className={'fa fa-times float-right'}/>
-                        </button>
-                    </span>
-                    }
+                    {/* <div className="container"> */}
+                    <div className="row">
+                        <div className='col'>
+                            {
+                                account &&
+                                account.id !== 0 &&
+                                <Link to={`/edit/groceries/${item.id}`}>
+                                    {item.title}
+                                </Link>
+                            }
+                            {
+                                account &&
+                                account.id === 0 &&
+                                <Link to={`/login`}>
+                                    {item.title}
+                                </Link>
+                            }
+
+                            {
+                                account &&
+                                account.id !== 0 &&
+                                <span className="float-right">
+                                    <button className={'btn btn-danger'} onClick={() => deleteGroceryItem(item.id)}>
+                                        <i className={'fa fa-times float-right'} />
+                                    </button>
+                                </span>
+                            }
+                        </div>
+                    </div>
+                    <div classname="row">
+                        NOTES: {item.notes}
+                    </div>
+                    {/* </div> */}
+
+
                 </li>
             )
         }

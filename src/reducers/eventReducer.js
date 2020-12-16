@@ -7,7 +7,7 @@ import {
 } from "../actions/eventActions"
 
 const initialState = {
-    events: [{ id: 1, title: "event1" }, { id: 2, title: "event2" }, { id: 3, title: "event3" }],
+    events: [],
     event: {
         title: '',
         location: '',
