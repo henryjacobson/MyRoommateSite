@@ -5,11 +5,12 @@ import { getChoreById, updateChore, deleteChore } from "../actions/choresActions
 import { getResidentsByApartmentId } from "../actions/residentActions";
 
 class ChoreEditorContainer extends React.Component {
-    state = {}
+    state = {
+        chore: {description: '', asignee: ''}
+    }
 
     constructor(props) {
         super(props);
-        this.state.chore = props.chore
     }
 
     componentDidMount() {

@@ -53,6 +53,8 @@ class ResidentProfileComponent extends React.Component {
                                 .then(ap => this.setState(prev => {
                                     return { ...prev, apartment: ap }
                                 }))
+
+                            this.props.getChoresForApartmentFiltered(this.state.loggedInResident.apartmentId, this.state.loggedInResident.name)
                         })
             })
     }
