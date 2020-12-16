@@ -10,7 +10,7 @@ const FoodForm = props => {
             <form onSubmit={props.getFood}>
                 <input type="text" name="foodName" />
                 
-                <button> Search </button>
+                <button className={'btn btn-primary'}> Search </button>
             </form>
         </div >
 

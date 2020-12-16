@@ -241,7 +241,7 @@ class ResidentProfileComponent extends React.Component {
                                     )
                                 }
                             </ul>
-                            {this.props.account.id !== 0 &&
+                            {this.props.account && this.props.account.id !== 0 &&
                                 <div>
 
 

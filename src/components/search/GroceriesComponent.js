@@ -23,9 +23,9 @@ const GroceriesComponent = ({
                     {
                         account &&
                         account.id === 0 &&
-                        <div>
+                        <Link to={`/login`}>
                             {item.title}
-                        </div>
+                        </Link>
                     }
                     {''} NOTES: {item.notes}
                     {

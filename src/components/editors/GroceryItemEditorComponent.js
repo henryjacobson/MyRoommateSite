@@ -74,6 +74,12 @@ class GroceryItemEditorComponent extends React.Component {
                             <img src={"https://spoonacular.com/cdn/ingredients_100x100/" + this.state.groceryItem.imageUrl} />
                         </div>
                     </div>
+
+                    <a href={`https://en.wikipedia.org/wiki/${this.state.groceryItem.title.split(' ').join('_')}`}
+                       target={'_blank'}>
+                        More Info
+                    </a>
+
                     <div className="form-group">
                         <label for="description">Notes</label>
                         <textarea

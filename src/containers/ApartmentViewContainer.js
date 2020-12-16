@@ -87,11 +87,25 @@ class ApartmentViewContainer extends React.Component {
                         <div className={'col-3 justify-content-end'}>
                             <h4>
                                 Groceries:
-                                <Link to={`/apartments/${this.props.match.params.apartmentId}/groceries`}>
-                                    <button className={'btn btn-primary'}>
-                                        Add Food
-                                    </button>
-                                </Link>
+
+                                {
+                                    this.props.account &&
+                                    this.props.account.id !== 0 &&
+                                    <Link to={`/apartments/${this.props.match.params.apartmentId}/groceries`}>
+                                        <button className={'btn btn-primary'}>
+                                            Add Food
+                                        </button>
+                                    </Link>
+                                }
+                                {
+                                    this.props.account &&
+                                    this.props.account.id === 0 &&
+                                    <Link to={`/login`}>
+                                        <button className={'btn btn-primary'}>
+                                            Add Food
+                                        </button>
+                                    </Link>
+                                }
 
                             </h4>
                             <GroceriesComonent />

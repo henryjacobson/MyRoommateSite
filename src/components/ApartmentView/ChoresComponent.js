@@ -26,9 +26,10 @@ const ChoresComponent = ({
                     {
                         account &&
                         account.id === 0 &&
-                            <div>
-                                {chore.description}
-                            </div>
+                        <Link to={`/login`}>
+                            {chore.description}
+
+                        </Link>
                     }
                     {
                         account &&
