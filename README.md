@@ -9,10 +9,14 @@ https://warm-inlet-25455.herokuapp.com
 
 ## My Contributions
 
-* ./apartment/{:apartmentId}
+* Apartment View
+  * ./apartment/{:apartmentId} 
+  * [/src/containers/ApartmentViewContainer.js](https://github.com/henryjacobson/RoommateSite/blob/master/src/containers/ApartmentViewContainer.js)
   * Displays events, chores, tenants, and groceries. Editable only when signed in.
-* ./apartments/{:apartmentId}/chores/{:choreId}
+* Chore Editor
+  * ./apartments/{:apartmentId}/chores/{:choreId} 
+  * [/src/containers/ChoreEditorContainer.js](https://github.com/henryjacobson/RoommateSite/blob/master/src/containers/ChoreEditorContainer.js)
   * Shows individual chore and allow editing name and assignee. Viewable only when signed in.
 * Backend data organization in Spring
   * https://github.com/henryjacobson/Team2Database
-* General bug fixing and connectivity of pages
+* General bug fixing
